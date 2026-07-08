@@ -67,6 +67,8 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
   footer > div { padding-left:22px !important; padding-right:22px !important; }
 }
 </style>
+<script src="phone-mask.js"></script>
+<script src="hash-scroll.js"></script>
 </helmet>
 
 <template id="__bundler_thumbnail" data-bg-color="#FBFCFB">
@@ -82,15 +84,24 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 <!-- ===== NAV ===== -->
 <header style="position:sticky; top:0; z-index:60; background:rgba(251,252,251,0.85); backdrop-filter:blur(14px); border-bottom:1px solid rgba(40,44,62,0.07);">
   <nav style="max-width:1280px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
-    <a href="index.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+    <a href="index.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
     <div style="display:flex; align-items:center; gap:28px;">
-      <a href="rezultaty.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Результаты</a>
-      <a href="nauchnyy-podkhod.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Научный подход</a>
-      <a href="index.html#pricing" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Тарифы</a>
-      <a href="index.html#platform" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Платформа</a>
-      <a href="#cases" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Кейсы</a>
-      <a href="index.html#events" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Мероприятия</a>
-      <a href="index.html#materials" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Полезное</a>
+      <a href="result.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Результаты</a>
+      <a href="nauch-podhod.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Научный подход</a>
+      <a href="index.dc.html#pricing" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Тарифы</a>
+      <a href="index.dc.html#platform" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Платформа</a>
+      <a href="keysy.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Кейсы</a>
+      <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Мероприятия</a>
+      <div style="position:relative;" onMouseEnter="{{ openUseful }}" onMouseLeave="{{ closeUseful }}">
+        <a href="gaids.dc.html" onClick="{{ toggleUseful }}" style="font-size:15px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; cursor:pointer;"><span style="color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Полезное</span><span style="display:inline-block; transition:transform .2s; transform:{{ usefulChevron }}; font-size:11px; color:#9197AC; text-decoration:none;">▾</span></a>
+        <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:{{ usefulDisplay }}; flex-direction:column; z-index:70;">
+          <div style="min-width:230px; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; box-shadow:0 16px 40px rgba(40,44,62,0.14); padding:8px; display:flex; flex-direction:column;">
+            <a href="gaids.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Исследования, гайды</a>
+            <a href="gaids.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Блог</a>
+            <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Тренинги и вебинары</a>
+          </div>
+        </div>
+      </div>
     </div>
     <a href="#demo" style="background:#239266; color:#fff; font-weight:700; font-size:15px; padding:12px 24px; border-radius:44px; text-decoration:none; box-shadow:0 10px 28px rgba(35,146,102,0.3); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 34px rgba(35,146,102,0.4);">Заказать демо</a>
     <a href="#" data-burger onClick="{{ toggleMenu }}" style="align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid rgba(40,44,62,0.12); color:#282C3E; text-decoration:none; flex-shrink:0;">
@@ -98,12 +109,12 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
     </a>
   </nav>
   <div data-mmenu style="display:{{ mMenuDisplay }}; flex-direction:column; background:#fff; border-top:1px solid rgba(40,44,62,0.07); padding:8px 18px 16px;">
-    <a href="rezultaty.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Результаты</a>
-    <a href="nauchnyy-podkhod.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Научный подход</a>
-    <a href="index.html#pricing" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Тарифы</a>
-    <a href="index.html#platform" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Платформа</a>
-    <a href="#cases" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Кейсы</a>
-    <a href="index.html#events" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px;">Мероприятия</a>
+    <a href="result.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Результаты</a>
+    <a href="nauch-podhod.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Научный подход</a>
+    <a href="index.dc.html#pricing" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Тарифы</a>
+    <a href="index.dc.html#platform" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Платформа</a>
+    <a href="keysy.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Кейсы</a>
+    <a href="Мероприятия%20Alter.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px;">Мероприятия</a>
   </div>
 </header>
 
@@ -118,7 +129,6 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
   <div style="position:relative; z-index:1; max-width:1080px; margin:0 auto;">
     <div style="text-align:center;">
       <div style="display:inline-flex; align-items:center; gap:9px; background:#EAF7F0; color:#239266; font-weight:700; font-size:14px; padding:8px 16px; border-radius:30px; margin-bottom:24px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:#29B981; display:inline-block; animation:breathe 2.6s ease-in-out infinite;"></span>
         Калькулятор окупаемости
       </div>
       <h1 style="font-family:'Futura PT'; font-weight:700; font-size:52px; line-height:1.08; letter-spacing:-1.2px; color:#282C3E; text-wrap:balance;">Калькулятор ROI психологической поддержки <span style="color:#29B981;">сотрудников</span></h1>
@@ -239,7 +249,7 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
       <a href="https://alter.ru/business/keysy/custis" target="_blank" rel="noopener" aria-label="Читать кейс" style="position:absolute; inset:0; z-index:2;"></a><a href="https://alter.ru/business/keysy/custis" target="_blank" rel="noopener" style="position:relative; z-index:2; margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:15px; padding:12px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#29B981 !important; color:#fff !important;">Читать кейс</a>
     </div>
   </div>
-  <div style="text-align:center; margin-top:36px;"><a href="https://alter.ru/business/keysy" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:11px; background:#F1F2F4; color:#5A607A; font-weight:700; font-size:15px; padding:11px 13px 11px 22px; border-radius:44px; text-decoration:none; transition:background .18s;" style-hover="background:#E8E9EC !important;">Смотреть все кейсы <span style="width:28px; height:28px; border-radius:50%; background:#9197AC; color:#fff; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; font-size:14px;">→</span></a></div>
+  <div style="text-align:center; margin-top:36px;"><a href="keysy.dc.html" style="display:inline-flex; align-items:center; gap:11px; background:#F1F2F4; color:#5A607A; font-weight:700; font-size:15px; padding:11px 13px 11px 22px; border-radius:44px; text-decoration:none; transition:background .18s;" style-hover="background:#E8E9EC !important;">Смотреть все кейсы <span style="width:28px; height:28px; border-radius:50%; background:#9197AC; color:#fff; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; font-size:14px;">→</span></a></div>
 </section>
 
 <!-- ===== TESTIMONIALS ===== -->
@@ -342,26 +352,29 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
   <div style="max-width:1280px; margin:0 auto; padding:64px 40px 40px;">
     <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.1);">
       <div>
-        <img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" />
+        <a href="index.dc.html" style="display:inline-block; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
         <p style="font-size:15px; line-height:1.55; color:#9AA0B5; margin-top:16px; max-width:280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <div style="font-weight:700; font-size:15px;">Сервис</div>
-        <a href="#top" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Результаты</a>
-        <a href="nauchnyy-podkhod.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Научный подход</a>
-        <a href="index.html#pricing" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тарифы</a>
-        <a href="#cases" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Кейсы</a>
+        <a href="result.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Результаты</a>
+        <a href="nauch-podhod.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Научный подход</a>
+        <a href="index.dc.html#platform" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Платформа</a>
+        <a href="index.dc.html#pricing" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тарифы</a>
+        <a href="keysy.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Кейсы</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тренинги и вебинары</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
-        <div style="font-weight:700; font-size:15px;">HR</div>
-        <a href="index.html#materials" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Полезные материалы</a>
-        <a href="index.html#events" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Мероприятия</a>
-        <a href="index.html#platform" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Платформа</a>
+        <div style="font-weight:700; font-size:15px;">для HR</div>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Исследования, гайды</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Мероприятия</a>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Блог</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
         <div style="font-weight:700; font-size:15px;">Контакты</div>
         <a href="mailto:business@alter.ru" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">business@alter.ru</a>
-        <a href="tel:+78001234567" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">8 800 123-45-67</a>
+        <a href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Telegram-канал</a>
+        <a href="https://t.me/alter_business" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Написать нам в Telegram</a>
         <a href="#demo" style="font-size:15px; color:#53C99B; text-decoration:none; font-weight:700; transition:color .18s;" style-hover="color:#7BDDB4 !important;">Заказать демо →</a>
       </div>
     </div>
@@ -376,7 +389,7 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { demoSubmitted: false, tIndex: 0, mMenu: false, roi: null };
+  state = { demoSubmitted: false, tIndex: 0, mMenu: false, roi: null, usefulOpen: false };
 
   computeRoi(f) {
     const N = Math.max(0, parseFloat(f.employees) || 0);
@@ -678,6 +691,11 @@ class Component extends DCLogic {
       mMenuDisplay: this.state.mMenu ? "flex" : "none",
       toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
       closeMenu: () => this.setState({ mMenu: false }),
+      usefulDisplay: this.state.usefulOpen ? "flex" : "none",
+      usefulChevron: this.state.usefulOpen ? "rotate(180deg)" : "rotate(0deg)",
+      openUseful: () => { clearTimeout(this._usefulT); this.setState({ usefulOpen: true }); },
+      closeUseful: () => { clearTimeout(this._usefulT); this._usefulT = setTimeout(() => this.setState({ usefulOpen: false }), 220); },
+      toggleUseful: (e) => { clearTimeout(this._usefulT); this.setState(s => ({ usefulOpen: !s.usefulOpen })); },
       reviews: t.map((x) => ({ role: x.role, title: x.title, body: x.body, avatar: React.createElement("img", { src: x.img, alt: x.role, style: { width: "130px", height: "130px", borderRadius: "50%", objectFit: "cover", margin: "0 auto", display: "block" } }) })),
       dots: t.map((x, i) => ({ color: i === this.state.tIndex ? "#239266" : "#CFE6DA", onClick: () => this.scrollCarousel("reviews", i) }))
     };

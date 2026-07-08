@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT Cond'; src:url('uploads/FuturaPTCondBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+* { box-sizing:border-box; }
+body { margin:0; background:#EBE8E2; font-family:'Futura PT', system-ui, sans-serif; -webkit-font-smoothing:antialiased; }
+.dv-turn { padding:48px 52px; }
+.dv-thd { display:flex; align-items:baseline; gap:11px; margin:0 0 28px; }
+.dv-tid { font:600 12px ui-monospace,Menlo,monospace; padding:4px 9px; background:#239266; color:#fff; border-radius:6px; text-decoration:none; }
+.dv-tname { font:600 14px/1.2 system-ui,sans-serif; color:#282C3E; }
+.dv-opts { display:flex; flex-wrap:nowrap; gap:44px; align-items:flex-start; }
+.dv-opt { flex:none; display:flex; flex-direction:column; gap:14px; }
+.dv-olabel { display:flex; align-items:baseline; gap:10px; font:400 13px/1.4 system-ui,sans-serif; color:rgba(40,44,62,.6); max-width:1180px; }
+.dv-oid { font:600 11px ui-monospace,Menlo,monospace; padding:3px 8px; background:rgba(40,44,62,.09); color:#282C3E; border-radius:6px; text-decoration:none; }
+.dv-opt:target .dv-oid { background:#239266; color:#fff; }
+.dv-card { background:#FBFCFB; border:1px solid rgba(40,44,62,.1); border-radius:18px; box-shadow:0 6px 30px rgba(40,44,62,.07); overflow:hidden; }
+.dv-next { margin:30px 0 0; font:13px/1.7 system-ui,sans-serif; color:rgba(40,44,62,.6); max-width:900px; }
+.dv-next a { text-decoration:none; }
+</style>
+</helmet>
+
+<section class="dv-turn" id="t2">
+  <div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">По референсу Lyra Health — Рекомендуем + фильтры Тема/Аудитория/Поиск + сетка с пагинацией + видеотека</span></div>
+  <div class="dv-opts">
+    <div class="dv-opt" id="2a">
+      <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Структура lyrahealth.com/resources в брендинге Alter: featured-лента отчётов, панель фильтров, сетка карточек с пагинацией и видеотека. Обложки — плейсхолдеры под реальные фото.</div>
+      <div class="dv-card" style="width:1180px;">
+        <div style="padding:44px 46px 54px;">
+
+          <!-- Featured -->
+          <h2 style="font-family:'Futura PT'; font-weight:700; font-size:32px; line-height:1.1; letter-spacing:-0.5px; color:#282C3E; margin:0 0 24px;">Рекомендуем</h2>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:0 0 56px;">
+            <sc-for list="{{ featuredReports }}" as="item" hint-placeholder-count="3">
+              <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:18px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                <div style="{{ item.phStyleFeat }}"><span style="font-family:ui-monospace,Menlo,monospace; font-size:11.5px; letter-spacing:0.5px; color:rgba(40,44,62,0.42);">обложка</span></div>
+                <div style="padding:22px 22px 24px; display:flex; flex-direction:column; gap:11px; flex:1;">
+                  <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
+                  <h3 style="font-family:'Futura PT'; font-weight:700; font-size:21px; line-height:1.25; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                  <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0;">{{ item.desc }}</p>
+                  <a href="#" style="margin-top:auto; padding-top:8px; font-size:14px; font-weight:700; color:#239266; text-decoration:none;">Подробнее →</a>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- Explore all -->
+          <h2 style="font-family:'Futura PT'; font-weight:700; font-size:32px; line-height:1.1; letter-spacing:-0.5px; color:#282C3E; margin:0 0 8px;">Все материалы</h2>
+          <p style="font-size:16px; color:#6A7088; margin:0 0 24px;">Отфильтруйте по теме и аудитории или найдите нужное поиском</p>
+
+          <div style="display:flex; gap:20px; align-items:flex-end; flex-wrap:wrap; margin:0 0 30px; padding:22px 24px; background:#F4F8F5; border:1px solid #E3ECE6; border-radius:18px;">
+            <div style="display:flex; flex-direction:column; gap:7px; flex:1; min-width:230px;">
+              <label style="font-size:13px; font-weight:700; color:#282C3E;">Тема</label>
+              <select onChange="{{ onTopic }}" style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff; cursor:pointer;">
+                <sc-for list="{{ topicOptions }}" as="opt" hint-placeholder-count="7"><option value="{{ opt.value }}">{{ opt.label }}</option></sc-for>
+              </select>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:7px; flex:1; min-width:190px;">
+              <label style="font-size:13px; font-weight:700; color:#282C3E;">Аудитория</label>
+              <select style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff; cursor:pointer;">
+                <option>Все</option><option>HR</option><option>Руководитель</option><option>Сотрудник</option>
+              </select>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:7px; flex:1.4; min-width:230px;">
+              <label style="font-size:13px; font-weight:700; color:#282C3E;">Поиск</label>
+              <input placeholder="Название материала" style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff;" />
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:22px;">
+            <sc-for list="{{ gridL }}" as="item" hint-placeholder-count="8">
+              <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 14px 30px rgba(40,44,62,0.12) !important;">
+                <div style="{{ item.phStyle }}"><span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:rgba(40,44,62,0.4);">обложка</span></div>
+                <div style="padding:16px 17px 18px; display:flex; flex-direction:column; gap:9px; flex:1;">
+                  <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
+                  <h3 style="font-family:'Futura PT'; font-weight:700; font-size:16.5px; line-height:1.3; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                  <a href="#" style="margin-top:auto; padding-top:6px; font-size:13.5px; font-weight:700; color:#239266; text-decoration:none;">Подробнее →</a>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:38px;">
+            <div style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(40,44,62,0.14); display:flex; align-items:center; justify-content:center; color:#9AA0B5; cursor:pointer;">‹</div>
+            <div style="width:40px; height:40px; border-radius:50%; background:#239266; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center;">1</div>
+            <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">2</div>
+            <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">3</div>
+            <span style="color:#9AA0B5; padding:0 4px;">…</span>
+            <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">23</div>
+            <div style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(40,44,62,0.14); display:flex; align-items:center; justify-content:center; color:#3A3F58; cursor:pointer;">›</div>
+          </div>
+
+          <!-- Video library -->
+          <h2 style="font-family:'Futura PT'; font-weight:700; font-size:32px; line-height:1.1; letter-spacing:-0.5px; color:#282C3E; margin:60px 0 24px;">Видеотека</h2>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <sc-for list="{{ videos }}" as="v" hint-placeholder-count="3">
+              <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:18px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                <div style="height:184px; position:relative; display:flex; align-items:center; justify-content:center; background:repeating-linear-gradient(45deg,#E9F5EF,#E9F5EF 11px,#ffffff 11px,#ffffff 22px);">
+                  <div style="width:58px; height:58px; border-radius:50%; background:rgba(255,255,255,0.94); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(40,44,62,0.18);">
+                    <div style="width:0; height:0; border-left:17px solid #239266; border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:4px;"></div>
+                  </div>
+                </div>
+                <div style="padding:18px 20px 22px;">
+                  <h4 style="font-family:'Futura PT'; font-weight:700; font-size:18px; line-height:1.3; color:#282C3E; margin:0 0 8px;">{{ v.title }}</h4>
+                  <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ v.desc }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="dv-next">Дальше: «беру <a class="dv-oid" href="#2a">2a</a>, собери полную страницу» · «в <a class="dv-oid" href="#2a">2a</a> сделай featured одной крупной карточкой» · «убери видеотеку» · «сетку в 3 колонки»</p>
+</section>
+
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Раздел «Полезное» — три подхода к материалам (шапка/форма/футер сохранены)</span></div>
+  <div class="dv-opts">
+
+    <!-- ============ 1A — БИБЛИОТЕКА С ФИЛЬТРАМИ ============ -->
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Библиотека с фильтрами — табы по типам + плотная сетка. Быстрый поиск нужного формата.</div>
+      <div class="dv-card" style="width:1180px;">
+        <div style="padding:44px 46px 52px;">
+          <div style="margin:0 0 26px;">
+            <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E; margin:0 0 8px;">Полезные материалы</h2>
+            <p style="font-size:16px; color:#6A7088; margin:0;">Чек-листы, гайды и исследования для HR и руководителей команд</p>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:0 0 30px;">
+            <div style="position:relative; flex:0 0 288px; max-width:288px;">
+              <input placeholder="Поиск по материалам" style="width:100%; font-family:'Futura PT'; font-size:15px; padding:12px 16px 12px 44px; border:1px solid rgba(40,44,62,0.14); border-radius:24px; outline:none; color:#282C3E; background:#fff;" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="position:absolute; left:16px; top:50%; transform:translateY(-50%);"><circle cx="11" cy="11" r="7" stroke="#9AA0B5" stroke-width="2"/><path d="M20 20l-3.2-3.2" stroke="#9AA0B5" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:10px;">
+              <sc-for list="{{ chipsA }}" as="chip" hint-placeholder-count="6">
+                <div onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}<span style="{{ chip.countStyle }}">{{ chip.count }}</span></div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <sc-for list="{{ gridA }}" as="item" hint-placeholder-count="6">
+              <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                <div style="{{ item.coverGrid }}">
+                  <div style="{{ item.mark }}"></div>
+                  <span style="{{ item.coverLabel }}">{{ item.tag }}</span>
+                </div>
+                <div style="padding:17px 18px 18px; display:flex; flex-direction:column; gap:9px; flex:1;">
+                  <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                  <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ item.desc }}</p>
+                  <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between;">
+                    <span style="font-size:12.5px; color:#9AA0B5;">{{ item.meta }}</span>
+                    <span style="font-size:13px; font-weight:700; color:#239266;">Скачать →</span>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 1B — РЕДАКЦИОННАЯ ============ -->
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Редакционная — крупный featured-материал + тематические ленты по типам. Для вовлечения и открытий.</div>
+      <div class="dv-card" style="width:1180px;">
+        <div style="padding:44px 46px 52px;">
+          <div style="margin:0 0 28px;">
+            <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E; margin:0 0 8px;">Полезные материалы</h2>
+            <p style="font-size:16px; color:#6A7088; margin:0;">Свежее исследование и подборки по темам</p>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1.1fr 1fr; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:20px; overflow:hidden; margin:0 0 44px;">
+            <div style="{{ featured.coverFeat }}">
+              <div style="{{ featured.markFeat }}"></div>
+              <span style="{{ featured.featLabel }}">{{ featured.tag }}</span>
+            </div>
+            <div style="padding:40px; display:flex; flex-direction:column; justify-content:center; gap:14px;">
+              <span style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#239266;">Рекомендуем</span>
+              <h3 style="font-family:'Futura PT'; font-weight:700; font-size:30px; line-height:1.18; color:#282C3E; margin:0;">{{ featured.title }}</h3>
+              <p style="font-size:16px; line-height:1.55; color:#4C516B; margin:0;">{{ featured.desc }}</p>
+              <a href="#" style="align-self:flex-start; margin-top:8px; background:#239266; color:#fff; font-weight:700; font-size:15px; padding:13px 26px; border-radius:40px; text-decoration:none; box-shadow:0 10px 26px rgba(35,146,102,0.3);">Читать исследование →</a>
+            </div>
+          </div>
+
+          <div style="margin:0 0 40px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin:0 0 18px;">
+              <h3 style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E; margin:0;">Чек-листы</h3>
+              <a href="#" style="font-size:14px; font-weight:700; color:#239266; text-decoration:none;">Все →</a>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+              <sc-for list="{{ rowCheck }}" as="item" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                  <div style="{{ item.coverGrid }}"><div style="{{ item.mark }}"></div><span style="{{ item.coverLabel }}">{{ item.tag }}</span></div>
+                  <div style="padding:17px 18px 18px; display:flex; flex-direction:column; gap:9px; flex:1;">
+                    <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                    <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ item.desc }}</p>
+                    <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#9AA0B5;">{{ item.meta }}</span><span style="font-size:13px; font-weight:700; color:#239266;">Скачать →</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin:0 0 40px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin:0 0 18px;">
+              <h3 style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E; margin:0;">Гайды</h3>
+              <a href="#" style="font-size:14px; font-weight:700; color:#239266; text-decoration:none;">Все →</a>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+              <sc-for list="{{ rowGuide }}" as="item" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                  <div style="{{ item.coverGrid }}"><div style="{{ item.mark }}"></div><span style="{{ item.coverLabel }}">{{ item.tag }}</span></div>
+                  <div style="padding:17px 18px 18px; display:flex; flex-direction:column; gap:9px; flex:1;">
+                    <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                    <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ item.desc }}</p>
+                    <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#9AA0B5;">{{ item.meta }}</span><span style="font-size:13px; font-weight:700; color:#239266;">Скачать →</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin:0 0 18px;">
+              <h3 style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E; margin:0;">Исследования</h3>
+              <a href="#" style="font-size:14px; font-weight:700; color:#239266; text-decoration:none;">Все →</a>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+              <sc-for list="{{ rowRes }}" as="item" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; cursor:pointer; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+                  <div style="{{ item.coverGrid }}"><div style="{{ item.mark }}"></div><span style="{{ item.coverLabel }}">{{ item.tag }}</span></div>
+                  <div style="padding:17px 18px 18px; display:flex; flex-direction:column; gap:9px; flex:1;">
+                    <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin:0;">{{ item.title }}</h3>
+                    <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ item.desc }}</p>
+                    <div style="margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between;"><span style="font-size:12.5px; color:#9AA0B5;">{{ item.meta }}</span><span style="font-size:13px; font-weight:700; color:#239266;">Скачать →</span></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 1C — БАЗА ЗНАНИЙ ============ -->
+    <div class="dv-opt" id="1c">
+      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>База знаний — боковой фильтр + компактный список строк. Самая плотная, для быстрого сканирования.</div>
+      <div class="dv-card" style="width:1180px;">
+        <div style="padding:44px 46px 52px;">
+          <div style="margin:0 0 30px;">
+            <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E; margin:0 0 8px;">Полезные материалы</h2>
+            <p style="font-size:16px; color:#6A7088; margin:0;">Вся база — фильтруйте по формату слева</p>
+          </div>
+
+          <div style="display:grid; grid-template-columns:232px 1fr; gap:38px; align-items:start;">
+            <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; padding:20px 16px;">
+              <div style="font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9AA0B5; padding:0 8px 14px;">Формат</div>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <sc-for list="{{ railC }}" as="r" hint-placeholder-count="6">
+                  <div onClick="{{ r.onClick }}" style="{{ r.style }}"><span>{{ r.label }}</span><span style="{{ r.countStyle }}">{{ r.count }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <sc-for list="{{ listC }}" as="item" hint-placeholder-count="6">
+                <div style="display:flex; align-items:center; gap:18px; padding:15px 18px; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:14px; cursor:pointer; transition:border-color .18s, box-shadow .18s, transform .18s;" style-hover="border-color:rgba(35,146,102,0.45) !important; box-shadow:0 12px 26px rgba(40,44,62,0.1) !important; transform:translateX(3px) !important;">
+                  <div style="{{ item.coverThumb }}"><span style="{{ item.thumbDot }}"></span></div>
+                  <div style="flex:1; min-width:0;">
+                    <span style="{{ item.tagStyle }}">{{ item.tag }}</span>
+                    <h3 style="font-family:'Futura PT'; font-weight:700; font-size:18px; line-height:1.3; color:#282C3E; margin:4px 0 3px;">{{ item.title }}</h3>
+                    <p style="font-size:13.5px; line-height:1.45; color:#6A7088; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ item.desc }}</p>
+                  </div>
+                  <span style="font-size:12.5px; color:#9AA0B5; white-space:nowrap;">{{ item.meta }}</span>
+                  <span style="font-size:20px; color:#239266;">→</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">Дальше можно: «беру <a class="dv-oid" href="#1a">1a</a>, собери полную страницу» · «в <a class="dv-oid" href="#1c">1c</a> добавь поиск сверху» · «смешай featured из <a class="dv-oid" href="#1b">1b</a> с сеткой <a class="dv-oid" href="#1a">1a</a>» · «новые направления»</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { fa: 'all', fc: 'all', topic: 'all' };
+
+  tm(type) {
+    return ({
+      checklist: { label:'Чек-лист', plural:'Чек-листы', bg:'#E9F5EF', ink:'#1E7A57', dot:'#29B981' },
+      guide:     { label:'Гайд', plural:'Гайды', bg:'#EAF0FB', ink:'#33468F', dot:'#5B6FE0' },
+      research:  { label:'Исследование', plural:'Исследования', bg:'#F1ECFA', ink:'#5A46A8', dot:'#8A6FE0' },
+      webinar:   { label:'Вебинар', plural:'Вебинары', bg:'#F7EFE6', ink:'#9A6B33', dot:'#D99A4E' },
+      article:   { label:'Статья', plural:'Статьи', bg:'#E7F3F1', ink:'#1F7A70', dot:'#3BA99C' }
+    })[type];
+  }
+
+  get materials() {
+    return [
+      { id:1, type:'checklist', title:'Признаки выгорания в команде', desc:'12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.', meta:'8 пунктов' },
+      { id:2, type:'guide', title:'Как поддержать сотрудника в кризис', desc:'Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.', meta:'14 стр.' },
+      { id:3, type:'research', title:'Alter&HH: ментальное здоровье сотрудников 2025', desc:'Ежегодное исследование о психологическом состоянии в российских компаниях.', meta:'48 стр.' },
+      { id:4, type:'checklist', title:'Экологичная обратная связь', desc:'Как давать критику, не разрушая мотивацию и доверие внутри команды.', meta:'10 пунктов' },
+      { id:5, type:'guide', title:'Профилактика конфликтов в коллективе', desc:'Инструменты, которые снижают напряжение до того, как оно перерастёт в конфликт.', meta:'11 стр.' },
+      { id:6, type:'webinar', title:'Стресс-менеджмент для команд', desc:'Запись вебинара с психологом Alter о работе со стрессом в интенсивных спринтах.', meta:'52 мин' },
+      { id:7, type:'article', title:'Как измерять well-being: метрики и ROI', desc:'Разбираем показатели, которые связывают заботу о людях с деньгами бизнеса.', meta:'7 мин' },
+      { id:8, type:'guide', title:'Онбординг без стресса', desc:'Как встроить психологическую поддержку в первые 90 дней нового сотрудника.', meta:'9 стр.' },
+      { id:9, type:'research', title:'Тревожность и продуктивность', desc:'Данные о том, как уровень тревоги в команде влияет на результаты работы.', meta:'22 стр.' },
+      { id:10, type:'webinar', title:'Эмоциональный интеллект руководителя', desc:'Практический вебинар о лидерстве через эмпатию и осознанность.', meta:'47 мин' },
+      { id:11, type:'checklist', title:'Готова ли компания к well-being программе', desc:'Быстрая самодиагностика зрелости корпоративной заботы о сотрудниках.', meta:'12 пунктов' },
+      { id:12, type:'article', title:'Синдром самозванца в IT', desc:'Почему сильные специалисты сомневаются в себе и что с этим делать команде.', meta:'6 мин' },
+      { id:13, type:'research', title:'Выгорание в IT: масштаб проблемы', desc:'Аналитика Alter о распространённости выгорания среди технических специалистов.', meta:'18 стр.' }
+    ];
+  }
+
+  get typeKeys() { return ['all','checklist','guide','research','webinar','article']; }
+  typeLabel(k) { return k === 'all' ? 'Все' : this.tm(k).plural; }
+  count(k) { return k === 'all' ? this.materials.length : this.materials.filter(m => m.type === k).length; }
+
+  decorate(m) {
+    const t = this.tm(m.type);
+    return {
+      id:m.id, type:m.type, title:m.title, desc:m.desc, tag:t.label, meta:m.meta,
+      coverGrid:{ height:'138px', display:'flex', alignItems:'center', justifyContent:'center', background:t.bg, position:'relative', overflow:'hidden' },
+      coverFeat:{ minHeight:'300px', display:'flex', alignItems:'center', justifyContent:'center', background:t.bg, position:'relative', overflow:'hidden' },
+      coverThumb:{ width:'74px', height:'74px', flex:'0 0 74px', borderRadius:'13px', display:'flex', alignItems:'center', justifyContent:'center', background:t.bg, position:'relative', overflow:'hidden' },
+      coverLabel:{ fontFamily:"'Futura PT', sans-serif", fontWeight:700, fontSize:'14px', letterSpacing:'1.6px', textTransform:'uppercase', color:t.ink, opacity:0.9, position:'relative', zIndex:2 },
+      featLabel:{ fontFamily:"'Futura PT', sans-serif", fontWeight:700, fontSize:'17px', letterSpacing:'2px', textTransform:'uppercase', color:t.ink, opacity:0.92, position:'relative', zIndex:2 },
+      thumbDot:{ width:'15px', height:'15px', borderRadius:'50%', background:t.dot },
+      mark:{ position:'absolute', width:'120px', height:'120px', borderRadius:'50%', background:t.dot, opacity:0.13, top:'-34px', right:'-30px' },
+      markFeat:{ position:'absolute', width:'230px', height:'230px', borderRadius:'50%', background:t.dot, opacity:0.12, bottom:'-72px', left:'-52px' },
+      tagStyle:{ display:'inline-flex', alignItems:'center', gap:'6px', fontSize:'12px', fontWeight:700, color:t.ink },
+      phStyle:{ height:'168px', display:'flex', alignItems:'center', justifyContent:'center', background:'repeating-linear-gradient(45deg, '+t.bg+', '+t.bg+' 11px, #ffffff 11px, #ffffff 22px)' },
+      phStyleFeat:{ height:'208px', display:'flex', alignItems:'center', justifyContent:'center', background:'repeating-linear-gradient(45deg, '+t.bg+', '+t.bg+' 11px, #ffffff 11px, #ffffff 22px)' },
+      iconStyle:{ width:'13px', height:'13px', borderRadius:'3px', background:t.dot, transform:'rotate(45deg)', flex:'0 0 auto' }
+    };
+  }
+
+  renderVals() {
+    const dec = this.materials.map(m => this.decorate(m));
+    const fa = this.state.fa, fc = this.state.fc;
+
+    const gridA = fa === 'all' ? dec.slice(0, 6) : dec.filter(m => m.type === fa);
+    const listC = fc === 'all' ? dec.slice(0, 6) : dec.filter(m => m.type === fc);
+
+    const chipsA = this.typeKeys.map(k => {
+      const on = fa === k;
+      return {
+        label: this.typeLabel(k),
+        count: this.count(k),
+        onClick: () => this.setState({ fa: k }),
+        style: Object.assign(
+          { display:'inline-flex', alignItems:'center', gap:'8px', padding:'10px 16px', borderRadius:'24px', fontSize:'14px', fontWeight:700, cursor:'pointer', transition:'all .18s', whiteSpace:'nowrap', fontFamily:"'Futura PT', sans-serif" },
+          on ? { background:'#239266', color:'#fff', border:'1px solid #239266', boxShadow:'0 8px 20px rgba(35,146,102,0.26)' }
+             : { background:'#fff', color:'#3A3F58', border:'1px solid rgba(40,44,62,0.14)' }
+        ),
+        countStyle: { fontSize:'12.5px', fontWeight:700, color: on ? 'rgba(255,255,255,0.85)' : '#9AA0B5' }
+      };
+    });
+
+    const railC = this.typeKeys.map(k => {
+      const on = fc === k;
+      return {
+        label: this.typeLabel(k),
+        count: this.count(k),
+        onClick: () => this.setState({ fc: k }),
+        style: Object.assign(
+          { display:'flex', alignItems:'center', justifyContent:'space-between', gap:'10px', padding:'11px 14px', borderRadius:'12px', fontSize:'15px', cursor:'pointer', transition:'all .15s', fontFamily:"'Futura PT', sans-serif" },
+          on ? { background:'#E9F5EF', color:'#1E7A57', fontWeight:700 }
+             : { background:'transparent', color:'#4C516B', fontWeight:500 }
+        ),
+        countStyle: Object.assign(
+          { fontSize:'12px', fontWeight:700, padding:'2px 9px', borderRadius:'20px' },
+          on ? { background:'#fff', color:'#1E7A57' } : { background:'rgba(40,44,62,0.06)', color:'#6A7088' }
+        )
+      };
+    });
+
+    const topicMap = { 1:'Выгорание', 2:'Лидерство', 3:'Культура', 4:'Культура', 5:'Лидерство', 6:'Стресс и тревога', 7:'ROI', 8:'Онбординг', 9:'Стресс и тревога', 10:'Лидерство', 11:'Культура', 12:'Стресс и тревога', 13:'Выгорание' };
+    const topics = ['all', 'Выгорание', 'Культура', 'Стресс и тревога', 'Лидерство', 'ROI', 'Онбординг'];
+    const tp = this.state.topic;
+    const gridL = (tp === 'all' ? dec : dec.filter(m => topicMap[m.id] === tp)).slice(0, 8);
+    const videos = [
+      { title:'Знакомство с Alter', desc:'Как устроена платформа для сотрудников и HR-кабинет.' },
+      { title:'Как проходит первая сессия', desc:'Психолог Alter рассказывает, чего ожидать на старте.' },
+      { title:'История клиента: как X5 внедрили заботу', desc:'Кейс о запуске психологической поддержки в большой команде.' }
+    ];
+
+    return {
+      chipsA, railC, gridA, listC,
+      featured: dec.find(m => m.type === 'research'),
+      rowCheck: dec.filter(m => m.type === 'checklist').slice(0, 3),
+      rowGuide: dec.filter(m => m.type === 'guide').slice(0, 3),
+      rowRes: dec.filter(m => m.type === 'research').slice(0, 3),
+      featuredReports: [3, 9, 13].map(id => dec.find(m => m.id === id)),
+      gridL,
+      topicOptions: topics.map(t => ({ value: t, label: t === 'all' ? 'Все темы' : t })),
+      videos,
+      onTopic: (e) => this.setState({ topic: e.target.value })
+    };
+  }
+}
+</script>
+</body>
+</html>

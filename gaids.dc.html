@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBookOblique.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBoldOblique.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT Cond'; src:url('uploads/FuturaPTCondBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -webkit-font-smoothing:antialiased; }
+::selection { background:#A1E1C8; color:#282C3E; }
+@keyframes floaty { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
+@keyframes drift1 { 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(26px,-20px) scale(1.09); } }
+@keyframes drift2 { 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-22px,18px) scale(1.12); } }
+[data-carousel]::-webkit-scrollbar { display:none; }
+
+[data-burger] { display:none; }
+@media (min-width: 981px) { [data-mmenu] { display:none !important; } }
+@media (max-width: 1024px) {
+  [style*="grid-template-columns: repeat(4"] { grid-template-columns:repeat(2,1fr) !important; }
+  [style*="grid-template-columns: repeat(3"] { grid-template-columns:repeat(2,1fr) !important; }
+  [style*="grid-template-columns: 1.4fr 1fr 1fr 1fr"] { grid-template-columns:1fr 1fr !important; }
+  #top h1 { font-size:44px !important; }
+  section h2 { font-size:30px !important; }
+}
+@media (max-width: 980px) {
+  header nav > div:nth-of-type(1) { display:none !important; }
+  [data-burger] { display:inline-flex !important; }
+}
+@media (max-width: 680px) {
+  header nav { padding-left:18px !important; padding-right:18px !important; }
+  section { padding-left:20px !important; padding-right:20px !important; }
+  [style*="grid-template-columns: repeat"] { grid-template-columns:1fr !important; }
+  #top { padding-top:52px !important; }
+  #top h1 { font-size:34px !important; letter-spacing:-0.5px !important; }
+  #top p { font-size:17px !important; }
+  section h2 { font-size:26px !important; }
+  footer > div { padding-left:22px !important; padding-right:22px !important; }
+}
+</style>
+<script src="./image-slot.js"></script>
+<script src="phone-mask.js"></script>
+<script src="hash-scroll.js"></script>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#FBFCFB">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FBFCFB"/>
+    <g fill="#29B981"><circle cx="600" cy="330" r="62"/><circle cx="600" cy="454" r="62"/><circle cx="538" cy="392" r="62"/><circle cx="662" cy="392" r="62"/></g>
+    <text x="600" y="600" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#239266" text-anchor="middle">материалы</text>
+  </svg>
+</template>
+
+<div style="overflow-x:hidden;">
+
+<!-- ===== NAV ===== -->
+<header style="position:sticky; top:0; z-index:60; background:rgba(251,252,251,0.85); backdrop-filter:blur(14px); border-bottom:1px solid rgba(40,44,62,0.07);">
+  <nav style="max-width:1280px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+    <a href="index.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="result.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Результаты</a>
+      <a href="nauch-podhod.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Научный подход</a>
+      <a href="index.dc.html#pricing" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Тарифы</a>
+      <a href="index.dc.html#platform" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Платформа</a>
+      <a href="index.dc.html#cases" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Кейсы</a>
+      <a href="index.dc.html#events" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Мероприятия</a>
+      <div style="position:relative;" onMouseEnter="{{ openUseful }}" onMouseLeave="{{ closeUseful }}">
+        <a href="#top" onClick="{{ toggleUseful }}" style="font-size:15px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; cursor:pointer;"><span style="color:#239266; font-weight:700; text-decoration:none;">Полезное</span><span style="display:inline-block; transition:transform .2s; transform:{{ usefulChevron }}; font-size:11px; color:#9197AC; text-decoration:none;">▾</span></a>
+        <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:{{ usefulDisplay }}; flex-direction:column; z-index:70;">
+          <div style="min-width:230px; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; box-shadow:0 16px 40px rgba(40,44,62,0.14); padding:8px; display:flex; flex-direction:column;">
+            <a href="#top" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Исследования, гайды</a>
+            <a href="#top" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Блог</a>
+            <a href="index.dc.html#events" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Тренинги и вебинары</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#demo" style="background:#239266; color:#fff; font-weight:700; font-size:15px; padding:12px 24px; border-radius:44px; text-decoration:none; box-shadow:0 10px 28px rgba(35,146,102,0.3); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 34px rgba(35,146,102,0.4);">Заказать демо</a>
+    <a href="#" data-burger onClick="{{ toggleMenu }}" style="align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid rgba(40,44,62,0.12); color:#282C3E; text-decoration:none; flex-shrink:0;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  <div data-mmenu style="display:{{ mMenuDisplay }}; flex-direction:column; background:#fff; border-top:1px solid rgba(40,44,62,0.07); padding:8px 18px 16px;">
+    <a href="result.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Результаты</a>
+    <a href="nauch-podhod.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Научный подход</a>
+    <a href="index.dc.html#pricing" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Тарифы</a>
+    <a href="index.dc.html#platform" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Платформа</a>
+    <a href="index.dc.html#cases" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Кейсы</a>
+    <a href="index.dc.html#events" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Мероприятия</a>
+    <a href="#top" onClick="{{ closeMenu }}" style="font-size:16px; color:#239266; font-weight:700; text-decoration:none; padding:13px 8px;">Полезное</a>
+  </div>
+</header>
+
+<!-- ===== PAGE TITLE ===== -->
+<section id="top" style="max-width:1160px; margin:0 auto; padding:76px 40px 0; text-align:center;">
+  <span style="display:inline-flex; align-items:center; background:#EAF7F0; color:#239266; font-weight:700; font-size:14px; padding:8px 16px; border-radius:30px; margin-bottom:16px;">Полезное</span>
+  <h1 style="font-family:'Futura PT'; font-weight:700; font-size:54px; line-height:1.05; letter-spacing:-1px; color:#282C3E; margin:0 0 18px;">Материалы для заботы о команде</h1>
+  <p style="font-size:19px; line-height:1.5; color:#4C516B; max-width:640px; margin:0 auto;">Чек-листы, гайды и исследования для HR и руководителей — бесплатно и на основе доказательного подхода.</p>
+</section>
+
+<!-- ===== FEATURED ===== -->
+<section style="max-width:1160px; margin:0 auto; padding:64px 40px 0;">
+  <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:28px;">
+    <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E; margin:0;">Рекомендуем</h2>
+    <div style="display:flex; gap:10px; flex-shrink:0;">
+      <div onClick="{{ fPrev }}" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(40,44,62,0.16); display:flex; align-items:center; justify-content:center; font-size:22px; color:#282C3E; cursor:pointer; transition:background .18s, border-color .18s;" style-hover="background:#F1F6F3 !important; border-color:#29B981 !important;">‹</div>
+      <div onClick="{{ fNext }}" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(40,44,62,0.16); display:flex; align-items:center; justify-content:center; font-size:22px; color:#282C3E; cursor:pointer; transition:background .18s, border-color .18s;" style-hover="background:#F1F6F3 !important; border-color:#29B981 !important;">›</div>
+    </div>
+  </div>
+
+  <div data-carousel="featured" style="overflow-x:auto; cursor:grab; scrollbar-width:none; -ms-overflow-style:none; margin:0 -4px;">
+    <div style="display:flex; gap:24px; padding:4px;">
+      <sc-for list="{{ featuredReports }}" as="item" hint-placeholder-count="0">
+        <div style="flex:0 0 calc(50% - 16px); max-width:calc(50% - 16px); display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:18px; overflow:hidden; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 16px 34px rgba(40,44,62,0.13) !important;">
+          <div style="width:100%; height:230px; background:{{ item.coverBg }};"></div>
+          <div style="padding:24px 26px 26px; display:flex; flex-direction:column; gap:12px; flex:1;">
+            <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
+            <h3 style="font-family:'Futura PT'; font-weight:700; font-size:22px; line-height:1.24; color:#282C3E; margin:0;">{{ item.title }}</h3>
+            <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ item.desc }}</p>
+            <a href="#" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:9px; justify-content:center; margin-top:26px;">
+    <sc-for list="{{ fDots }}" as="d" hint-placeholder-count="5">
+      <div onClick="{{ d.onClick }}" style="{{ d.style }}"></div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ===== EXPLORE ALL ===== -->
+<section style="max-width:1160px; margin:0 auto; padding:80px 40px 0;">
+  <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E;">Все материалы</h2>
+  <p style="font-size:16px; color:#6A7088; margin:8px 0 0;">Отфильтруйте по формату, теме и аудитории или найдите нужное поиском</p>
+
+  <div style="display:flex; gap:22px; align-items:flex-end; flex-wrap:wrap; margin:28px 0 32px; padding-bottom:28px; border-bottom:1px solid rgba(40,44,62,0.1);">
+    <div style="display:flex; flex-direction:column; gap:7px; flex:1; min-width:170px;">
+      <label style="font-size:13px; font-weight:700; color:#282C3E;">Тип материала</label>
+      <select onChange="{{ onType }}" style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff; cursor:pointer;">
+        <sc-for list="{{ typeOptions }}" as="opt" hint-placeholder-count="6"><option value="{{ opt.value }}">{{ opt.label }}</option></sc-for>
+      </select>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:7px; flex:1; min-width:170px;">
+      <label style="font-size:13px; font-weight:700; color:#282C3E;">Тема</label>
+      <select onChange="{{ onTopic }}" style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff; cursor:pointer;">
+        <sc-for list="{{ topicOptions }}" as="opt" hint-placeholder-count="7"><option value="{{ opt.value }}">{{ opt.label }}</option></sc-for>
+      </select>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:7px; flex:1; min-width:150px;">
+      <label style="font-size:13px; font-weight:700; color:#282C3E;">Аудитория</label>
+      <select style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff; cursor:pointer;">
+        <option>Все</option><option>HR</option><option>Руководитель</option><option>Сотрудник</option>
+      </select>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:7px; flex:1.4; min-width:200px;">
+      <label style="font-size:13px; font-weight:700; color:#282C3E;">Поиск</label>
+      <input placeholder="Название материала" style="font-family:'Futura PT'; font-size:15px; padding:13px 16px; border:1px solid #DCE5DF; border-radius:12px; outline:none; color:#282C3E; background:#fff;" />
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;">
+    <sc-for list="{{ gridL }}" as="item" hint-placeholder-count="0">
+      <div style="display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; overflow:hidden; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 14px 30px rgba(40,44,62,0.12) !important;">
+        <div style="width:100%; height:180px; background:{{ item.coverBg }};"></div>
+        <div style="padding:18px 20px 20px; display:flex; flex-direction:column; gap:10px; flex:1;">
+          <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
+          <h3 style="font-family:'Futura PT'; font-weight:700; font-size:18px; line-height:1.3; color:#282C3E; margin:0;">{{ item.title }}</h3>
+          <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ item.desc }}</p>
+          <a href="#" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+    <div style="text-align:center; padding:56px 20px; color:#6A7088; font-size:17px;">По выбранным фильтрам материалов не нашлось. Попробуйте изменить условия.</div>
+  </sc-if>
+
+  <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-top:40px;">
+    <div style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(40,44,62,0.14); display:flex; align-items:center; justify-content:center; color:#9AA0B5; cursor:pointer;">‹</div>
+    <div style="width:40px; height:40px; border-radius:50%; background:#239266; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center;">1</div>
+    <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">2</div>
+    <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">3</div>
+    <span style="color:#9AA0B5; padding:0 4px;">…</span>
+    <div style="width:40px; height:40px; border-radius:50%; color:#3A3F58; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;">8</div>
+    <div style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(40,44,62,0.14); display:flex; align-items:center; justify-content:center; color:#3A3F58; cursor:pointer;">›</div>
+  </div>
+</section>
+
+<!-- ===== VIDEO LIBRARY (SLIDER) ===== -->
+<section style="max-width:1160px; margin:0 auto; padding:84px 40px 0;">
+  <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:28px;">
+    <div>
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:34px; line-height:1.1; letter-spacing:-0.6px; color:#282C3E;">Видеотека</h2>
+      <p style="font-size:16px; color:#6A7088; margin:8px 0 0;">Короткие видео о платформе и историях клиентов</p>
+    </div>
+    <div style="display:flex; gap:10px; flex-shrink:0;">
+      <div onClick="{{ vPrev }}" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(40,44,62,0.16); display:flex; align-items:center; justify-content:center; font-size:22px; color:#282C3E; cursor:pointer; transition:background .18s, border-color .18s;" style-hover="background:#F1F6F3 !important; border-color:#29B981 !important;">‹</div>
+      <div onClick="{{ vNext }}" style="width:48px; height:48px; border-radius:50%; border:1px solid rgba(40,44,62,0.16); display:flex; align-items:center; justify-content:center; font-size:22px; color:#282C3E; cursor:pointer; transition:background .18s, border-color .18s;" style-hover="background:#F1F6F3 !important; border-color:#29B981 !important;">›</div>
+    </div>
+  </div>
+
+  <div data-carousel="videos" style="overflow-x:auto; cursor:grab; scrollbar-width:none; -ms-overflow-style:none; margin:0 -4px;">
+    <div style="display:flex; gap:24px; padding:4px;">
+      <sc-for list="{{ videos }}" as="v" hint-placeholder-count="0">
+        <div style="flex:0 0 372px; max-width:372px; display:flex; flex-direction:column; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:18px; overflow:hidden;">
+          <div style="height:210px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+            <div style="position:absolute; inset:0; background:{{ v.coverBg }};"></div>
+            <div style="position:absolute; inset:0; background:rgba(40,44,62,0.30);"></div>
+            <div style="position:relative; z-index:2; width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,0.94); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(40,44,62,0.28);">
+              <div style="width:0; height:0; border-left:18px solid #239266; border-top:12px solid transparent; border-bottom:12px solid transparent; margin-left:5px;"></div>
+            </div>
+          </div>
+          <div style="padding:20px 22px 24px;">
+            <h4 style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.3; color:#282C3E; margin:0 0 9px;">{{ v.title }}</h4>
+            <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0;">{{ v.desc }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:9px; justify-content:center; margin-top:26px;">
+    <sc-for list="{{ vDots }}" as="d" hint-placeholder-count="6">
+      <div onClick="{{ d.onClick }}" style="{{ d.style }}"></div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ===== DEMO FORM ===== -->
+<section id="demo" style="max-width:1280px; margin:100px auto 0; padding:0 40px;">
+  <div style="background:#F4F8F5; border:1px solid #E3ECE6; border-radius:32px; padding:60px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-90px; right:-70px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(41,185,129,0.20), rgba(41,185,129,0) 70%); animation:drift1 15s ease-in-out infinite; z-index:1; pointer-events:none;"></div>
+    <div style="position:absolute; bottom:-110px; left:34%; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(41,185,129,0.11), rgba(41,185,129,0) 70%); animation:drift2 19s ease-in-out infinite; z-index:1; pointer-events:none;"></div>
+    <h2 style="font-family:'Futura PT'; font-weight:700; font-size:38px; letter-spacing:-0.6px; color:#282C3E; position:relative; z-index:2; text-align:center;">Заказать демонстрацию «Alter для бизнеса»</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:36px; position:relative; z-index:2;">
+      <div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:20px;">
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Покажем платформу для сотрудников и HR-кабинет</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Поможем выбрать оптимальный тариф под ваши задачи и бюджет</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Выдадим демо-доступы на тестовую сессию с психологом</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Проконсультируем по диагностике команды и пилотному запуску</span></li>
+        </ul>
+        <div style="margin-top:24px; display:flex; justify-content:center;">
+          <img src="assets/illustrations/meditation.png" alt="Медитация" style="width:300px; height:auto; display:block; animation:floaty 6s ease-in-out infinite;" />
+        </div>
+      </div>
+      <div>
+        <sc-if value="{{ demoSubmitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff; border:1px solid #E3ECE6; border-radius:22px; padding:48px; text-align:center;">
+            <div style="width:64px; height:64px; border-radius:50%; background:#29B981; color:#fff; font-size:32px; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">✓</div>
+            <h3 style="font-family:'Futura PT'; font-weight:700; font-size:26px; color:#282C3E;">Заявка отправлена!</h3>
+            <p style="font-size:17px; color:#6A7088; margin-top:12px;">Менеджер Alter свяжется с вами в течение рабочего дня.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ demoNot }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onDemo }}" style="display:flex; flex-direction:column; gap:14px;">
+            <input type="text" required="required" placeholder="Имя" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="text" required="required" placeholder="Название компании" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="tel" placeholder="+7 (000) 000-00-00" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="email" required="required" placeholder="Почта" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <select required="required" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#6A7088; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);">
+              <option value="">Где удобнее связаться?</option>
+              <option>Telegram</option><option>WhatsApp</option><option>Звонок</option><option>Почта</option>
+            </select>
+            <select required="required" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#6A7088; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);">
+              <option value="">Размер компании</option>
+              <option>50–200 сотрудников</option><option>200–500 сотрудников</option><option>500–1000 сотрудников</option><option>более 1000 сотрудников</option>
+            </select>
+            <p style="font-size:13px; line-height:1.5; color:#8A90A6; margin-top:4px;">Нажимая «Отправить», вы принимаете условия <span style="text-decoration:underline;">пользовательского соглашения</span>, даёте согласие на обработку <span style="text-decoration:underline;">персональных данных</span> и на получение рекламно-информационной рассылки.</p>
+            <button type="submit" style="font-family:'Futura PT'; font-weight:700; font-size:18px; color:#fff; background:#29B981; border:none; padding:18px; border-radius:44px; cursor:pointer; margin-top:6px; box-shadow:0 10px 26px rgba(41,185,129,0.34); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 32px rgba(41,185,129,0.36);">Отправить</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:#282C3E; color:#fff; margin-top:100px;">
+  <div style="max-width:1280px; margin:0 auto; padding:64px 40px 40px;">
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <a href="index.dc.html" style="display:inline-block; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+        <p style="font-size:15px; line-height:1.55; color:#9AA0B5; margin-top:16px; max-width:280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Сервис</div>
+        <a href="result.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Результаты</a>
+        <a href="nauch-podhod.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Научный подход</a>
+        <a href="index.dc.html#platform" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Платформа</a>
+        <a href="index.dc.html#pricing" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тарифы</a>
+        <a href="keysy.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Кейсы</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тренинги и вебинары</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">для HR</div>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Исследования, гайды</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Мероприятия</a>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Блог</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Контакты</div>
+        <a href="mailto:business@alter.ru" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">business@alter.ru</a>
+        <a href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Telegram-канал</a>
+        <a href="https://t.me/alter_business" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Написать нам в Telegram</a>
+        <a href="#demo" style="font-size:15px; color:#53C99B; text-decoration:none; font-weight:700; transition:color .18s;" style-hover="color:#7BDDB4 !important;">Заказать демо →</a>
+      </div>
+    </div>
+    <div style="padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <span style="font-size:14px; color:#717892;">© 2026 Alter. Все права защищены.</span>
+      <div style="display:flex; gap:24px;"><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Политика конфиденциальности</a><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Условия использования</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { demoSubmitted: false, mMenu: false, usefulOpen: false, ftype: 'all', topic: 'all', vIndex: 0, fIndex: 0 };
+
+  componentDidMount() {
+    this.setupCarousel("featured", "fIndex");
+    this.setupCarousel("videos", "vIndex");
+    this.setupReveal();
+    this.setupHeader();
+  }
+
+  setupHeader() {
+    if (this._headerInit) return;
+    const root = document.getElementById("dc-root") || document;
+    const header = root.querySelector("header");
+    if (!header) return;
+    this._headerInit = true;
+    const hH = header.offsetHeight || 76;
+    const spacer = document.createElement("div");
+    spacer.style.height = hH + "px";
+    spacer.style.flex = "0 0 auto";
+    header.parentElement.insertBefore(spacer, header.nextSibling);
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.right = "0";
+    header.style.width = "100%";
+    header.style.transition = "transform .35s cubic-bezier(0.4,0,0.2,1), box-shadow .35s ease";
+    header.style.willChange = "transform";
+    let lastY = window.scrollY || 0;
+    let hidden = false;
+    let ticking = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      const goingDown = y > lastY;
+      const delta = Math.abs(y - lastY);
+      if (y < 80) {
+        if (hidden) { header.style.transform = "translateY(0)"; hidden = false; }
+        header.style.boxShadow = "none";
+      } else if (delta > 6) {
+        header.style.boxShadow = "0 6px 22px rgba(40,44,62,0.08)";
+        if (goingDown && !hidden) {
+          header.style.transform = "translateY(-100%)";
+          hidden = true;
+        } else if (!goingDown && hidden) {
+          header.style.transform = "translateY(0)";
+          hidden = false;
+        }
+      }
+      lastY = y;
+      ticking = false;
+    };
+    this._headerScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    };
+    window.addEventListener("scroll", this._headerScroll, { passive: true });
+  }
+
+  setupReveal() {
+    if (this._revealInit) return;
+    this._revealInit = true;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.getElementById("dc-root") || document;
+    const selectors = [
+      "section h1",
+      "section h2",
+      "section > p",
+      '[style*="grid-template-columns"] > div'
+    ];
+    const seen = new Set();
+    const targets = [];
+    selectors.forEach((sel) => {
+      root.querySelectorAll(sel).forEach((el) => {
+        if (seen.has(el)) return;
+        if (el.closest("footer")) return;
+        if (el.closest("header")) return;
+        if (el.closest('[data-carousel]')) return;
+        seen.add(el);
+        targets.push(el);
+      });
+    });
+    const vh = window.innerHeight || 800;
+    const hidden = [];
+    targets.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh - 60) return;
+      const idx = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+      el._origTransition = el.style.transition || "";
+      el._origTransform = el.style.transform || "";
+      el.style.transition = "opacity .8s cubic-bezier(0.22,0.61,0.36,1), transform .8s cubic-bezier(0.22,0.61,0.36,1)";
+      el.style.transitionDelay = (Math.max(0, idx % 4) * 90) + "ms";
+      el.style.opacity = "0";
+      el.style.transform = "translateY(54px) scale(0.97)";
+      el.dataset.revealPending = "1";
+      hidden.push(el);
+    });
+    if (!hidden.length || !("IntersectionObserver" in window)) {
+      hidden.forEach((el) => this._reveal(el));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          this._reveal(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    hidden.forEach((el) => io.observe(el));
+    this._revealIO = io;
+  }
+
+  _reveal(el) {
+    if (!el || !el.dataset.revealPending) return;
+    delete el.dataset.revealPending;
+    el.style.opacity = "1";
+    el.style.transform = "translateY(0)";
+    setTimeout(() => {
+      el.style.transition = el._origTransition || "";
+      el.style.transitionDelay = "";
+      el.style.transform = el._origTransform || "";
+    }, 950);
+  }
+
+  componentWillUnmount() {
+    if (this._headerScroll) window.removeEventListener("scroll", this._headerScroll);
+    if (this._revealIO) this._revealIO.disconnect();
+  }
+
+  stepOf(vp) {
+    const t = vp && vp.firstElementChild;
+    if (!t || t.children.length < 2) return 0;
+    return t.children[1].getBoundingClientRect().left - t.children[0].getBoundingClientRect().left;
+  }
+
+  animateTo(vp, to) {
+    if (vp._raf) cancelAnimationFrame(vp._raf);
+    const from = vp.scrollLeft;
+    const dist = to - from;
+    if (Math.abs(dist) < 1) { vp.scrollLeft = to; return; }
+    const dur = Math.min(620, Math.max(260, Math.abs(dist) * 0.6));
+    const t0 = performance.now();
+    const ease = (p) => 1 - Math.pow(1 - p, 3);
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      vp.scrollLeft = from + dist * ease(p);
+      if (p < 1) { vp._raf = requestAnimationFrame(tick); }
+      else { vp._raf = null; }
+    };
+    vp._raf = requestAnimationFrame(tick);
+  }
+
+  settleTo(vp, key, index) {
+    const step = this.stepOf(vp) || 1;
+    const n = vp.firstElementChild.children.length;
+    const i = Math.max(0, Math.min(n - 1, index));
+    if (i !== this.state[key]) this.setState({ [key]: i });
+    this.animateTo(vp, Math.round(i * step));
+  }
+
+  scrollCarousel(name, key, i) {
+    const vp = document.querySelector('[data-carousel="' + name + '"]');
+    if (!vp) return;
+    this.settleTo(vp, key, i);
+  }
+
+  setupCarousel(name, key) {
+    const vp = document.querySelector('[data-carousel="' + name + '"]');
+    if (!vp || vp._init) return;
+    vp._init = true;
+    let down = false, sx = 0, ss = 0, moved = false, lastX = 0, lastT = 0, vel = 0;
+    vp.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      if (vp._raf) { cancelAnimationFrame(vp._raf); vp._raf = null; }
+      down = true; moved = false; sx = e.clientX; ss = vp.scrollLeft;
+      lastX = e.clientX; lastT = performance.now(); vel = 0;
+      vp.style.cursor = "grabbing";
+      try { vp.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    vp.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - sx;
+      if (Math.abs(dx) > 3) moved = true;
+      const now = performance.now();
+      const dt = now - lastT;
+      if (dt > 0) vel = 0.8 * vel + 0.2 * ((e.clientX - lastX) / dt);
+      lastX = e.clientX; lastT = now;
+      vp.scrollLeft = ss - dx;
+    });
+    const end = () => {
+      if (!down) return;
+      down = false;
+      vp.style.cursor = "grab";
+      if (moved) {
+        const step = this.stepOf(vp) || 1;
+        const projected = vp.scrollLeft - vel * 140;
+        this.settleTo(vp, key, Math.round(projected / step));
+      }
+    };
+    vp.addEventListener("pointerup", end);
+    vp.addEventListener("pointercancel", end);
+    vp.addEventListener("click", (e) => {
+      if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; }
+    }, true);
+    let t;
+    vp.addEventListener("scroll", () => {
+      if (down || vp._raf) return;
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const step = this.stepOf(vp) || 1;
+        this.settleTo(vp, key, Math.round(vp.scrollLeft / step));
+      }, 140);
+    });
+  }
+
+  tm(type) {
+    return ({
+      checklist: { label:'Чек-лист', plural:'Чек-листы', bg:'#E9F5EF', ink:'#1E7A57', dot:'#29B981' },
+      guide:     { label:'Гайд', plural:'Гайды', bg:'#EAF0FB', ink:'#33468F', dot:'#5B6FE0' },
+      research:  { label:'Исследование', plural:'Исследования', bg:'#F1ECFA', ink:'#5A46A8', dot:'#8A6FE0' },
+      webinar:   { label:'Вебинар', plural:'Вебинары', bg:'#F7EFE6', ink:'#9A6B33', dot:'#D99A4E' },
+      article:   { label:'Статья', plural:'Статьи', bg:'#E7F3F1', ink:'#1F7A70', dot:'#3BA99C' }
+    })[type];
+  }
+
+  get materials() {
+    return [
+      { id:1, type:'checklist', title:'Признаки выгорания в команде', desc:'12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.' },
+      { id:2, type:'guide', title:'Как поддержать сотрудника в кризис', desc:'Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.' },
+      { id:3, type:'research', title:'Alter&HH: ментальное здоровье сотрудников 2025', desc:'Ежегодное исследование о психологическом состоянии в российских компаниях.' },
+      { id:4, type:'checklist', title:'Экологичная обратная связь', desc:'Как давать критику, не разрушая мотивацию и доверие внутри команды.' },
+      { id:5, type:'guide', title:'Профилактика конфликтов в коллективе', desc:'Инструменты, которые снижают напряжение до того, как оно перерастёт в конфликт.' },
+      { id:8, type:'guide', title:'Онбординг без стресса', desc:'Как встроить психологическую поддержку в первые 90 дней нового сотрудника.' },
+      { id:9, type:'research', title:'Тревожность и продуктивность', desc:'Данные о том, как уровень тревоги в команде влияет на результаты работы.' },
+      { id:11, type:'checklist', title:'Готова ли компания к well-being программе', desc:'Быстрая самодиагностика зрелости корпоративной заботы о сотрудниках.' },
+      { id:13, type:'research', title:'Выгорание в IT: масштаб проблемы', desc:'Аналитика Alter о распространённости выгорания среди технических специалистов.' }
+    ];
+  }
+
+  get typeKeys() { return ['all', 'checklist', 'guide', 'research']; }
+
+  get videos() {
+    return [
+      { title:'Знакомство с Alter', desc:'Как устроена платформа для сотрудников и HR-кабинет.', coverBg:"url('assets/covers/184.jpg') center/cover no-repeat" },
+      { title:'Как проходит первая сессия', desc:'Психолог Alter рассказывает, чего ожидать на старте.', coverBg:"url('assets/covers/186.jpg') center/cover no-repeat" },
+      { title:'История клиента: как X5 внедрили заботу', desc:'Кейс о запуске психологической поддержки в большой команде.', coverBg:"url('assets/covers/188.jpg') center/cover no-repeat" },
+      { title:'Вебинар: стресс-менеджмент для команд', desc:'Запись практического вебинара с психологом Alter.', coverBg:"url('assets/covers/185.jpg') center/cover no-repeat" },
+      { title:'Как выбрать психолога сотруднику', desc:'Разбираем, как устроен подбор специалиста в сервисе.', coverBg:"url('assets/covers/189-01.jpg') center/cover no-repeat" },
+      { title:'HR-кабинет Alter за 3 минуты', desc:'Обзор аналитики и метрик благополучия команды.', coverBg:"url('assets/covers/187.jpg') center/cover no-repeat" }
+    ];
+  }
+
+  get coverMap() {
+    return { 1:'195', 2:'191_2', 3:'196', 4:'191', 5:'194', 8:'189-04', 9:'192', 11:'193', 13:'197' };
+  }
+
+  decorate(m) {
+    const t = this.tm(m.type);
+    return {
+      id:m.id, type:m.type, title:m.title, desc:m.desc, tag:t.label,
+      cover: 'assets/covers/' + (this.coverMap[m.id] || '189-04') + '.jpg',
+      coverBg: "url('assets/covers/" + (this.coverMap[m.id] || '189-04') + ".jpg') center/cover no-repeat",
+      tagStyle:{ display:'inline-flex', alignItems:'center', gap:'7px', fontSize:'12.5px', fontWeight:700, color:t.ink },
+      iconStyle:{ width:'13px', height:'13px', borderRadius:'3px', background:t.dot, transform:'rotate(45deg)', flex:'0 0 auto' },
+      phStyle:{ height:'168px', display:'flex', alignItems:'center', justifyContent:'center', background:'repeating-linear-gradient(45deg, '+t.bg+', '+t.bg+' 11px, #ffffff 11px, #ffffff 22px)' },
+      phStyleFeat:{ height:'214px', display:'flex', alignItems:'center', justifyContent:'center', background:'repeating-linear-gradient(45deg, '+t.bg+', '+t.bg+' 11px, #ffffff 11px, #ffffff 22px)' }
+    };
+  }
+
+  renderVals() {
+    const dec = this.materials.map(m => this.decorate(m));
+    const topicMap = { 1:'Выгорание', 2:'Лидерство', 3:'Культура', 4:'Культура', 5:'Лидерство', 6:'Стресс и тревога', 7:'ROI', 8:'Онбординг', 9:'Стресс и тревога', 10:'Лидерство', 11:'Культура', 12:'Стресс и тревога', 13:'Выгорание' };
+    const topics = ['all', 'Выгорание', 'Культура', 'Стресс и тревога', 'Лидерство', 'ROI', 'Онбординг'];
+    const ft = this.state.ftype, tp = this.state.topic;
+    let arr = dec;
+    if (ft !== 'all') arr = arr.filter(m => m.type === ft);
+    if (tp !== 'all') arr = arr.filter(m => topicMap[m.id] === tp);
+    const gridL = arr.slice(0, 9);
+    const vids = this.videos;
+
+    return {
+      demoSubmitted: this.state.demoSubmitted,
+      demoNot: !this.state.demoSubmitted,
+      onDemo: (e) => { e.preventDefault(); this.setState({ demoSubmitted: true }); },
+      mMenuDisplay: this.state.mMenu ? "flex" : "none",
+      toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
+      closeMenu: () => this.setState({ mMenu: false }),
+      usefulDisplay: this.state.usefulOpen ? "flex" : "none",
+      usefulChevron: this.state.usefulOpen ? "rotate(180deg)" : "rotate(0deg)",
+      openUseful: () => { clearTimeout(this._usefulT); this.setState({ usefulOpen: true }); },
+      closeUseful: () => { clearTimeout(this._usefulT); this._usefulT = setTimeout(() => this.setState({ usefulOpen: false }), 220); },
+      toggleUseful: (e) => { e.preventDefault(); clearTimeout(this._usefulT); this.setState(s => ({ usefulOpen: !s.usefulOpen })); },
+
+      featuredReports: [3, 9, 13, 1, 2].map(id => dec.find(m => m.id === id)),
+      gridL,
+      noResults: gridL.length === 0,
+      typeOptions: this.typeKeys.map(k => ({ value: k, label: k === 'all' ? 'Все форматы' : this.tm(k).plural })),
+      topicOptions: topics.map(x => ({ value: x, label: x === 'all' ? 'Все темы' : x })),
+      onType: (e) => this.setState({ ftype: e.target.value }),
+      onTopic: (e) => this.setState({ topic: e.target.value }),
+
+      fDots: [3, 9, 13, 1, 2].map((_, i) => ({
+        style: { width:'9px', height:'9px', borderRadius:'50%', cursor:'pointer', background: i === this.state.fIndex ? '#239266' : '#CFE6DA', transition:'background .2s' },
+        onClick: () => this.scrollCarousel("featured", "fIndex", i)
+      })),
+      fPrev: () => this.scrollCarousel("featured", "fIndex", this.state.fIndex - 1),
+      fNext: () => this.scrollCarousel("featured", "fIndex", this.state.fIndex + 1),
+
+      videos: vids,
+      vDots: vids.map((_, i) => ({
+        style: { width:'9px', height:'9px', borderRadius:'50%', cursor:'pointer', background: i === this.state.vIndex ? '#239266' : '#CFE6DA', transition:'background .2s' },
+        onClick: () => this.scrollCarousel("videos", "vIndex", i)
+      })),
+      vPrev: () => this.scrollCarousel("videos", "vIndex", this.state.vIndex - 1),
+      vNext: () => this.scrollCarousel("videos", "vIndex", this.state.vIndex + 1)
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBookOblique.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBoldOblique.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT Cond'; src:url('uploads/FuturaPTCondBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#EDEFEC; -webkit-font-smoothing:antialiased; }
+::selection { background:#A1E1C8; color:#282C3E; }
+a { color:#239266; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#EDEFEC">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#EDEFEC"/>
+    <text x="600" y="420" font-family="Georgia, serif" font-size="200" font-weight="700" fill="#239266" text-anchor="middle">&#8221;</text>
+  </svg>
+</template>
+
+<div style="padding:64px 56px; display:flex; flex-direction:column; gap:64px; align-items:center;">
+
+  <!-- ============ OPTION 1A — Editorial pull-quote ============ -->
+  <div id="1a" style="width:940px; max-width:100%;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+      <span style="background:#282C3E; color:#fff; font-weight:700; font-size:13px; padding:6px 12px; border-radius:30px;">1a</span>
+      <span style="font-size:14px; color:#6A7088;">Редакционная — крупная цитата по центру, без «коробки»</span>
+    </div>
+    <div style="background:#fff; border-radius:28px; padding:72px 88px; text-align:center; box-shadow:0 18px 44px rgba(40,44,62,0.08);">
+      <div style="font-family:'Futura PT'; font-weight:700; font-size:150px; line-height:0.4; color:#29B981; height:70px;">“</div>
+      <p style="font-family:'Futura PT'; font-weight:700; font-size:30px; line-height:1.42; letter-spacing:-0.4px; color:#282C3E; max-width:720px; margin:0 auto; text-wrap:balance;">Додо стала первой в России компанией, которая запустила психологическую поддержку для 22&#8239;000 сотрудников.</p>
+      <p style="font-size:17px; line-height:1.62; color:#5A6076; max-width:660px; margin:26px auto 0;">Мы понимали, что индивидуальные терапии — дорого, а звонки удобны не всем. От Alter пришла идея нового формата — чат-поддержка в Telegram, где сотрудник анонимно описывает запрос, а психолог помогает разобраться.</p>
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-top:40px;">
+        <div style="width:52px; height:52px; border-radius:50%; background:#EAF7F0; color:#239266; display:flex; align-items:center; justify-content:center; font-family:'Futura PT'; font-weight:700; font-size:19px;">КА</div>
+        <div style="text-align:left;">
+          <div style="font-family:'Futura PT'; font-weight:700; font-size:16px; color:#282C3E;">Кристина Айдумова</div>
+          <div style="font-size:14px; color:#8A90A6; margin-top:2px;">Лидер SMM в Додо Пицца Евразия</div>
+        </div>
+        <div style="width:1px; height:34px; background:rgba(40,44,62,0.14); margin:0 4px;"></div>
+        <img src="assets/clients/dodo.png" alt="Додо" style="height:22px; width:auto; opacity:0.85;" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ OPTION 1B — Big-stat split ============ -->
+  <div id="1b" style="width:940px; max-width:100%;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+      <span style="background:#282C3E; color:#fff; font-weight:700; font-size:13px; padding:6px 12px; border-radius:30px;">1b</span>
+      <span style="font-size:14px; color:#6A7088;">Data-forward — гигантская цифра как акцент, цитата рядом</span>
+    </div>
+    <div style="display:grid; grid-template-columns:0.82fr 1fr; background:#fff; border-radius:28px; overflow:hidden; box-shadow:0 18px 44px rgba(40,44,62,0.08);">
+      <div style="background:#282C3E; padding:56px 44px; display:flex; flex-direction:column; justify-content:center; position:relative; overflow:hidden;">
+        <div aria-hidden="true" style="position:absolute; bottom:-60px; right:-40px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(41,185,129,0.28),rgba(41,185,129,0) 70%);"></div>
+        <div style="position:relative; z-index:2; font-family:'Futura PT Cond'; font-weight:700; font-size:104px; line-height:0.9; color:#fff; letter-spacing:-1px;">22&#8239;000</div>
+        <div style="position:relative; z-index:2; font-size:17px; line-height:1.45; color:#C5C9D8; margin-top:14px; max-width:260px;">сотрудников получили доступ к психологической поддержке — первыми в России</div>
+      </div>
+      <div style="padding:52px 48px; display:flex; flex-direction:column; justify-content:center;">
+        <p style="font-family:'Futura PT'; font-style:italic; font-weight:700; font-size:21px; line-height:1.4; color:#239266; margin:0;">«Всего за пару месяцев удалось реализовать проект и получить 450 откликов в чате. Мы первыми запустили такую программу для широкой аудитории — и видим, что она работает».</p>
+        <div style="display:flex; align-items:center; gap:14px; margin-top:30px; padding-top:24px; border-top:1px solid rgba(40,44,62,0.08);">
+          <div style="width:48px; height:48px; border-radius:50%; background:#EAF7F0; color:#239266; display:flex; align-items:center; justify-content:center; font-family:'Futura PT'; font-weight:700; font-size:17px;">КА</div>
+          <div>
+            <div style="font-family:'Futura PT'; font-weight:700; font-size:16px; color:#282C3E;">Кристина Айдумова</div>
+            <div style="font-size:14px; color:#8A90A6; margin-top:2px;">Лидер SMM в Додо Пицца Евразия</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ OPTION 1C — Overlapping author chip ============ -->
+  <div id="1c" style="width:940px; max-width:100%;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+      <span style="background:#282C3E; color:#fff; font-weight:700; font-size:13px; padding:6px 12px; border-radius:30px;">1c</span>
+      <span style="font-size:14px; color:#6A7088;">Мягкая карточка — акцентная полоса слева, автор-чип внизу</span>
+    </div>
+    <div style="position:relative; background:#fff; border-radius:24px; padding:52px 56px 40px; box-shadow:0 18px 44px rgba(40,44,62,0.08); border-left:5px solid #29B981;">
+      <div style="position:absolute; top:34px; right:48px; display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#239266;">Отзыв клиента</div>
+      <p style="font-family:'Futura PT'; font-weight:700; font-size:24px; line-height:1.4; letter-spacing:-0.3px; color:#282C3E; margin:0 0 20px; max-width:760px; text-wrap:pretty;">Додо стала первой в России компанией, которая запустила психологическую поддержку для 22&#8239;000 сотрудников.</p>
+      <p style="font-size:16.5px; line-height:1.6; color:#5A6076; margin:0; max-width:780px;">Пиццамейкеры, кассиры и курьеры ежедневно работают с клиентами и сталкиваются с высокой эмоциональной нагрузкой. Всё это приводит к стрессу и выгоранию — а поделиться переживаниями получается не всегда. Чат-поддержка в Telegram дала анонимный и быстрый способ получить помощь психолога.</p>
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:34px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <div style="width:52px; height:52px; border-radius:50%; background:#282C3E; color:#53C99B; display:flex; align-items:center; justify-content:center; font-family:'Futura PT'; font-weight:700; font-size:18px;">КА</div>
+          <div>
+            <div style="font-family:'Futura PT'; font-weight:700; font-size:16px; color:#282C3E;">Кристина Айдумова</div>
+            <div style="font-size:14px; color:#8A90A6; margin-top:2px;">Лидер SMM в Додо Пицца Евразия</div>
+          </div>
+        </div>
+        <img src="assets/clients/dodo.png" alt="Додо" style="height:26px; width:auto; opacity:0.85;" />
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

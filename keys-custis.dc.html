@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBookOblique.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBoldOblique.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT Cond'; src:url('uploads/FuturaPTCondBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -webkit-font-smoothing:antialiased; }
+::selection { background:#A1E1C8; color:#282C3E; }
+a { color:#239266; }
+a:hover { color:#1B7350; }
+@keyframes floaty { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
+@keyframes drift1 { 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(26px,-20px) scale(1.09); } }
+@keyframes drift2 { 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-22px,18px) scale(1.12); } }
+[data-burger] { display:none; }
+@media (min-width: 981px) { [data-mmenu] { display:none !important; } }
+@media (max-width: 1024px) {
+  [style*="repeat(4, 1fr)"] { grid-template-columns:repeat(2,1fr) !important; }
+  [style*="grid-template-columns: 1.4fr 1fr 1fr 1fr"] { grid-template-columns:1fr 1fr !important; }
+  #top h1 { font-size:46px !important; }
+  section h2 { font-size:30px !important; }
+}
+@media (max-width: 980px) {
+  header nav > div:nth-of-type(1) { display:none !important; }
+  [data-burger] { display:inline-flex !important; }
+}
+@media (max-width: 900px) {
+  [data-editorial] { grid-template-columns:1fr !important; gap:8px !important; }
+  [data-editorial] > div:first-child { position:static !important; }
+  #reviewcard { grid-template-columns:1fr !important; }
+  [style*="grid-template-columns:1fr 1fr; gap:56px"] { grid-template-columns:1fr !important; }
+}
+@media (max-width: 680px) {
+  header nav { padding-left:18px !important; padding-right:18px !important; }
+  section { padding-left:20px !important; padding-right:20px !important; }
+  [style*="repeat(4, 1fr)"] { grid-template-columns:1fr !important; }
+  [style*="repeat(3, 1fr)"] { grid-template-columns:1fr !important; }
+  [style*="grid-template-columns: 1.4fr 1fr 1fr 1fr"] { grid-template-columns:1fr 1fr !important; }
+  #top h1 { font-size:36px !important; letter-spacing:-0.5px !important; }
+  section h2 { font-size:26px !important; }
+  footer > div { padding-left:22px !important; padding-right:22px !important; }
+}
+</style>
+<script src="image-slot.js"></script>
+<script src="phone-mask.js"></script>
+<script src="hash-scroll.js"></script>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#FBFCFB">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FBFCFB"/>
+    <rect x="470" y="250" width="260" height="200" rx="28" fill="#29B981"/>
+    <text x="600" y="378" font-family="Georgia, serif" font-size="150" font-weight="700" fill="#fff" text-anchor="middle">&#8221;</text>
+    <text x="600" y="580" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#239266" text-anchor="middle">кейс</text>
+  </svg>
+</template>
+
+<div style="overflow-x:hidden;">
+
+<!-- ===== NAV ===== -->
+<header style="position:sticky; top:0; z-index:60; background:rgba(251,252,251,0.85); backdrop-filter:blur(14px); border-bottom:1px solid rgba(40,44,62,0.07);">
+  <nav style="max-width:1280px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+    <a href="index.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="result.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Результаты</a>
+      <a href="nauch-podhod.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Научный подход</a>
+      <a href="index.dc.html#pricing" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Тарифы</a>
+      <a href="index.dc.html#platform" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Платформа</a>
+      <a href="keysy.dc.html" style="font-size:15px; color:#239266; font-weight:700; text-decoration:none;">Кейсы</a>
+      <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Мероприятия</a>
+      <div style="position:relative;" onMouseEnter="{{ openUseful }}" onMouseLeave="{{ closeUseful }}">
+        <a href="gaids.dc.html" onClick="{{ toggleUseful }}" style="font-size:15px; text-decoration:none; display:inline-flex; align-items:center; gap:5px; cursor:pointer;"><span style="color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Полезное</span><span style="display:inline-block; transition:transform .2s; transform:{{ usefulChevron }}; font-size:11px; color:#9197AC; text-decoration:none;">▾</span></a>
+        <div style="position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:12px; display:{{ usefulDisplay }}; flex-direction:column; z-index:70;">
+          <div style="min-width:230px; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; box-shadow:0 16px 40px rgba(40,44,62,0.14); padding:8px; display:flex; flex-direction:column;">
+            <a href="gaids.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Исследования, гайды</a>
+            <a href="gaids.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Блог</a>
+            <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#282C3E; text-decoration:none; padding:11px 16px; border-radius:10px; transition:background .15s;" style-hover="background:#F1F5F2;">Тренинги и вебинары</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#demo" style="background:#239266; color:#fff; font-weight:700; font-size:15px; padding:12px 24px; border-radius:44px; text-decoration:none; box-shadow:0 10px 28px rgba(35,146,102,0.3); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 34px rgba(35,146,102,0.4);">Заказать демо</a>
+    <a href="#" data-burger onClick="{{ toggleMenu }}" style="align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid rgba(40,44,62,0.12); color:#282C3E; text-decoration:none; flex-shrink:0;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  <div data-mmenu style="display:{{ mMenuDisplay }}; flex-direction:column; background:#fff; border-top:1px solid rgba(40,44,62,0.07); padding:8px 18px 16px;">
+    <a href="result.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Результаты</a>
+    <a href="nauch-podhod.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Научный подход</a>
+    <a href="index.dc.html#pricing" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Тарифы</a>
+    <a href="index.dc.html#platform" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Платформа</a>
+    <a href="keysy.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#239266; font-weight:700; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Кейсы</a>
+    <a href="Мероприятия%20Alter.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Мероприятия</a>
+    <a href="gaids.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px;">Полезное</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" style="position:relative; overflow:hidden; padding:56px 40px 40px;">
+  <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; z-index:0;">
+    <div style="position:absolute; top:-60px; left:-40px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle,rgba(41,185,129,0.13),rgba(41,185,129,0) 70%); animation:drift1 16s ease-in-out infinite;"></div>
+    <div style="position:absolute; top:20px; right:-30px; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle,rgba(102,101,221,0.09),rgba(102,101,221,0) 70%); animation:drift2 20s ease-in-out infinite;"></div>
+  </div>
+  <div style="position:relative; z-index:1; max-width:1080px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#9AA0B5; margin-bottom:22px;">
+      <a href="keysy.dc.html" style="color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important;">Кейсы</a>
+      <span>›</span>
+      <span style="color:#5A6076;">{{ company }}</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; text-align:center;">
+      <span style="display:inline-flex; align-items:center; background:#EAF7F0; color:#239266; font-weight:700; font-size:14px; padding:8px 16px; border-radius:30px; margin:0 0 18px;">Кейс клиента</span>
+      <h1 style="font-family:'Futura PT'; font-weight:700; font-size:56px; line-height:1.05; letter-spacing:-1.2px; color:#282C3E; margin:0 0 18px; max-width:820px;">{{ company }}</h1>
+      <p style="font-size:19px; line-height:1.55; color:#4C516B; max-width:640px; margin:0;">{{ sphere }}</p>
+      <sc-if value="{{ hasVc }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:30px;"><a href="{{ vcUrl }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:9px; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:15px; padding:13px 26px; border-radius:44px; text-decoration:none; transition:background .18s, color .18s, transform .2s;" style-hover="background:#239266 !important; color:#fff !important; transform:translateY(-2px) !important;">Читать кейс на vc.ru <span style="font-size:17px;">↗</span></a></div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ===== META CARDS ===== -->
+<section style="max-width:1080px; margin:0 auto; padding:8px 40px 0;">
+  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:18px;">
+    <div style="position:relative; overflow:hidden; background:#fff; border:1px solid #ECEFEA; border-radius:20px; padding:24px 24px 26px; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(0.22,0.61,0.36,1), box-shadow .3s ease, border-color .3s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(40,44,62,0.10); border-color:#A1E1C8 !important;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:#29B981; transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(0.22,0.61,0.36,1);" class="card-accent"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.5px; line-height:1.3; text-transform:uppercase; color:#9AA0B5; min-height:29px;">Сфера</div>
+      <div style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin-top:16px;">{{ metaSphere }}</div>
+    </div>
+    <div style="position:relative; overflow:hidden; background:#fff; border:1px solid #ECEFEA; border-radius:20px; padding:24px 24px 26px; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(0.22,0.61,0.36,1), box-shadow .3s ease, border-color .3s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(40,44,62,0.10); border-color:#A1E1C8 !important;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:#29B981; transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(0.22,0.61,0.36,1);" class="card-accent"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.5px; line-height:1.3; text-transform:uppercase; color:#9AA0B5; min-height:29px;">Сайт компании</div>
+      <a href="{{ siteUrl }}" target="_blank" rel="noopener" style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#239266; margin-top:16px; text-decoration:none;" style-hover="text-decoration:underline !important; text-underline-offset:4px;">{{ siteLabel }}</a>
+    </div>
+    <div style="position:relative; overflow:hidden; background:#fff; border:1px solid #ECEFEA; border-radius:20px; padding:24px 24px 26px; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(0.22,0.61,0.36,1), box-shadow .3s ease, border-color .3s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 40px rgba(40,44,62,0.10); border-color:#A1E1C8 !important;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:#29B981; transform:scaleX(0); transform-origin:left; transition:transform .32s cubic-bezier(0.22,0.61,0.36,1);" class="card-accent"></div>
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.5px; line-height:1.3; text-transform:uppercase; color:#9AA0B5; min-height:29px;">Дата запуска программы поддержки</div>
+      <div style="font-family:'Futura PT'; font-weight:700; font-size:19px; line-height:1.25; color:#282C3E; margin-top:16px;">{{ launched }}</div>
+    </div>
+    <div style="position:relative; overflow:hidden; background:#282C3E; border-radius:20px; padding:24px 24px 26px; display:flex; flex-direction:column; transition:transform .3s cubic-bezier(0.22,0.61,0.36,1), box-shadow .3s ease;" style-hover="transform:translateY(-6px); box-shadow:0 20px 46px rgba(35,146,102,0.34);">
+      <div aria-hidden="true" style="position:absolute; bottom:-46px; right:-30px; width:150px; height:150px; border-radius:50%; background:radial-gradient(circle,rgba(83,201,155,0.28),rgba(83,201,155,0) 70%);"></div>
+      <div style="position:relative; z-index:1; font-size:11px; font-weight:700; letter-spacing:0.5px; line-height:1.3; text-transform:uppercase; color:#53C99B; min-height:29px;">Сотрудников</div>
+      <div style="position:relative; z-index:1; font-family:'Futura PT Cond'; font-weight:700; font-size:40px; line-height:1; color:#fff; margin-top:16px;">{{ headcount }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDITORIAL SECTIONS ===== -->
+<section style="max-width:1080px; margin:0 auto; padding:80px 40px 0;">
+  <div data-editorial style="display:grid; grid-template-columns:240px 1fr; gap:40px 56px;">
+    <div style="position:sticky; top:110px; align-self:start;">
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:26px; letter-spacing:-0.4px; color:#282C3E;">Запрос клиента</h2>
+    </div>
+    <div style="font-size:18px; line-height:1.62; color:#3A3F58;">{{ request }}</div>
+  </div>
+
+  <div style="height:1px; background:rgba(40,44,62,0.08); margin:44px 0;"></div>
+
+  <div data-editorial style="display:grid; grid-template-columns:240px 1fr; gap:40px 56px;">
+    <div style="position:sticky; top:110px; align-self:start;">
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:26px; letter-spacing:-0.4px; color:#282C3E;">Продукт</h2>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; align-content:flex-start;">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="2">
+        <span style="display:inline-flex; align-items:center; background:#EAF7F0; color:#239266; font-weight:700; font-size:16px; padding:12px 20px; border-radius:44px;">{{ p }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="height:1px; background:rgba(40,44,62,0.08); margin:44px 0;"></div>
+
+  <div data-editorial style="display:grid; grid-template-columns:240px 1fr; gap:40px 56px;">
+    <div style="position:sticky; top:110px; align-self:start;">
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:26px; letter-spacing:-0.4px; color:#282C3E;">Что сделали</h2>
+    </div>
+    <div style="font-size:18px; line-height:1.62; color:#3A3F58; display:flex; flex-direction:column; gap:18px;">
+      <sc-for list="{{ actions }}" as="a" hint-placeholder-count="2">
+        <p style="margin:0;">{{ a }}</p>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESULTS BAND ===== -->
+<sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+<section style="max-width:1080px; margin:0 auto; padding:80px 40px 0;">
+  <div style="background:linear-gradient(150deg,#14543A 0%,#1B7350 55%,#239266 100%); border-radius:28px; padding:52px 48px; position:relative; overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute; top:-70px; right:-40px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(255,255,255,0.2),rgba(255,255,255,0) 70%); animation:drift1 15s ease-in-out infinite;"></div>
+    <div style="position:relative; z-index:2; font-size:13px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:30px;">Результаты</div>
+    <div style="position:relative; z-index:2; display:grid; grid-template-columns: repeat(3, 1fr); gap:36px;">
+      <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+        <div>
+          <div style="font-family:'Futura PT Cond'; font-weight:700; font-size:60px; line-height:0.95; color:#fff;">{{ r.value }}</div>
+          <div style="font-size:16px; line-height:1.45; color:rgba(255,255,255,0.92); margin-top:12px;">{{ r.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- ===== REVIEW ===== -->
+<section style="max-width:1080px; margin:0 auto; padding:80px 40px 0;">
+  <div id="reviewcard" style="position:relative; overflow:hidden; background:radial-gradient(130% 130% at 100% 0%, #F1FAF5 0%, #fff 46%); border-radius:24px; padding:48px 56px 40px; box-shadow:0 18px 44px rgba(40,44,62,0.08); border-left:5px solid #29B981;">
+    <div aria-hidden="true" style="position:absolute; top:-90px; right:-50px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,rgba(41,185,129,0.10),rgba(41,185,129,0) 70%); z-index:0; pointer-events:none;"></div>
+    <div aria-hidden="true" style="position:absolute; top:12px; right:34px; font-family:Georgia,serif; font-size:190px; line-height:1; color:rgba(41,185,129,0.07); z-index:0; pointer-events:none; user-select:none;">&#8221;</div>
+    <div style="position:relative; z-index:1; display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#239266; margin-bottom:22px;"><span style="width:26px; height:2px; background:#29B981; display:inline-block;"></span>Отзыв клиента</div>
+    <p style="position:relative; z-index:1; font-family:'Futura PT'; font-weight:700; font-size:24px; line-height:1.4; letter-spacing:-0.3px; color:#282C3E; margin:0 0 22px; max-width:820px; text-wrap:pretty;">{{ highlight }}</p>
+    <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:16px; font-size:16.5px; line-height:1.6; color:#5A6076; max-width:840px;">
+      <sc-for list="{{ reviewParas }}" as="para" hint-placeholder-count="3">
+        <p style="margin:0;">{{ para }}</p>
+      </sc-for>
+    </div>
+    <div style="position:relative; z-index:1; display:flex; align-items:center; gap:16px; margin-top:34px; padding-top:26px; border-top:1px solid rgba(40,44,62,0.08);">
+      <sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ true }}">
+        <div style="width:52px; height:52px; border-radius:50%; overflow:hidden; flex:0 0 auto; box-shadow:0 6px 16px rgba(40,44,62,0.16);"><img src="assets/reviews/elena-levchenko.jpg" alt="{{ authorName }}" style="width:100%; height:100%; object-fit:cover; display:block;" /></div>
+      </sc-if>
+      <sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ false }}">
+        <div style="width:52px; height:52px; border-radius:50%; background:#282C3E; color:#53C99B; display:flex; align-items:center; justify-content:center; font-family:'Futura PT'; font-weight:700; font-size:18px; flex:0 0 auto;">{{ authorInitials }}</div>
+      </sc-if>
+      <div>
+        <div style="font-family:'Futura PT'; font-weight:700; font-size:16px; color:#282C3E;">{{ authorName }}</div>
+        <div style="font-size:14px; color:#8A90A6; margin-top:2px;">{{ authorRole }}</div>
+      </div>
+      <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ true }}">
+        <div style="width:1px; height:34px; background:rgba(40,44,62,0.14); margin-left:6px;"></div>
+        <img src="assets/clients/dodo.png" alt="{{ company }}" style="height:24px; width:auto; opacity:0.85; margin-left:14px;" />
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEMO FORM ===== -->
+<section id="demo" style="max-width:1280px; margin:96px auto 0; padding:0 40px;">
+  <div style="background:#F4F8F5; border:1px solid #E3ECE6; border-radius:32px; padding:60px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-90px; right:-70px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(41,185,129,0.20), rgba(41,185,129,0) 70%); animation:drift1 15s ease-in-out infinite; z-index:1; pointer-events:none;"></div>
+    <div style="position:absolute; bottom:-110px; left:34%; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(41,185,129,0.11), rgba(41,185,129,0) 70%); animation:drift2 19s ease-in-out infinite; z-index:1; pointer-events:none;"></div>
+    <h2 style="font-family:'Futura PT'; font-weight:700; font-size:38px; letter-spacing:-0.6px; color:#282C3E; position:relative; z-index:2; text-align:center;">Заказать демонстрацию «Alter для бизнеса»</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:36px; position:relative; z-index:2;">
+      <div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:20px;">
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Покажем платформу для сотрудников и HR-кабинет</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Поможем выбрать оптимальный тариф под ваши задачи и бюджет</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Выдадим демо-доступы на тестовую сессию с психологом</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Проконсультируем по диагностике команды и пилотному запуску</span></li>
+          <li style="display:flex; gap:16px; align-items:flex-start;"><span style="color:#239266; font-size:20px; line-height:1.3;">→</span><span style="font-size:17px; line-height:1.4; color:#4C516B;">Рассчитаем издержки на текучку и ROI поддержки</span></li>
+        </ul>
+        <div style="margin-top:24px; display:flex; justify-content:center;">
+          <img src="assets/illustrations/meditation.png" alt="Медитация" style="width:300px; height:auto; display:block; animation:floaty 6s ease-in-out infinite;" />
+        </div>
+      </div>
+      <div>
+        <sc-if value="{{ demoSubmitted }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#fff; border:1px solid #E3ECE6; border-radius:22px; padding:48px; text-align:center;">
+            <div style="width:64px; height:64px; border-radius:50%; background:#29B981; color:#fff; font-size:32px; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">✓</div>
+            <h3 style="font-family:'Futura PT'; font-weight:700; font-size:26px; color:#282C3E;">Заявка отправлена!</h3>
+            <p style="font-size:17px; color:#6A7088; margin-top:12px;">Менеджер Alter свяжется с вами в течение рабочего дня.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ demoNot }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onDemo }}" style="display:flex; flex-direction:column; gap:14px;">
+            <input type="text" required="required" placeholder="Имя" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="text" required="required" placeholder="Название компании" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="tel" placeholder="+7 (000) 000-00-00" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <input type="email" required="required" placeholder="Почта" style="font-family:'Futura PT'; font-size:16px; padding:17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#282C3E; background:#fff; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);" />
+            <select required="required" style="font-family:'Futura PT'; font-size:16px; padding:17px 44px 17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#6A7088; appearance:none; -webkit-appearance:none; -moz-appearance:none; background:#fff url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239197AC%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E) no-repeat right 16px center; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);">
+              <option value="">Где удобнее связаться?</option>
+              <option>Telegram</option><option>WhatsApp</option><option>Звонок</option><option>Почта</option>
+            </select>
+            <select required="required" style="font-family:'Futura PT'; font-size:16px; padding:17px 44px 17px 20px; border:1px solid #DCE5DF; border-radius:14px; outline:none; color:#6A7088; appearance:none; -webkit-appearance:none; -moz-appearance:none; background:#fff url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%239197AC%22%20stroke-width%3D%222.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E) no-repeat right 16px center; transition:border-color .18s, box-shadow .18s;" style-focus="border-color:#29B981; box-shadow:0 0 0 4px rgba(41,185,129,0.13);">
+              <option value="">Размер компании</option>
+              <option>50–200 сотрудников</option><option>200–500 сотрудников</option><option>500–1000 сотрудников</option><option>более 1000 сотрудников</option>
+            </select>
+            <p style="font-size:13px; line-height:1.5; color:#8A90A6; margin-top:4px;">Нажимая «Отправить», вы принимаете условия <span style="text-decoration:underline;">пользовательского соглашения</span>, даёте согласие на обработку <span style="text-decoration:underline;">персональных данных</span> и на получение рекламно-информационной рассылки.</p>
+            <button type="submit" style="font-family:'Futura PT'; font-weight:700; font-size:18px; color:#fff; background:#29B981; border:none; padding:18px; border-radius:44px; cursor:pointer; margin-top:6px; box-shadow:0 10px 26px rgba(41,185,129,0.34); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 32px rgba(41,185,129,0.36);">Отправить</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MORE CASES ===== -->
+<section style="max-width:1080px; margin:64px auto 0; padding:0 40px; text-align:center;">
+  <a href="keysy.dc.html" style="display:inline-flex; align-items:center; gap:10px; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:16px; padding:14px 28px; border-radius:44px; text-decoration:none; transition:background .18s, color .18s, transform .2s;" style-hover="background:#239266 !important; color:#fff !important; transform:translateY(-2px) !important;"><span style="font-size:18px;">←</span> Все кейсы</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:#282C3E; color:#fff; margin-top:100px;">
+  <div style="max-width:1280px; margin:0 auto; padding:64px 40px 40px;">
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <a href="index.dc.html" style="display:inline-block; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+        <p style="font-size:15px; line-height:1.55; color:#9AA0B5; margin-top:16px; max-width:280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Сервис</div>
+        <a href="result.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Результаты</a>
+        <a href="nauch-podhod.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Научный подход</a>
+        <a href="index.dc.html#platform" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Платформа</a>
+        <a href="index.dc.html#pricing" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тарифы</a>
+        <a href="keysy.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Кейсы</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тренинги и вебинары</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">для HR</div>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Исследования, гайды</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Мероприятия</a>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Блог</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Контакты</div>
+        <a href="mailto:business@alter.ru" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">business@alter.ru</a>
+        <a href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Telegram-канал</a>
+        <a href="https://t.me/alter_business" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Написать нам в Telegram</a>
+        <a href="#demo" style="font-size:15px; color:#53C99B; text-decoration:none; font-weight:700; transition:color .18s;" style-hover="color:#7BDDB4 !important;">Заказать демо →</a>
+      </div>
+    </div>
+    <div style="padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <span style="font-size:14px; color:#717892;">© 2026 Alter. Все права защищены.</span>
+      <div style="display:flex; gap:24px;"><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Политика конфиденциальности</a><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Условия использования</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { demoSubmitted: false, mMenu: false, usefulOpen: false };
+
+  componentDidMount() {
+    this.setupReveal();
+    this.setupHeader();
+  }
+
+  setupHeader() {
+    if (this._headerInit) return;
+    const root = document.getElementById("dc-root") || document;
+    const header = root.querySelector("header");
+    if (!header) return;
+    this._headerInit = true;
+    const hH = header.offsetHeight || 76;
+    const spacer = document.createElement("div");
+    spacer.style.height = hH + "px";
+    spacer.style.flex = "0 0 auto";
+    header.parentElement.insertBefore(spacer, header.nextSibling);
+    header.style.position = "fixed";
+    header.style.top = "0";
+    header.style.left = "0";
+    header.style.right = "0";
+    header.style.width = "100%";
+    header.style.transition = "transform .35s cubic-bezier(0.4,0,0.2,1), box-shadow .35s ease";
+    header.style.willChange = "transform";
+    let lastY = window.scrollY || 0;
+    let hidden = false;
+    let ticking = false;
+    const apply = () => {
+      const y = window.scrollY || 0;
+      const goingDown = y > lastY;
+      const delta = Math.abs(y - lastY);
+      if (y < 80) {
+        if (hidden) { header.style.transform = "translateY(0)"; hidden = false; }
+        header.style.boxShadow = "none";
+      } else if (delta > 6) {
+        header.style.boxShadow = "0 6px 22px rgba(40,44,62,0.08)";
+        if (goingDown && !hidden) { header.style.transform = "translateY(-100%)"; hidden = true; }
+        else if (!goingDown && hidden) { header.style.transform = "translateY(0)"; hidden = false; }
+      }
+      lastY = y;
+      ticking = false;
+    };
+    this._headerScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
+    window.addEventListener("scroll", this._headerScroll, { passive: true });
+  }
+
+  setupReveal() {
+    if (this._revealInit) return;
+    this._revealInit = true;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.getElementById("dc-root") || document;
+    const selectors = ["section h1", "section h2", "section > div > p", '[data-editorial] > div', '[style*="grid-template-columns"] > div', '[style*="grid-template-columns"] > a'];
+    const seen = new Set();
+    const targets = [];
+    selectors.forEach((sel) => {
+      root.querySelectorAll(sel).forEach((el) => {
+        if (seen.has(el)) return;
+        if (el.closest("footer") || el.closest("header") || el.closest("#top")) return;
+        seen.add(el);
+        targets.push(el);
+      });
+    });
+    const vh = window.innerHeight || 800;
+    const hidden = [];
+    targets.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh - 60) return;
+      const idx = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+      el._origTransition = el.style.transition || "";
+      el._origTransform = el.style.transform || "";
+      el.style.transition = "opacity .8s cubic-bezier(0.22,0.61,0.36,1), transform .8s cubic-bezier(0.22,0.61,0.36,1)";
+      el.style.transitionDelay = (Math.max(0, idx % 4) * 80) + "ms";
+      el.style.opacity = "0";
+      el.style.transform = "translateY(48px) scale(0.98)";
+      el.dataset.revealPending = "1";
+      hidden.push(el);
+    });
+    if (!hidden.length || !("IntersectionObserver" in window)) { hidden.forEach((el) => this._reveal(el)); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { this._reveal(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    hidden.forEach((el) => io.observe(el));
+    this._revealIO = io;
+  }
+
+  _reveal(el) {
+    if (!el || !el.dataset.revealPending) return;
+    delete el.dataset.revealPending;
+    el.style.opacity = "1";
+    el.style.transform = "translateY(0)";
+    setTimeout(() => {
+      el.style.transition = el._origTransition || "";
+      el.style.transitionDelay = "";
+      el.style.transform = el._origTransform || "";
+    }, 950);
+  }
+
+  componentWillUnmount() {
+    if (this._headerScroll) window.removeEventListener("scroll", this._headerScroll);
+    if (this._revealIO) this._revealIO.disconnect();
+  }
+
+  // ── Case data (CUSTIS) ──
+  get caseData() {
+    return {
+      company: "CUSTIS",
+      sphere: "Разработка ПО для крупных enterprise-компаний — IT-команда, для которой забота о сотрудниках стала частью культуры.",
+      metaSphere: "Разработка ПО для Enterprise",
+      siteUrl: "https://custis.ru",
+      siteLabel: "custis.ru",
+      launched: "2022 г.",
+      headcount: "285",
+      hasVc: false,
+      vcUrl: "",
+      request: "Поддержать сотрудников в период стресса и постпандемийной нестабильности, обеспечить широкий выбор специалистов по разным психологическим подходам и улучшить HR-бренд для сотрудников и соискателей.",
+      products: ["Индивидуальные сессии с психологами"],
+      actions: [
+        "Подобрали оптимальные условия компенсации и развернули стандартную программу поддержки.",
+        "Создали индивидуальный лендинг под компанию для входа в личный кабинет и подготовили материалы для анонса программы в разных каналах.",
+        "Предоставили доступ к HR-кабинету, гайды, чек-листы и дайджесты по психологическим темам.",
+        "Проводим ежеквартальные прямые эфиры с психологом."
+      ],
+      hasResults: false,
+      results: [],
+      hasPhoto: false,
+      hasLogo: false,
+      logoSrc: "",
+      authorName: "Евгения",
+      authorRole: "Менеджер по обучению, CUSTIS",
+      reviewParas: [
+        "Мы начали сотрудничество с Alter в середине 2022 года. Основной пик заболеваемости COVID-19 уже остался позади, но растерянность и стресс у людей продолжали ощущаться. В HR-отделе мы решили, что должны протянуть сотрудникам психологическую руку помощи и показать, что заботимся о здоровье и развитии коллег.",
+        "Каждый человек — индивидуальность, и его переживания уникальны. Поэтому нам требовались психологи с разными специализациями, чтобы сотрудники могли подобрать специалиста с опытом в решении их конкретных запросов. В Alter коллеги могут самостоятельно выбирать среди широкого круга специалистов по разным параметрам: опыт, специализация, стоимость, возраст, пол.",
+        "Сервис Alter пользуется большой популярностью среди наших сотрудников. Мы периодически получаем положительные отзывы от тех, кто обратился за помощью, что подтверждает эффективность сотрудничества."
+      ],
+      highlight: "Alter пользуется большой популярностью среди наших сотрудников."
+    };
+  }
+
+  initials(name) {
+    return (name || "").split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase();
+  }
+
+  renderVals() {
+    const c = this.caseData;
+    return Object.assign({}, c, {
+      noPhoto: !c.hasPhoto,
+      authorInitials: this.initials(c.authorName),
+      demoSubmitted: this.state.demoSubmitted,
+      demoNot: !this.state.demoSubmitted,
+      onDemo: (e) => { e.preventDefault(); this.setState({ demoSubmitted: true }); },
+      mMenuDisplay: this.state.mMenu ? "flex" : "none",
+      toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
+      closeMenu: () => this.setState({ mMenu: false }),
+      usefulDisplay: this.state.usefulOpen ? "flex" : "none",
+      usefulChevron: this.state.usefulOpen ? "rotate(180deg)" : "rotate(0deg)",
+      openUseful: () => { clearTimeout(this._usefulT); this.setState({ usefulOpen: true }); },
+      closeUseful: () => { clearTimeout(this._usefulT); this._usefulT = setTimeout(() => this.setState({ usefulOpen: false }), 220); },
+      toggleUseful: (e) => { clearTimeout(this._usefulT); this.setState(s => ({ usefulOpen: !s.usefulOpen })); }
+    });
+  }
+}
+</script>
+</body>
+</html>
