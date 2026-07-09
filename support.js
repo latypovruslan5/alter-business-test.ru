@@ -161,9 +161,15 @@
     }).catch(() => {
     });
     const dc = doc.querySelector("x-dc");
-    const hostEl = doc.createElement("div");
-    hostEl.id = "dc-root";
-    dc.replaceWith(hostEl);
+    let hostEl = doc.getElementById("dc-root");
+    const prerendered = !!(hostEl && hostEl.firstChild);
+    if (hostEl) {
+      if (dc) dc.remove();
+    } else {
+      hostEl = doc.createElement("div");
+      hostEl.id = "dc-root";
+      dc.replaceWith(hostEl);
+    }
     if (!parsed.preview) {
       const s = doc.createElement("style");
       s.textContent = FULL_PAGE_CSS;
@@ -191,7 +197,9 @@
       return h(Root, { ...defaults, ...entry.propOverrides || {} });
     }
     const ReactDOM = getReactDOM();
-    if (ReactDOM.createRoot)
+    if (prerendered && ReactDOM.hydrateRoot)
+      ReactDOM.hydrateRoot(hostEl, h(StandaloneRoot));
+    else if (ReactDOM.createRoot)
       ReactDOM.createRoot(hostEl).render(h(StandaloneRoot));
     else ReactDOM.render(h(StandaloneRoot), hostEl);
     return rootName;
@@ -1045,8 +1053,8 @@
     }
     return cur;
   }
-  var BABEL_URL = "https://unpkg.com/@babel/standalone@7.29.0/babel.min.js";
-  var BABEL_SRI = "sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y";
+  var BABEL_URL = "vendor/babel.min.js";
+  var BABEL_SRI = "";
   var GLOBAL_POLL_INTERVAL_MS = 50;
   var GLOBAL_POLL_TIMEOUT_MS = 3e4;
   function createExternalModules(onResolved) {
@@ -1591,10 +1599,10 @@
   }
 
   // src/index.ts
-  var REACT_URL = "https://unpkg.com/react@18.3.1/umd/react.production.min.js";
-  var REACT_SRI = "sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z";
-  var REACT_DOM_URL = "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js";
-  var REACT_DOM_SRI = "sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1";
+  var REACT_URL = "vendor/react.production.min.js";
+  var REACT_SRI = "";
+  var REACT_DOM_URL = "vendor/react-dom.production.min.js";
+  var REACT_DOM_SRI = "";
   function hideRawTemplate() {
     const s = document.createElement("style");
     s.textContent = "x-dc{display:none!important}";
