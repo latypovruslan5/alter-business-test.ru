@@ -23,6 +23,34 @@
     };
   }
 
+  // Воркер создает личный кабинет при любой заявке и возвращает токен сессии.
+  // Сохраняем его под тем же ключом, что и cabinet-client.js, — лид входит
+  // в кабинет без повторных форм. Новому кабинету показываем плашку со ссылкой.
+  var TOKEN_KEY = 'alter_cab_token';
+
+  function cabinetToast() {
+    if (document.getElementById('alter-cab-toast')) return;
+    var box = document.createElement('div');
+    box.id = 'alter-cab-toast';
+    box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;' +
+      'background:#282C3E;color:#fff;padding:14px 20px;border-radius:14px;' +
+      'box-shadow:0 12px 32px rgba(40,44,62,.35);font-family:inherit;font-size:15px;' +
+      'display:flex;align-items:center;gap:14px;max-width:92vw;';
+    box.innerHTML = 'Мы создали вам личный кабинет — заявка и полезные материалы уже там. ' +
+      '<a href="kabinet.dc.html" style="color:#7DE0B8;font-weight:700;white-space:nowrap;">Открыть кабинет</a>' +
+      '<button type="button" aria-label="Закрыть" style="background:none;border:none;color:#9AA0B5;' +
+      'font-size:18px;cursor:pointer;line-height:1;padding:0;">&times;</button>';
+    box.querySelector('button').onclick = function () { box.remove(); };
+    document.body.appendChild(box);
+    setTimeout(function () { if (box.parentNode) box.remove(); }, 15000);
+  }
+
+  function handleCabinet(body) {
+    if (!body || !body.token) return;
+    try { localStorage.setItem(TOKEN_KEY, body.token); } catch (_) {}
+    if (body.cabinetCreated) cabinetToast();
+  }
+
   window.alterSubmitLead = function (formEl) {
     var payload;
     try {
@@ -37,6 +65,9 @@
     }).then(function (res) {
       if (!res.ok) throw new Error('CRM submit failed: HTTP ' + res.status);
       return res.json().catch(function () { return { ok: true }; });
+    }).then(function (body) {
+      try { handleCabinet(body); } catch (_) {}
+      return body;
     });
   };
 })();
