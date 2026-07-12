@@ -68,6 +68,7 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 }
 </style>
 <script src="phone-mask.js"></script>
+<script src="crm-submit.js"></script>
 <script src="hash-scroll.js"></script>
 </helmet>
 
@@ -1046,7 +1047,7 @@ class Component extends DCLogic {
     return {
       demoSubmitted: this.state.demoSubmitted,
       demoNot: !this.state.demoSubmitted,
-      onDemo: (e) => { e.preventDefault(); this.setState({ demoSubmitted: true }); },
+      onDemo: (e) => { e.preventDefault(); const form = e.currentTarget; window.alterSubmitLead(form).then(() => this.setState({ demoSubmitted: true })).catch((err) => { console.error(err); alert('Не удалось отправить заявку. Попробуйте позже или напишите нам.'); }); },
       mMenuDisplay: this.state.mMenu ? "flex" : "none",
       toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
       closeMenu: () => this.setState({ mMenu: false }),
