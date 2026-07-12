@@ -50,6 +50,8 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 </style>
 <script src="./image-slot.js"></script>
 <script src="phone-mask.js"></script>
+<script src="crm-submit.js"></script>
+<script src="cabinet-client.js"></script>
 <script src="hash-scroll.js"></script>
 </helmet>
 
@@ -127,7 +129,7 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
             <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
             <h3 style="font-family:'Futura PT'; font-weight:700; font-size:22px; line-height:1.24; color:#282C3E; margin:0;">{{ item.title }}</h3>
             <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ item.desc }}</p>
-            <a href="#" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
+            <a href="#" data-mat-id="{{ item.id }}" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
           </div>
         </div>
       </sc-for>
@@ -179,7 +181,7 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
           <span style="{{ item.tagStyle }}"><span style="{{ item.iconStyle }}"></span>{{ item.tag }}</span>
           <h3 style="font-family:'Futura PT'; font-weight:700; font-size:18px; line-height:1.3; color:#282C3E; margin:0;">{{ item.title }}</h3>
           <p style="font-size:14px; line-height:1.5; color:#6A7088; margin:0; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ item.desc }}</p>
-          <a href="#" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
+          <a href="#" data-mat-id="{{ item.id }}" style="margin-top:auto; text-align:center; border:1.5px solid #29B981; color:#239266; font-weight:700; font-size:14px; padding:11px 18px; border-radius:40px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">Скачать ↓</a>
         </div>
       </div>
     </sc-for>
@@ -330,238 +332,238 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 </div>
 </x-dc>
 <!--PRERENDER-START-->
-<div id="dc-root"><div class="sc-host" data-sc-name="gaids"><template data-dc-tpl="5" id="__bundler_thumbnail" data-bg-color="#FBFCFB"></template><div data-dc-tpl="6" style="overflow-x: hidden;"><header data-dc-tpl="7" style="position: fixed; top: 0px; z-index: 60; background: rgba(251, 252, 251, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(40, 44, 62, 0.07); left: 0px; right: 0px; width: 100%; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s; will-change: transform;">
-  <nav data-dc-tpl="8" style="max-width: 1280px; margin: 0px auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-    <a data-dc-tpl="9" href="index.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><img data-dc-tpl="10" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
-    <div data-dc-tpl="11" style="display: flex; align-items: center; gap: 28px;">
-      <a data-dc-tpl="12" href="result.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Результаты</a>
-      <a data-dc-tpl="13" href="nauch-podhod.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Научный подход</a>
-      <a data-dc-tpl="14" href="index.dc.html#pricing" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Тарифы</a>
-      <a data-dc-tpl="15" href="index.dc.html#platform" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Платформа</a>
-      <a data-dc-tpl="16" href="index.dc.html#cases" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Кейсы</a>
-      <a data-dc-tpl="17" href="index.dc.html#events" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Мероприятия</a>
-      <div data-dc-tpl="18" style="position: relative;">
-        <a data-dc-tpl="19" href="#top" style="font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;"><span data-dc-tpl="20" style="color: rgb(35, 146, 102); font-weight: 700; text-decoration: none;">Полезное</span><span data-dc-tpl="21" style="display: inline-block; transition: transform 0.2s; transform: rotate(0deg); font-size: 11px; color: rgb(145, 151, 172); text-decoration: none;">▾</span></a>
-        <div data-dc-tpl="22" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; display: none; flex-direction: column; z-index: 70;">
-          <div data-dc-tpl="23" style="min-width: 230px; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; box-shadow: rgba(40, 44, 62, 0.14) 0px 16px 40px; padding: 8px; display: flex; flex-direction: column;">
-            <a data-dc-tpl="24" href="#top" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Исследования, гайды</a>
-            <a data-dc-tpl="25" href="#top" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Блог</a>
-            <a data-dc-tpl="26" href="index.dc.html#events" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Тренинги и вебинары</a>
+<div id="dc-root"><div class="sc-host" data-sc-name="gaids"><template data-dc-tpl="7" id="__bundler_thumbnail" data-bg-color="#FBFCFB"></template><div data-dc-tpl="8" style="overflow-x: hidden;"><header data-dc-tpl="9" style="position: fixed; top: 0px; z-index: 60; background: rgba(251, 252, 251, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(40, 44, 62, 0.07); left: 0px; right: 0px; width: 100%; transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s; will-change: transform;">
+  <nav data-dc-tpl="10" style="max-width: 1280px; margin: 0px auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+    <a data-dc-tpl="11" href="index.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><img data-dc-tpl="12" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
+    <div data-dc-tpl="13" style="display: flex; align-items: center; gap: 28px;">
+      <a data-dc-tpl="14" href="result.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Результаты</a>
+      <a data-dc-tpl="15" href="nauch-podhod.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Научный подход</a>
+      <a data-dc-tpl="16" href="index.dc.html#pricing" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Тарифы</a>
+      <a data-dc-tpl="17" href="index.dc.html#platform" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Платформа</a>
+      <a data-dc-tpl="18" href="index.dc.html#cases" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Кейсы</a>
+      <a data-dc-tpl="19" href="index.dc.html#events" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Мероприятия</a>
+      <div data-dc-tpl="20" style="position: relative;">
+        <a data-dc-tpl="21" href="#top" style="font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;"><span data-dc-tpl="22" style="color: rgb(35, 146, 102); font-weight: 700; text-decoration: none;">Полезное</span><span data-dc-tpl="23" style="display: inline-block; transition: transform 0.2s; transform: rotate(0deg); font-size: 11px; color: rgb(145, 151, 172); text-decoration: none;">▾</span></a>
+        <div data-dc-tpl="24" style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 12px; display: none; flex-direction: column; z-index: 70;">
+          <div data-dc-tpl="25" style="min-width: 230px; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; box-shadow: rgba(40, 44, 62, 0.14) 0px 16px 40px; padding: 8px; display: flex; flex-direction: column;">
+            <a data-dc-tpl="26" href="#top" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Исследования, гайды</a>
+            <a data-dc-tpl="27" href="#top" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Блог</a>
+            <a data-dc-tpl="28" href="index.dc.html#events" class="scp1" style="font-size: 15px; color: rgb(40, 44, 62); text-decoration: none; padding: 11px 16px; border-radius: 10px; transition: background 0.15s;">Тренинги и вебинары</a>
           </div>
         </div>
       </div>
     </div>
-    <a data-dc-tpl="27" href="#demo" class="scp2" style="background: rgb(35, 146, 102); color: rgb(255, 255, 255); font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 44px; text-decoration: none; box-shadow: rgba(35, 146, 102, 0.3) 0px 10px 28px; transition: transform 0.2s, box-shadow 0.2s;">Заказать демо</a>
-    <a data-dc-tpl="28" href="#" data-burger="" style="align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(40, 44, 62, 0.12); color: rgb(40, 44, 62); text-decoration: none; flex-shrink: 0;">
-      <svg data-dc-tpl="29" width="22" height="22" viewBox="0 0 24 24" fill="none"><path data-dc-tpl="30" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+    <a data-dc-tpl="29" href="#demo" class="scp2" style="background: rgb(35, 146, 102); color: rgb(255, 255, 255); font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 44px; text-decoration: none; box-shadow: rgba(35, 146, 102, 0.3) 0px 10px 28px; transition: transform 0.2s, box-shadow 0.2s;">Заказать демо</a>
+    <a data-dc-tpl="30" href="#" data-burger="" style="align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(40, 44, 62, 0.12); color: rgb(40, 44, 62); text-decoration: none; flex-shrink: 0;">
+      <svg data-dc-tpl="31" width="22" height="22" viewBox="0 0 24 24" fill="none"><path data-dc-tpl="32" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
     </a>
   </nav>
-  <div data-dc-tpl="31" data-mmenu="" style="display: none; flex-direction: column; background: rgb(255, 255, 255); border-top: 1px solid rgba(40, 44, 62, 0.07); padding: 8px 18px 16px;">
-    <a data-dc-tpl="32" href="result.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Результаты</a>
-    <a data-dc-tpl="33" href="nauch-podhod.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Научный подход</a>
-    <a data-dc-tpl="34" href="index.dc.html#pricing" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Тарифы</a>
-    <a data-dc-tpl="35" href="index.dc.html#platform" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Платформа</a>
-    <a data-dc-tpl="36" href="index.dc.html#cases" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Кейсы</a>
-    <a data-dc-tpl="37" href="index.dc.html#events" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Мероприятия</a>
-    <a data-dc-tpl="38" href="#top" style="font-size: 16px; color: rgb(35, 146, 102); font-weight: 700; text-decoration: none; padding: 13px 8px;">Полезное</a>
-  </div></header><div style="height: 77px; flex: 0 0 auto;"></div><section data-dc-tpl="39" id="top" style="max-width: 1160px; margin: 0px auto; padding: 76px 40px 0px; text-align: center;">
-  <span data-dc-tpl="40" style="display: inline-flex; align-items: center; background: rgb(234, 247, 240); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 30px; margin-bottom: 16px;">Полезное</span>
-  <h1 data-dc-tpl="41" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 54px; line-height: 1.05; letter-spacing: -1px; color: rgb(40, 44, 62); margin: 0px 0px 18px;">Материалы для заботы о команде</h1>
-  <p data-dc-tpl="42" style="font-size: 19px; line-height: 1.5; color: rgb(76, 81, 107); max-width: 640px; margin: 0px auto;">Чек-листы, гайды и исследования для HR и руководителей — бесплатно и на основе доказательного подхода.</p></section><section data-dc-tpl="43" style="max-width: 1160px; margin: 0px auto; padding: 64px 40px 0px;">
-  <div data-dc-tpl="44" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 28px;">
-    <h2 data-dc-tpl="45" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); margin: 0px;">Рекомендуем</h2>
-    <div data-dc-tpl="46" style="display: flex; gap: 10px; flex-shrink: 0;">
-      <div data-dc-tpl="47" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">‹</div>
-      <div data-dc-tpl="48" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">›</div>
+  <div data-dc-tpl="33" data-mmenu="" style="display: none; flex-direction: column; background: rgb(255, 255, 255); border-top: 1px solid rgba(40, 44, 62, 0.07); padding: 8px 18px 16px;">
+    <a data-dc-tpl="34" href="result.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Результаты</a>
+    <a data-dc-tpl="35" href="nauch-podhod.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Научный подход</a>
+    <a data-dc-tpl="36" href="index.dc.html#pricing" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Тарифы</a>
+    <a data-dc-tpl="37" href="index.dc.html#platform" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Платформа</a>
+    <a data-dc-tpl="38" href="index.dc.html#cases" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Кейсы</a>
+    <a data-dc-tpl="39" href="index.dc.html#events" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Мероприятия</a>
+    <a data-dc-tpl="40" href="#top" style="font-size: 16px; color: rgb(35, 146, 102); font-weight: 700; text-decoration: none; padding: 13px 8px;">Полезное</a>
+  </div></header><div style="height: 77px; flex: 0 0 auto;"></div><section data-dc-tpl="41" id="top" style="max-width: 1160px; margin: 0px auto; padding: 76px 40px 0px; text-align: center;">
+  <span data-dc-tpl="42" style="display: inline-flex; align-items: center; background: rgb(234, 247, 240); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 30px; margin-bottom: 16px;">Полезное</span>
+  <h1 data-dc-tpl="43" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 54px; line-height: 1.05; letter-spacing: -1px; color: rgb(40, 44, 62); margin: 0px 0px 18px;">Материалы для заботы о команде</h1>
+  <p data-dc-tpl="44" style="font-size: 19px; line-height: 1.5; color: rgb(76, 81, 107); max-width: 640px; margin: 0px auto;">Чек-листы, гайды и исследования для HR и руководителей — бесплатно и на основе доказательного подхода.</p></section><section data-dc-tpl="45" style="max-width: 1160px; margin: 0px auto; padding: 64px 40px 0px;">
+  <div data-dc-tpl="46" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 28px;">
+    <h2 data-dc-tpl="47" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); margin: 0px; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Рекомендуем</h2>
+    <div data-dc-tpl="48" style="display: flex; gap: 10px; flex-shrink: 0;">
+      <div data-dc-tpl="49" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">‹</div>
+      <div data-dc-tpl="50" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">›</div>
     </div>
   </div>
 
-  <div data-dc-tpl="49" data-carousel="featured" style="overflow-x: auto; cursor: grab; scrollbar-width: none; margin: 0px -4px;">
-    <div data-dc-tpl="50" style="display: flex; gap: 24px; padding: 4px;">
+  <div data-dc-tpl="51" data-carousel="featured" style="overflow-x: auto; cursor: grab; scrollbar-width: none; margin: 0px -4px;">
+    <div data-dc-tpl="52" style="display: flex; gap: 24px; padding: 4px;">
       
-        <div data-dc-tpl="52" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
-          <div data-dc-tpl="53" style="width: 100%; height: 230px; background: url(&quot;assets/covers/196.jpg&quot;) center center / cover no-repeat;"></div>
-          <div data-dc-tpl="54" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
-            <span data-dc-tpl="55" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="56" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-            <h3 data-dc-tpl="57" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Alter&amp;HH: ментальное здоровье сотрудников 2025</span></h3>
-            <p data-dc-tpl="58" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Ежегодное исследование о психологическом состоянии в российских компаниях.</span></p>
-            <a data-dc-tpl="59" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+        <div data-dc-tpl="54" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+          <div data-dc-tpl="55" style="width: 100%; height: 230px; background: url(&quot;assets/covers/196.jpg&quot;) center center / cover no-repeat;"></div>
+          <div data-dc-tpl="56" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
+            <span data-dc-tpl="57" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="58" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+            <h3 data-dc-tpl="59" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Alter&amp;HH: ментальное здоровье сотрудников 2025</span></h3>
+            <p data-dc-tpl="60" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Ежегодное исследование о психологическом состоянии в российских компаниях.</span></p>
+            <a data-dc-tpl="61" href="#" data-mat-id="3" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
           </div>
         </div>
       
-        <div data-dc-tpl="52" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
-          <div data-dc-tpl="53" style="width: 100%; height: 230px; background: url(&quot;assets/covers/192.jpg&quot;) center center / cover no-repeat;"></div>
-          <div data-dc-tpl="54" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
-            <span data-dc-tpl="55" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="56" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-            <h3 data-dc-tpl="57" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Тревожность и продуктивность</span></h3>
-            <p data-dc-tpl="58" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Данные о том, как уровень тревоги в команде влияет на результаты работы.</span></p>
-            <a data-dc-tpl="59" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+        <div data-dc-tpl="54" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+          <div data-dc-tpl="55" style="width: 100%; height: 230px; background: url(&quot;assets/covers/192.jpg&quot;) center center / cover no-repeat;"></div>
+          <div data-dc-tpl="56" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
+            <span data-dc-tpl="57" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="58" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+            <h3 data-dc-tpl="59" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Тревожность и продуктивность</span></h3>
+            <p data-dc-tpl="60" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Данные о том, как уровень тревоги в команде влияет на результаты работы.</span></p>
+            <a data-dc-tpl="61" href="#" data-mat-id="9" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
           </div>
         </div>
       
-        <div data-dc-tpl="52" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
-          <div data-dc-tpl="53" style="width: 100%; height: 230px; background: url(&quot;assets/covers/197.jpg&quot;) center center / cover no-repeat;"></div>
-          <div data-dc-tpl="54" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
-            <span data-dc-tpl="55" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="56" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-            <h3 data-dc-tpl="57" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Выгорание в IT: масштаб проблемы</span></h3>
-            <p data-dc-tpl="58" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Аналитика Alter о распространённости выгорания среди технических специалистов.</span></p>
-            <a data-dc-tpl="59" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+        <div data-dc-tpl="54" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+          <div data-dc-tpl="55" style="width: 100%; height: 230px; background: url(&quot;assets/covers/197.jpg&quot;) center center / cover no-repeat;"></div>
+          <div data-dc-tpl="56" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
+            <span data-dc-tpl="57" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="58" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+            <h3 data-dc-tpl="59" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Выгорание в IT: масштаб проблемы</span></h3>
+            <p data-dc-tpl="60" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Аналитика Alter о распространённости выгорания среди технических специалистов.</span></p>
+            <a data-dc-tpl="61" href="#" data-mat-id="13" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
           </div>
         </div>
       
-        <div data-dc-tpl="52" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
-          <div data-dc-tpl="53" style="width: 100%; height: 230px; background: url(&quot;assets/covers/195.jpg&quot;) center center / cover no-repeat;"></div>
-          <div data-dc-tpl="54" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
-            <span data-dc-tpl="55" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="56" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
-            <h3 data-dc-tpl="57" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Признаки выгорания в команде</span></h3>
-            <p data-dc-tpl="58" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.</span></p>
-            <a data-dc-tpl="59" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+        <div data-dc-tpl="54" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+          <div data-dc-tpl="55" style="width: 100%; height: 230px; background: url(&quot;assets/covers/195.jpg&quot;) center center / cover no-repeat;"></div>
+          <div data-dc-tpl="56" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
+            <span data-dc-tpl="57" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="58" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
+            <h3 data-dc-tpl="59" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Признаки выгорания в команде</span></h3>
+            <p data-dc-tpl="60" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.</span></p>
+            <a data-dc-tpl="61" href="#" data-mat-id="1" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
           </div>
         </div>
       
-        <div data-dc-tpl="52" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
-          <div data-dc-tpl="53" style="width: 100%; height: 230px; background: url(&quot;assets/covers/191_2.jpg&quot;) center center / cover no-repeat;"></div>
-          <div data-dc-tpl="54" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
-            <span data-dc-tpl="55" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="56" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
-            <h3 data-dc-tpl="57" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Как поддержать сотрудника в кризис</span></h3>
-            <p data-dc-tpl="58" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.</span></p>
-            <a data-dc-tpl="59" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+        <div data-dc-tpl="54" class="scp4" style="flex: 0 0 calc(50% - 16px); max-width: calc(50% - 16px); display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;">
+          <div data-dc-tpl="55" style="width: 100%; height: 230px; background: url(&quot;assets/covers/191_2.jpg&quot;) center center / cover no-repeat;"></div>
+          <div data-dc-tpl="56" style="padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 12px; flex: 1 1 0%;">
+            <span data-dc-tpl="57" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="58" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
+            <h3 data-dc-tpl="59" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 22px; line-height: 1.24; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Как поддержать сотрудника в кризис</span></h3>
+            <p data-dc-tpl="60" style="font-size: 14.5px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.</span></p>
+            <a data-dc-tpl="61" href="#" data-mat-id="2" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
           </div>
         </div>
       
     </div>
   </div>
 
-  <div data-dc-tpl="60" style="display: flex; gap: 9px; justify-content: center; margin-top: 26px;">
+  <div data-dc-tpl="62" style="display: flex; gap: 9px; justify-content: center; margin-top: 26px;">
     
-      <div data-dc-tpl="62" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(35, 146, 102); transition: background 0.2s;"></div>
+      <div data-dc-tpl="64" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(35, 146, 102); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="62" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="64" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="62" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="64" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="62" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="64" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="62" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="64" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-  </div></section><section data-dc-tpl="63" style="max-width: 1160px; margin: 0px auto; padding: 80px 40px 0px;">
-  <h2 data-dc-tpl="64" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Все материалы</h2>
-  <p data-dc-tpl="65" style="font-size: 16px; color: rgb(106, 112, 136); margin: 8px 0px 0px; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Отфильтруйте по формату, теме и аудитории или найдите нужное поиском</p>
+  </div></section><section data-dc-tpl="65" style="max-width: 1160px; margin: 0px auto; padding: 80px 40px 0px;">
+  <h2 data-dc-tpl="66" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Все материалы</h2>
+  <p data-dc-tpl="67" style="font-size: 16px; color: rgb(106, 112, 136); margin: 8px 0px 0px; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Отфильтруйте по формату, теме и аудитории или найдите нужное поиском</p>
 
-  <div data-dc-tpl="66" style="display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; margin: 28px 0px 32px; padding-bottom: 28px; border-bottom: 1px solid rgba(40, 44, 62, 0.1);">
-    <div data-dc-tpl="67" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 170px;">
-      <label data-dc-tpl="68" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Тип материала</label>
-      <select data-dc-tpl="69" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
-        <option data-dc-tpl="71" value="all"><span class="sc-interp">Все форматы</span></option><option data-dc-tpl="71" value="checklist"><span class="sc-interp">Чек-листы</span></option><option data-dc-tpl="71" value="guide"><span class="sc-interp">Гайды</span></option><option data-dc-tpl="71" value="research"><span class="sc-interp">Исследования</span></option>
+  <div data-dc-tpl="68" style="display: flex; gap: 22px; align-items: flex-end; flex-wrap: wrap; margin: 28px 0px 32px; padding-bottom: 28px; border-bottom: 1px solid rgba(40, 44, 62, 0.1);">
+    <div data-dc-tpl="69" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 170px;">
+      <label data-dc-tpl="70" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Тип материала</label>
+      <select data-dc-tpl="71" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
+        <option data-dc-tpl="73" value="all"><span class="sc-interp">Все форматы</span></option><option data-dc-tpl="73" value="checklist"><span class="sc-interp">Чек-листы</span></option><option data-dc-tpl="73" value="guide"><span class="sc-interp">Гайды</span></option><option data-dc-tpl="73" value="research"><span class="sc-interp">Исследования</span></option>
       </select>
     </div>
-    <div data-dc-tpl="72" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 170px;">
-      <label data-dc-tpl="73" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Тема</label>
-      <select data-dc-tpl="74" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
-        <option data-dc-tpl="76" value="all"><span class="sc-interp">Все темы</span></option><option data-dc-tpl="76" value="Выгорание"><span class="sc-interp">Выгорание</span></option><option data-dc-tpl="76" value="Культура"><span class="sc-interp">Культура</span></option><option data-dc-tpl="76" value="Стресс и тревога"><span class="sc-interp">Стресс и тревога</span></option><option data-dc-tpl="76" value="Лидерство"><span class="sc-interp">Лидерство</span></option><option data-dc-tpl="76" value="ROI"><span class="sc-interp">ROI</span></option><option data-dc-tpl="76" value="Онбординг"><span class="sc-interp">Онбординг</span></option>
+    <div data-dc-tpl="74" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 170px;">
+      <label data-dc-tpl="75" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Тема</label>
+      <select data-dc-tpl="76" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
+        <option data-dc-tpl="78" value="all"><span class="sc-interp">Все темы</span></option><option data-dc-tpl="78" value="Выгорание"><span class="sc-interp">Выгорание</span></option><option data-dc-tpl="78" value="Культура"><span class="sc-interp">Культура</span></option><option data-dc-tpl="78" value="Стресс и тревога"><span class="sc-interp">Стресс и тревога</span></option><option data-dc-tpl="78" value="Лидерство"><span class="sc-interp">Лидерство</span></option><option data-dc-tpl="78" value="ROI"><span class="sc-interp">ROI</span></option><option data-dc-tpl="78" value="Онбординг"><span class="sc-interp">Онбординг</span></option>
       </select>
     </div>
-    <div data-dc-tpl="77" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 150px;">
-      <label data-dc-tpl="78" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Аудитория</label>
-      <select data-dc-tpl="79" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
-        <option data-dc-tpl="80">Все</option><option data-dc-tpl="81">HR</option><option data-dc-tpl="82">Руководитель</option><option data-dc-tpl="83">Сотрудник</option>
+    <div data-dc-tpl="79" style="display: flex; flex-direction: column; gap: 7px; flex: 1 1 0%; min-width: 150px;">
+      <label data-dc-tpl="80" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Аудитория</label>
+      <select data-dc-tpl="81" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); cursor: pointer;">
+        <option data-dc-tpl="82">Все</option><option data-dc-tpl="83">HR</option><option data-dc-tpl="84">Руководитель</option><option data-dc-tpl="85">Сотрудник</option>
       </select>
     </div>
-    <div data-dc-tpl="84" style="display: flex; flex-direction: column; gap: 7px; flex: 1.4 1 0%; min-width: 200px;">
-      <label data-dc-tpl="85" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Поиск</label>
-      <input data-dc-tpl="86" placeholder="Название материала" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255);">
+    <div data-dc-tpl="86" style="display: flex; flex-direction: column; gap: 7px; flex: 1.4 1 0%; min-width: 200px;">
+      <label data-dc-tpl="87" style="font-size: 13px; font-weight: 700; color: rgb(40, 44, 62);">Поиск</label>
+      <input data-dc-tpl="88" placeholder="Название материала" style="font-family: &quot;Futura PT&quot;; font-size: 15px; padding: 13px 16px; border: 1px solid rgb(220, 229, 223); border-radius: 12px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255);">
     </div>
   </div>
 
-  <div data-dc-tpl="87" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+  <div data-dc-tpl="89" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/195.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Признаки выгорания в команде</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/195.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Признаки выгорания в команде</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">12 маркеров, по которым HR распознаёт выгорание раньше, чем оно ударит по продуктивности.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="1" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/191_2.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Как поддержать сотрудника в кризис</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/191_2.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Как поддержать сотрудника в кризис</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Пошаговый сценарий разговора руководителя с сотрудником в трудной ситуации.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="2" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/196.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Alter&amp;HH: ментальное здоровье сотрудников 2025</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Ежегодное исследование о психологическом состоянии в российских компаниях.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/196.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Alter&amp;HH: ментальное здоровье сотрудников 2025</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Ежегодное исследование о психологическом состоянии в российских компаниях.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="3" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 270ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/191.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Экологичная обратная связь</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Как давать критику, не разрушая мотивацию и доверие внутри команды.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 270ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/191.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Экологичная обратная связь</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Как давать критику, не разрушая мотивацию и доверие внутри команды.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="4" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/194.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Профилактика конфликтов в коллективе</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Инструменты, которые снижают напряжение до того, как оно перерастёт в конфликт.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/194.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Профилактика конфликтов в коллективе</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Инструменты, которые снижают напряжение до того, как оно перерастёт в конфликт.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="5" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/189-04.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Онбординг без стресса</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Как встроить психологическую поддержку в первые 90 дней нового сотрудника.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/189-04.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(51, 70, 143);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(91, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Гайд</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Онбординг без стресса</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Как встроить психологическую поддержку в первые 90 дней нового сотрудника.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="8" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/192.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Тревожность и продуктивность</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Данные о том, как уровень тревоги в команде влияет на результаты работы.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/192.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Тревожность и продуктивность</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Данные о том, как уровень тревоги в команде влияет на результаты работы.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="9" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 270ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/193.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Готова ли компания к well-being программе</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Быстрая самодиагностика зрелости корпоративной заботы о сотрудниках.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 270ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/193.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(30, 122, 87);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(41, 185, 129); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Чек-лист</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Готова ли компания к well-being программе</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Быстрая самодиагностика зрелости корпоративной заботы о сотрудниках.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="11" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
-      <div data-dc-tpl="89" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
-        <div data-dc-tpl="90" style="width: 100%; height: 180px; background: url(&quot;assets/covers/197.jpg&quot;) center center / cover no-repeat;"></div>
-        <div data-dc-tpl="91" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
-          <span data-dc-tpl="92" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="93" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
-          <h3 data-dc-tpl="94" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Выгорание в IT: масштаб проблемы</span></h3>
-          <p data-dc-tpl="95" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Аналитика Alter о распространённости выгорания среди технических специалистов.</span></p>
-          <a data-dc-tpl="96" href="#" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
+      <div data-dc-tpl="91" class="scp6" style="display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; overflow: hidden; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">
+        <div data-dc-tpl="92" style="width: 100%; height: 180px; background: url(&quot;assets/covers/197.jpg&quot;) center center / cover no-repeat;"></div>
+        <div data-dc-tpl="93" style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 1 0%;">
+          <span data-dc-tpl="94" style="display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 700; color: rgb(90, 70, 168);"><span data-dc-tpl="95" style="width: 13px; height: 13px; border-radius: 3px; background: rgb(138, 111, 224); transform: rotate(45deg); flex: 0 0 auto;"></span><span class="sc-interp">Исследование</span></span>
+          <h3 data-dc-tpl="96" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px;"><span class="sc-interp">Выгорание в IT: масштаб проблемы</span></h3>
+          <p data-dc-tpl="97" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><span class="sc-interp">Аналитика Alter о распространённости выгорания среди технических специалистов.</span></p>
+          <a data-dc-tpl="98" href="#" data-mat-id="13" class="scp5" style="margin-top: auto; text-align: center; border: 1.5px solid rgb(41, 185, 129); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 40px; text-decoration: none; transition: background 0.18s, color 0.18s;">Скачать ↓</a>
         </div>
       </div>
     
@@ -569,205 +571,207 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 
   
 
-  <div data-dc-tpl="99" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 40px;">
-    <div data-dc-tpl="100" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.14); display: flex; align-items: center; justify-content: center; color: rgb(154, 160, 181); cursor: pointer;">‹</div>
-    <div data-dc-tpl="101" style="width: 40px; height: 40px; border-radius: 50%; background: rgb(35, 146, 102); color: rgb(255, 255, 255); font-weight: 700; display: flex; align-items: center; justify-content: center;">1</div>
-    <div data-dc-tpl="102" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">2</div>
-    <div data-dc-tpl="103" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">3</div>
-    <span data-dc-tpl="104" style="color: rgb(154, 160, 181); padding: 0px 4px;">…</span>
-    <div data-dc-tpl="105" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">8</div>
-    <div data-dc-tpl="106" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.14); display: flex; align-items: center; justify-content: center; color: rgb(58, 63, 88); cursor: pointer;">›</div>
-  </div></section><section data-dc-tpl="107" style="max-width: 1160px; margin: 0px auto; padding: 84px 40px 0px;">
-  <div data-dc-tpl="108" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 28px;">
-    <div data-dc-tpl="109">
-      <h2 data-dc-tpl="110" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Видеотека</h2>
-      <p data-dc-tpl="111" style="font-size: 16px; color: rgb(106, 112, 136); margin: 8px 0px 0px;">Короткие видео о платформе и историях клиентов</p>
+  <div data-dc-tpl="101" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 40px;">
+    <div data-dc-tpl="102" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.14); display: flex; align-items: center; justify-content: center; color: rgb(154, 160, 181); cursor: pointer;">‹</div>
+    <div data-dc-tpl="103" style="width: 40px; height: 40px; border-radius: 50%; background: rgb(35, 146, 102); color: rgb(255, 255, 255); font-weight: 700; display: flex; align-items: center; justify-content: center;">1</div>
+    <div data-dc-tpl="104" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">2</div>
+    <div data-dc-tpl="105" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">3</div>
+    <span data-dc-tpl="106" style="color: rgb(154, 160, 181); padding: 0px 4px;">…</span>
+    <div data-dc-tpl="107" style="width: 40px; height: 40px; border-radius: 50%; color: rgb(58, 63, 88); font-weight: 700; display: flex; align-items: center; justify-content: center; cursor: pointer;">8</div>
+    <div data-dc-tpl="108" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.14); display: flex; align-items: center; justify-content: center; color: rgb(58, 63, 88); cursor: pointer;">›</div>
+  </div></section><section data-dc-tpl="109" style="max-width: 1160px; margin: 0px auto; padding: 84px 40px 0px;">
+  <div data-dc-tpl="110" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 28px;">
+    <div data-dc-tpl="111">
+      <h2 data-dc-tpl="112" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.6px; color: rgb(40, 44, 62); transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Видеотека</h2>
+      <p data-dc-tpl="113" style="font-size: 16px; color: rgb(106, 112, 136); margin: 8px 0px 0px;">Короткие видео о платформе и историях клиентов</p>
     </div>
-    <div data-dc-tpl="112" style="display: flex; gap: 10px; flex-shrink: 0;">
-      <div data-dc-tpl="113" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">‹</div>
-      <div data-dc-tpl="114" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">›</div>
-    </div>
-  </div>
-
-  <div data-dc-tpl="115" data-carousel="videos" style="overflow-x: auto; cursor: grab; scrollbar-width: none; margin: 0px -4px;">
-    <div data-dc-tpl="116" style="display: flex; gap: 24px; padding: 4px;">
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/184.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Знакомство с Alter</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Как устроена платформа для сотрудников и HR-кабинет.</span></p>
-          </div>
-        </div>
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/186.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Как проходит первая сессия</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Психолог Alter рассказывает, чего ожидать на старте.</span></p>
-          </div>
-        </div>
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/188.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">История клиента: как X5 внедрили заботу</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Кейс о запуске психологической поддержки в большой команде.</span></p>
-          </div>
-        </div>
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/185.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Вебинар: стресс-менеджмент для команд</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Запись практического вебинара с психологом Alter.</span></p>
-          </div>
-        </div>
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/189-01.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Как выбрать психолога сотруднику</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Разбираем, как устроен подбор специалиста в сервисе.</span></p>
-          </div>
-        </div>
-      
-        <div data-dc-tpl="118" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
-          <div data-dc-tpl="119" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-            <div data-dc-tpl="120" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/187.jpg&quot;) center center / cover no-repeat;"></div>
-            <div data-dc-tpl="121" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
-            <div data-dc-tpl="122" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
-              <div data-dc-tpl="123" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
-            </div>
-          </div>
-          <div data-dc-tpl="124" style="padding: 20px 22px 24px;">
-            <h4 data-dc-tpl="125" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">HR-кабинет Alter за 3 минуты</span></h4>
-            <p data-dc-tpl="126" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Обзор аналитики и метрик благополучия команды.</span></p>
-          </div>
-        </div>
-      
+    <div data-dc-tpl="114" style="display: flex; gap: 10px; flex-shrink: 0;">
+      <div data-dc-tpl="115" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">‹</div>
+      <div data-dc-tpl="116" class="scp3" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(40, 44, 62, 0.16); display: flex; align-items: center; justify-content: center; font-size: 22px; color: rgb(40, 44, 62); cursor: pointer; transition: background 0.18s, border-color 0.18s;">›</div>
     </div>
   </div>
 
-  <div data-dc-tpl="127" style="display: flex; gap: 9px; justify-content: center; margin-top: 26px;">
+  <div data-dc-tpl="117" data-carousel="videos" style="overflow-x: auto; cursor: grab; scrollbar-width: none; margin: 0px -4px;">
+    <div data-dc-tpl="118" style="display: flex; gap: 24px; padding: 4px;">
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/184.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Знакомство с Alter</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Как устроена платформа для сотрудников и HR-кабинет.</span></p>
+          </div>
+        </div>
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/186.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Как проходит первая сессия</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Психолог Alter рассказывает, чего ожидать на старте.</span></p>
+          </div>
+        </div>
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/188.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">История клиента: как X5 внедрили заботу</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Кейс о запуске психологической поддержки в большой команде.</span></p>
+          </div>
+        </div>
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/185.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Вебинар: стресс-менеджмент для команд</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Запись практического вебинара с психологом Alter.</span></p>
+          </div>
+        </div>
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/189-01.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">Как выбрать психолога сотруднику</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Разбираем, как устроен подбор специалиста в сервисе.</span></p>
+          </div>
+        </div>
+      
+        <div data-dc-tpl="120" style="flex: 0 0 372px; max-width: 372px; display: flex; flex-direction: column; background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 18px; overflow: hidden;">
+          <div data-dc-tpl="121" style="height: 210px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+            <div data-dc-tpl="122" style="position: absolute; inset: 0px; background: url(&quot;assets/covers/187.jpg&quot;) center center / cover no-repeat;"></div>
+            <div data-dc-tpl="123" style="position: absolute; inset: 0px; background: rgba(40, 44, 62, 0.3);"></div>
+            <div data-dc-tpl="124" style="position: relative; z-index: 2; width: 62px; height: 62px; border-radius: 50%; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; box-shadow: rgba(40, 44, 62, 0.28) 0px 8px 22px;">
+              <div data-dc-tpl="125" style="width: 0px; height: 0px; border-left: 18px solid rgb(35, 146, 102); border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+            </div>
+          </div>
+          <div data-dc-tpl="126" style="padding: 20px 22px 24px;">
+            <h4 data-dc-tpl="127" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 19px; line-height: 1.3; color: rgb(40, 44, 62); margin: 0px 0px 9px;"><span class="sc-interp">HR-кабинет Alter за 3 минуты</span></h4>
+            <p data-dc-tpl="128" style="font-size: 14px; line-height: 1.5; color: rgb(106, 112, 136); margin: 0px;"><span class="sc-interp">Обзор аналитики и метрик благополучия команды.</span></p>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+  <div data-dc-tpl="129" style="display: flex; gap: 9px; justify-content: center; margin-top: 26px;">
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(35, 146, 102); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(35, 146, 102); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-      <div data-dc-tpl="129" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
+      <div data-dc-tpl="131" style="width: 9px; height: 9px; border-radius: 50%; cursor: pointer; background: rgb(207, 230, 218); transition: background 0.2s;"></div>
     
-  </div></section><section data-dc-tpl="130" id="demo" style="max-width: 1280px; margin: 100px auto 0px; padding: 0px 40px;">
-  <div data-dc-tpl="131" style="background: rgb(244, 248, 245); border: 1px solid rgb(227, 236, 230); border-radius: 32px; padding: 60px; position: relative; overflow: hidden;">
-    <div data-dc-tpl="132" style="position: absolute; top: -90px; right: -70px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(41, 185, 129, 0.2), rgba(41, 185, 129, 0) 70%); animation: 15s ease-in-out 0s infinite normal none running drift1; z-index: 1; pointer-events: none;"></div>
-    <div data-dc-tpl="133" style="position: absolute; bottom: -110px; left: 34%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(41, 185, 129, 0.11), rgba(41, 185, 129, 0) 70%); animation: 19s ease-in-out 0s infinite normal none running drift2; z-index: 1; pointer-events: none;"></div>
-    <h2 data-dc-tpl="134" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 38px; letter-spacing: -0.6px; color: rgb(40, 44, 62); position: relative; z-index: 2; text-align: center; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Заказать демонстрацию «Alter для бизнеса»</h2>
-    <div data-dc-tpl="135" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 36px; position: relative; z-index: 2;">
-      <div data-dc-tpl="136" data-reveal-pending="1" style="transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);">
-        <ul data-dc-tpl="137" style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
-          <li data-dc-tpl="138" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="139" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="140" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Покажем платформу для сотрудников и HR-кабинет</span></li>
-          <li data-dc-tpl="141" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="142" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="143" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Поможем выбрать оптимальный тариф под ваши задачи и бюджет</span></li>
-          <li data-dc-tpl="144" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="145" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="146" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Выдадим демо-доступы на тестовую сессию с психологом</span></li>
-          <li data-dc-tpl="147" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="148" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="149" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Проконсультируем по диагностике команды и пилотному запуску</span></li>
+  </div></section><section data-dc-tpl="132" id="demo" style="max-width: 1280px; margin: 100px auto 0px; padding: 0px 40px;">
+  <div data-dc-tpl="133" style="background: rgb(244, 248, 245); border: 1px solid rgb(227, 236, 230); border-radius: 32px; padding: 60px; position: relative; overflow: hidden;">
+    <div data-dc-tpl="134" style="position: absolute; top: -90px; right: -70px; width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(41, 185, 129, 0.2), rgba(41, 185, 129, 0) 70%); animation: 15s ease-in-out 0s infinite normal none running drift1; z-index: 1; pointer-events: none;"></div>
+    <div data-dc-tpl="135" style="position: absolute; bottom: -110px; left: 34%; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(41, 185, 129, 0.11), rgba(41, 185, 129, 0) 70%); animation: 19s ease-in-out 0s infinite normal none running drift2; z-index: 1; pointer-events: none;"></div>
+    <h2 data-dc-tpl="136" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 38px; letter-spacing: -0.6px; color: rgb(40, 44, 62); position: relative; z-index: 2; text-align: center; transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 180ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);" data-reveal-pending="1">Заказать демонстрацию «Alter для бизнеса»</h2>
+    <div data-dc-tpl="137" style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-top: 36px; position: relative; z-index: 2;">
+      <div data-dc-tpl="138" data-reveal-pending="1" style="transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);">
+        <ul data-dc-tpl="139" style="list-style: none; display: flex; flex-direction: column; gap: 20px;">
+          <li data-dc-tpl="140" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="141" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="142" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Покажем платформу для сотрудников и HR-кабинет</span></li>
+          <li data-dc-tpl="143" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="144" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="145" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Поможем выбрать оптимальный тариф под ваши задачи и бюджет</span></li>
+          <li data-dc-tpl="146" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="147" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="148" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Выдадим демо-доступы на тестовую сессию с психологом</span></li>
+          <li data-dc-tpl="149" style="display: flex; gap: 16px; align-items: flex-start;"><span data-dc-tpl="150" style="color: rgb(35, 146, 102); font-size: 20px; line-height: 1.3;">→</span><span data-dc-tpl="151" style="font-size: 17px; line-height: 1.4; color: rgb(76, 81, 107);">Проконсультируем по диагностике команды и пилотному запуску</span></li>
         </ul>
-        <div data-dc-tpl="150" style="margin-top: 24px; display: flex; justify-content: center;">
-          <img data-dc-tpl="151" src="assets/illustrations/meditation.png" alt="Медитация" style="width: 300px; height: auto; display: block; animation: 6s ease-in-out 0s infinite normal none running floaty;">
+        <div data-dc-tpl="152" style="margin-top: 24px; display: flex; justify-content: center;">
+          <img data-dc-tpl="153" src="assets/illustrations/meditation.png" alt="Медитация" style="width: 300px; height: auto; display: block; animation: 6s ease-in-out 0s infinite normal none running floaty;">
         </div>
       </div>
-      <div data-dc-tpl="152" data-reveal-pending="1" style="transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);">
+      <div data-dc-tpl="154" data-reveal-pending="1" style="transition: opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) 90ms, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); opacity: 0; transform: translateY(54px) scale(0.97);">
         
         
-          <form data-dc-tpl="159" style="display: flex; flex-direction: column; gap: 14px;">
-            <input data-dc-tpl="160" type="text" required="" placeholder="Имя" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-            <input data-dc-tpl="161" type="text" required="" placeholder="Название компании" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-            <input data-dc-tpl="162" type="tel" placeholder="+7 (000) 000-00-00" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-            <input data-dc-tpl="163" type="email" required="" placeholder="Почта" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-            <select data-dc-tpl="164" required="" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(106, 112, 136); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-              <option data-dc-tpl="165" value="">Где удобнее связаться?</option>
-              <option data-dc-tpl="166">Telegram</option><option data-dc-tpl="167">WhatsApp</option><option data-dc-tpl="168">Звонок</option><option data-dc-tpl="169">Почта</option>
+          <form data-dc-tpl="161" style="display: flex; flex-direction: column; gap: 14px;">
+            <input data-dc-tpl="162" type="text" required="" placeholder="Имя" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+            <input data-dc-tpl="163" type="text" required="" placeholder="Название компании" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+            <input data-dc-tpl="164" type="tel" placeholder="+7 (000) 000-00-00" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+            <input data-dc-tpl="165" type="email" required="" placeholder="Почта" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(40, 44, 62); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+            <select data-dc-tpl="166" required="" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(106, 112, 136); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+              <option data-dc-tpl="167" value="">Где удобнее связаться?</option>
+              <option data-dc-tpl="168">Telegram</option><option data-dc-tpl="169">WhatsApp</option><option data-dc-tpl="170">Звонок</option><option data-dc-tpl="171">Почта</option>
             </select>
-            <select data-dc-tpl="170" required="" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(106, 112, 136); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
-              <option data-dc-tpl="171" value="">Размер компании</option>
-              <option data-dc-tpl="172">50–200 сотрудников</option><option data-dc-tpl="173">200–500 сотрудников</option><option data-dc-tpl="174">500–1000 сотрудников</option><option data-dc-tpl="175">более 1000 сотрудников</option>
+            <select data-dc-tpl="172" required="" class="scp7" style="font-family: &quot;Futura PT&quot;; font-size: 16px; padding: 17px 20px; border: 1px solid rgb(220, 229, 223); border-radius: 14px; outline: none; color: rgb(106, 112, 136); background: rgb(255, 255, 255); transition: border-color 0.18s, box-shadow 0.18s;">
+              <option data-dc-tpl="173" value="">Размер компании</option>
+              <option data-dc-tpl="174">50–200 сотрудников</option><option data-dc-tpl="175">200–500 сотрудников</option><option data-dc-tpl="176">500–1000 сотрудников</option><option data-dc-tpl="177">более 1000 сотрудников</option>
             </select>
-            <p data-dc-tpl="176" style="font-size: 13px; line-height: 1.5; color: rgb(138, 144, 166); margin-top: 4px;">Нажимая «Отправить», вы принимаете условия <span data-dc-tpl="177" style="text-decoration: underline;">пользовательского соглашения</span>, даёте согласие на обработку <span data-dc-tpl="178" style="text-decoration: underline;">персональных данных</span> и на получение рекламно-информационной рассылки.</p>
-            <button data-dc-tpl="179" type="submit" class="scp8" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; color: rgb(255, 255, 255); background: rgb(41, 185, 129); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 18px; border-radius: 44px; cursor: pointer; margin-top: 6px; box-shadow: rgba(41, 185, 129, 0.34) 0px 10px 26px; transition: transform 0.2s, box-shadow 0.2s;">Отправить</button>
+            <p data-dc-tpl="178" style="font-size: 13px; line-height: 1.5; color: rgb(138, 144, 166); margin-top: 4px;">Нажимая «Отправить», вы принимаете условия <span data-dc-tpl="179" style="text-decoration: underline;">пользовательского соглашения</span>, даёте согласие на обработку <span data-dc-tpl="180" style="text-decoration: underline;">персональных данных</span> и на получение рекламно-информационной рассылки.</p>
+            <button data-dc-tpl="181" type="submit" class="scp8" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 18px; color: rgb(255, 255, 255); background: rgb(41, 185, 129); border-width: medium; border-style: none; border-color: currentcolor; border-image: none; padding: 18px; border-radius: 44px; cursor: pointer; margin-top: 6px; box-shadow: rgba(41, 185, 129, 0.34) 0px 10px 26px; transition: transform 0.2s, box-shadow 0.2s;">Отправить</button>
           </form>
         
       </div>
     </div>
-  </div></section><footer data-dc-tpl="180" style="background: rgb(40, 44, 62); color: rgb(255, 255, 255); margin-top: 100px;">
-  <div data-dc-tpl="181" style="max-width: 1280px; margin: 0px auto; padding: 64px 40px 40px;">
-    <div data-dc-tpl="182" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-      <div data-dc-tpl="183">
-        <a data-dc-tpl="184" href="index.dc.html" style="display: inline-block; text-decoration: none;"><img data-dc-tpl="185" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
-        <p data-dc-tpl="186" style="font-size: 15px; line-height: 1.55; color: rgb(154, 160, 181); margin-top: 16px; max-width: 280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
+  </div></section><footer data-dc-tpl="182" style="background: rgb(40, 44, 62); color: rgb(255, 255, 255); margin-top: 100px;">
+  <div data-dc-tpl="183" style="max-width: 1280px; margin: 0px auto; padding: 64px 40px 40px;">
+    <div data-dc-tpl="184" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <div data-dc-tpl="185">
+        <a data-dc-tpl="186" href="index.dc.html" style="display: inline-block; text-decoration: none;"><img data-dc-tpl="187" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
+        <p data-dc-tpl="188" style="font-size: 15px; line-height: 1.55; color: rgb(154, 160, 181); margin-top: 16px; max-width: 280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
       </div>
-      <div data-dc-tpl="187" style="display: flex; flex-direction: column; gap: 12px;">
-        <div data-dc-tpl="188" style="font-weight: 700; font-size: 15px;">Сервис</div>
-        <a data-dc-tpl="189" href="result.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Результаты</a>
-        <a data-dc-tpl="190" href="nauch-podhod.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Научный подход</a>
-        <a data-dc-tpl="191" href="index.dc.html#platform" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Платформа</a>
-        <a data-dc-tpl="192" href="index.dc.html#pricing" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Тарифы</a>
-        <a data-dc-tpl="193" href="keysy.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Кейсы</a>
-        <a data-dc-tpl="194" href="Мероприятия%20Alter.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Тренинги и вебинары</a>
+      <div data-dc-tpl="189" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="190" style="font-weight: 700; font-size: 15px;">Сервис</div>
+        <a data-dc-tpl="191" href="result.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Результаты</a>
+        <a data-dc-tpl="192" href="nauch-podhod.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Научный подход</a>
+        <a data-dc-tpl="193" href="index.dc.html#platform" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Платформа</a>
+        <a data-dc-tpl="194" href="index.dc.html#pricing" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Тарифы</a>
+        <a data-dc-tpl="195" href="keysy.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Кейсы</a>
+        <a data-dc-tpl="196" href="Мероприятия%20Alter.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Тренинги и вебинары</a>
       </div>
-      <div data-dc-tpl="195" style="display: flex; flex-direction: column; gap: 12px;">
-        <div data-dc-tpl="196" style="font-weight: 700; font-size: 15px;">для HR</div>
-        <a data-dc-tpl="197" href="gaids.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Исследования, гайды</a>
-        <a data-dc-tpl="198" href="Мероприятия%20Alter.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Мероприятия</a>
-        <a data-dc-tpl="199" href="gaids.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Блог</a>
+      <div data-dc-tpl="197" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="198" style="font-weight: 700; font-size: 15px;">для HR</div>
+        <a data-dc-tpl="199" href="gaids.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Исследования, гайды</a>
+        <a data-dc-tpl="200" href="Мероприятия%20Alter.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Мероприятия</a>
+        <a data-dc-tpl="201" href="gaids.dc.html" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Блог</a>
       </div>
-      <div data-dc-tpl="200" style="display: flex; flex-direction: column; gap: 12px;">
-        <div data-dc-tpl="201" style="font-weight: 700; font-size: 15px;">Контакты</div>
-        <a data-dc-tpl="202" href="mailto:business@alter.ru" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">business@alter.ru</a>
-        <a data-dc-tpl="203" href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Telegram-канал</a>
-        <a data-dc-tpl="204" href="https://t.me/alter_business" target="_blank" rel="noopener" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Написать нам в Telegram</a>
-        <a data-dc-tpl="205" href="#demo" class="scpa" style="font-size: 15px; color: rgb(83, 201, 155); text-decoration: none; font-weight: 700; transition: color 0.18s;">Заказать демо →</a>
+      <div data-dc-tpl="202" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="203" style="font-weight: 700; font-size: 15px;">Контакты</div>
+        <a data-dc-tpl="204" href="mailto:business@alter.ru" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">business@alter.ru</a>
+        <a data-dc-tpl="205" href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Telegram-канал</a>
+        <a data-dc-tpl="206" href="https://t.me/alter_business" target="_blank" rel="noopener" class="scp9" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Написать нам в Telegram</a>
+        <a data-dc-tpl="207" href="#demo" class="scpa" style="font-size: 15px; color: rgb(83, 201, 155); text-decoration: none; font-weight: 700; transition: color 0.18s;">Заказать демо →</a>
       </div>
     </div>
-    <div data-dc-tpl="206" style="padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-      <span data-dc-tpl="207" style="font-size: 14px; color: rgb(113, 120, 146);">© 2026 Alter. Все права защищены.</span>
-      <div data-dc-tpl="208" style="display: flex; gap: 24px;"><a data-dc-tpl="209" href="#" class="scp9" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Политика конфиденциальности</a><a data-dc-tpl="210" href="#" class="scp9" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Условия использования</a></div>
+    <div data-dc-tpl="208" style="padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <span data-dc-tpl="209" style="font-size: 14px; color: rgb(113, 120, 146);">© 2026 Alter. Все права защищены.</span>
+      <div data-dc-tpl="210" style="display: flex; gap: 24px;"><a data-dc-tpl="211" href="#" class="scp9" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Политика конфиденциальности</a><a data-dc-tpl="212" href="#" class="scp9" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Условия использования</a></div>
     </div>
   </div></footer></div></div></div>
 <!--PRERENDER-END-->
+
+
 
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
@@ -1052,7 +1056,7 @@ class Component extends DCLogic {
     return {
       demoSubmitted: this.state.demoSubmitted,
       demoNot: !this.state.demoSubmitted,
-      onDemo: (e) => { e.preventDefault(); this.setState({ demoSubmitted: true }); },
+      onDemo: (e) => { e.preventDefault(); const form = e.currentTarget; window.alterSubmitLead(form).then(() => this.setState({ demoSubmitted: true })).catch((err) => { console.error(err); alert('Не удалось отправить заявку. Попробуйте позже или напишите нам.'); }); },
       mMenuDisplay: this.state.mMenu ? "flex" : "none",
       toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
       closeMenu: () => this.setState({ mMenu: false }),

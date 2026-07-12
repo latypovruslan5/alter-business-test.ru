@@ -55,6 +55,7 @@ a:hover { color:#1B7350; }
 </style>
 <script src="image-slot.js"></script>
 <script src="phone-mask.js"></script>
+<script src="crm-submit.js"></script>
 <script src="hash-scroll.js"></script>
 </helmet>
 
@@ -706,7 +707,7 @@ class Component extends DCLogic {
       authorInitials: this.initials(c.authorName),
       demoSubmitted: this.state.demoSubmitted,
       demoNot: !this.state.demoSubmitted,
-      onDemo: (e) => { e.preventDefault(); this.setState({ demoSubmitted: true }); },
+      onDemo: (e) => { e.preventDefault(); const form = e.currentTarget; window.alterSubmitLead(form).then(() => this.setState({ demoSubmitted: true })).catch((err) => { console.error(err); alert('Не удалось отправить заявку. Попробуйте позже или напишите нам.'); }); },
       mMenuDisplay: this.state.mMenu ? "flex" : "none",
       toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
       closeMenu: () => this.setState({ mMenu: false }),
