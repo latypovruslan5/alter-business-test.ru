@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style id="dc-nojs-css">x-dc{display:none!important}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBookOblique.otf') format('opentype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBoldOblique.otf') format('opentype'); font-weight:700; font-style:italic; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -webkit-font-smoothing:antialiased; }
+::selection { background:#A1E1C8; color:#282C3E; }
+[data-burger] { display:none; }
+@media (min-width: 981px) { [data-mmenu] { display:none !important; } }
+@media (max-width: 980px) {
+  header nav > div:nth-of-type(1) { display:none !important; }
+  [data-burger] { display:inline-flex !important; }
+}
+@media (max-width: 1024px) {
+  [data-tour-grid] { grid-template-columns:1fr !important; }
+  #top h1 { font-size:40px !important; }
+}
+@media (max-width: 680px) {
+  header nav { padding-left:18px !important; padding-right:18px !important; }
+  section { padding-left:20px !important; padding-right:20px !important; }
+  #top h1 { font-size:32px !important; letter-spacing:-0.5px !important; }
+  footer > div { padding-left:22px !important; padding-right:22px !important; }
+}
+</style>
+<script src="cabinet-client.js"></script>
+<script src="image-slot.js"></script>
+<script src="hash-scroll.js"></script>
+</helmet>
+
+<template id="__bundler_thumbnail" data-bg-color="#FBFCFB">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#FBFCFB"/>
+    <rect x="330" y="200" width="540" height="360" rx="28" fill="#29B981"/>
+    <text x="600" y="660" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#239266" text-anchor="middle">демо-тур</text>
+  </svg>
+</template>
+
+<div style="overflow-x:hidden;">
+
+<!-- ===== NAV ===== -->
+<header style="position:sticky; top:0; z-index:60; background:rgba(251,252,251,0.85); backdrop-filter:blur(14px); border-bottom:1px solid rgba(40,44,62,0.07);">
+  <nav style="max-width:1280px; margin:0 auto; padding:16px 40px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+    <a href="index.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="result.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Результаты</a>
+      <a href="nauch-podhod.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Научный подход</a>
+      <a href="index.dc.html#pricing" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Тарифы</a>
+      <a href="index.dc.html#platform" style="font-size:15px; color:#239266; font-weight:700; text-decoration:none;">Платформа</a>
+      <a href="keysy.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Кейсы</a>
+      <a href="gaids.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Полезное</a>
+      <a href="kabinet.dc.html" style="font-size:15px; color:#3A3F58; text-decoration:none; transition:color .18s;" style-hover="color:#239266 !important; text-decoration:underline !important; text-underline-offset:6px;">Личный кабинет</a>
+    </div>
+    <a href="kabinet.dc.html#demo" style="background:#239266; color:#fff; font-weight:700; font-size:15px; padding:12px 24px; border-radius:44px; text-decoration:none; box-shadow:0 10px 28px rgba(35,146,102,0.3); transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-2px); box-shadow:0 14px 34px rgba(35,146,102,0.4);">Встреча с менеджером</a>
+    <a href="#" data-burger onClick="{{ toggleMenu }}" style="align-items:center; justify-content:center; width:44px; height:44px; border-radius:12px; border:1px solid rgba(40,44,62,0.12); color:#282C3E; text-decoration:none; flex-shrink:0;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </a>
+  </nav>
+  <div data-mmenu style="display:{{ mMenuDisplay }}; flex-direction:column; background:#fff; border-top:1px solid rgba(40,44,62,0.07); padding:8px 18px 16px;">
+    <a href="result.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Результаты</a>
+    <a href="nauch-podhod.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Научный подход</a>
+    <a href="index.dc.html#pricing" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Тарифы</a>
+    <a href="gaids.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#282C3E; text-decoration:none; padding:13px 8px; border-bottom:1px solid rgba(40,44,62,0.06);">Полезное</a>
+    <a href="kabinet.dc.html" onClick="{{ closeMenu }}" style="font-size:16px; color:#239266; font-weight:700; text-decoration:none; padding:13px 8px;">Личный кабинет</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" style="max-width:960px; margin:0 auto; padding:72px 40px 0; text-align:center;">
+  <span style="display:inline-flex; align-items:center; background:#EAF7F0; color:#239266; font-weight:700; font-size:14px; padding:8px 16px; border-radius:30px; margin-bottom:16px;">Демо-тур платформы</span>
+  <h1 style="font-family:'Futura PT'; font-weight:700; font-size:48px; line-height:1.08; letter-spacing:-1px; color:#282C3E; margin:0 0 18px;">Как Alter выглядит для ваших сотрудников</h1>
+  <p style="font-size:18px; line-height:1.5; color:#4C516B; max-width:640px; margin:0 auto;">Пять шагов — от подбора психолога до чата между сессиями. Тур за минуту покажет, что увидит сотрудник, когда компания подключит программу поддержки.</p>
+  <div style="display:inline-flex; align-items:flex-start; gap:10px; background:#FFF7E6; border:1px solid #F0DCAF; border-radius:14px; padding:13px 18px; margin-top:22px; text-align:left; max-width:640px;">
+    <span style="font-size:17px;">🔒</span>
+    <span style="font-size:14.5px; line-height:1.5; color:#8A6D2F;">Конфиденциально: работодатель не видит, кто из сотрудников обращается к психологам и с какими запросами. HR получает только обезличенную статистику.</span>
+  </div>
+</section>
+
+<!-- ===== TOUR ===== -->
+<section style="max-width:1160px; margin:0 auto; padding:56px 40px 0;">
+  <div data-tour-grid style="display:grid; grid-template-columns:340px 1fr; gap:28px; align-items:start;">
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <a href="#top" onClick="{{ t.onPick }}" style="{{ t.style }}">
+          <span style="{{ t.numStyle }}">{{ t.num }}</span>
+          <span>{{ t.label }}</span>
+        </a>
+      </sc-for>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:24px; padding:30px; min-height:480px;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9AA0B5;">{{ stepNum }}</div>
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:26px; letter-spacing:-0.4px; color:#282C3E; margin:8px 0 10px;">{{ stepTitle }}</h2>
+      <p style="font-size:16px; line-height:1.55; color:#4C516B; margin:0 0 22px; max-width:640px;">{{ stepDesc }}</p>
+      <div style="display:{{ slot1Display }};"><image-slot id="demo-step-1" radius="16" placeholder="Скриншот: анкета подбора психолога" style="width:100%; height:400px;"></image-slot></div>
+      <div style="display:{{ slot2Display }};"><image-slot id="demo-step-2" radius="16" placeholder="Скриншот: подборка психологов под запрос" style="width:100%; height:400px;"></image-slot></div>
+      <div style="display:{{ slot3Display }};"><image-slot id="demo-step-3" radius="16" placeholder="Скриншот: выбор времени сессии" style="width:100%; height:400px;"></image-slot></div>
+      <div style="display:{{ slot4Display }};"><image-slot id="demo-step-4" radius="16" placeholder="Скриншот: видеосессия на платформе" style="width:100%; height:400px;"></image-slot></div>
+      <div style="display:{{ slot5Display }};"><image-slot id="demo-step-5" radius="16" placeholder="Скриншот: чат с психологом между сессиями" style="width:100%; height:400px;"></image-slot></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section style="max-width:1160px; margin:0 auto; padding:64px 40px 0;">
+  <div style="background:#282C3E; border-radius:28px; padding:44px 52px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+    <div style="max-width:620px;">
+      <h2 style="font-family:'Futura PT'; font-weight:700; font-size:28px; line-height:1.15; letter-spacing:-0.5px; color:#fff; margin:0 0 8px;">Хотите посмотреть платформу вживую?</h2>
+      <p style="font-size:16px; line-height:1.5; color:#B9BFD2; margin:0;">На встрече менеджер покажет платформу и HR-кабинет со статистикой, ответит на вопросы про запуск и цены.</p>
+    </div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="kabinet.dc.html#demo" style="background:#29B981; color:#fff; font-weight:700; font-size:16px; padding:15px 30px; border-radius:44px; text-decoration:none; box-shadow:0 10px 26px rgba(41,185,129,0.4); transition:transform .2s;" style-hover="transform:translateY(-2px);">Назначить встречу</a>
+      <a href="kabinet.dc.html" style="border:1.5px solid rgba(255,255,255,0.35); color:#fff; font-weight:700; font-size:16px; padding:15px 30px; border-radius:44px; text-decoration:none; transition:background .18s;" style-hover="background:rgba(255,255,255,0.12) !important;">В личный кабинет</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:#282C3E; color:#fff; margin-top:100px;">
+  <div style="max-width:1280px; margin:0 auto; padding:64px 40px 40px;">
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div>
+        <a href="index.dc.html" style="display:inline-block; text-decoration:none;"><img src="assets/logo.svg" alt="Alter" style="height:28px; width:auto; display:block;" /></a>
+        <p style="font-size:15px; line-height:1.55; color:#9AA0B5; margin-top:16px; max-width:280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Сервис</div>
+        <a href="result.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Результаты</a>
+        <a href="nauch-podhod.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Научный подход</a>
+        <a href="index.dc.html#platform" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Платформа</a>
+        <a href="index.dc.html#pricing" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Тарифы</a>
+        <a href="keysy.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Кейсы</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">для HR</div>
+        <a href="gaids.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Исследования, гайды</a>
+        <a href="Мероприятия%20Alter.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Мероприятия</a>
+        <a href="kabinet.dc.html" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Личный кабинет</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:700; font-size:15px;">Контакты</div>
+        <a href="mailto:business@alter.ru" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">business@alter.ru</a>
+        <a href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Telegram-канал</a>
+        <a href="https://t.me/alter_business" target="_blank" rel="noopener" style="font-size:15px; color:#9AA0B5; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Написать нам в Telegram</a>
+      </div>
+    </div>
+    <div style="padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <span style="font-size:14px; color:#717892;">© 2026 Alter. Все права защищены.</span>
+      <div style="display:flex; gap:24px;"><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Политика конфиденциальности</a><a href="#" style="font-size:14px; color:#717892; text-decoration:none; transition:color .18s;" style-hover="color:#fff !important;">Условия использования</a></div>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<!--PRERENDER-START-->
+<div id="dc-root"><div class="sc-host" data-sc-name="demo-platforma"><template data-dc-tpl="5" id="__bundler_thumbnail" data-bg-color="#FBFCFB"></template><div data-dc-tpl="6" style="overflow-x: hidden;"><header data-dc-tpl="7" style="position: sticky; top: 0px; z-index: 60; background: rgba(251, 252, 251, 0.85); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(40, 44, 62, 0.07);">
+  <nav data-dc-tpl="8" style="max-width: 1280px; margin: 0px auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+    <a data-dc-tpl="9" href="index.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none;"><img data-dc-tpl="10" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
+    <div data-dc-tpl="11" style="display: flex; align-items: center; gap: 28px;">
+      <a data-dc-tpl="12" href="result.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Результаты</a>
+      <a data-dc-tpl="13" href="nauch-podhod.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Научный подход</a>
+      <a data-dc-tpl="14" href="index.dc.html#pricing" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Тарифы</a>
+      <a data-dc-tpl="15" href="index.dc.html#platform" style="font-size: 15px; color: rgb(35, 146, 102); font-weight: 700; text-decoration: none;">Платформа</a>
+      <a data-dc-tpl="16" href="keysy.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Кейсы</a>
+      <a data-dc-tpl="17" href="gaids.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Полезное</a>
+      <a data-dc-tpl="18" href="kabinet.dc.html" class="scp0" style="font-size: 15px; color: rgb(58, 63, 88); text-decoration: none; transition: color 0.18s;">Личный кабинет</a>
+    </div>
+    <a data-dc-tpl="19" href="kabinet.dc.html#demo" class="scp1" style="background: rgb(35, 146, 102); color: rgb(255, 255, 255); font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 44px; text-decoration: none; box-shadow: rgba(35, 146, 102, 0.3) 0px 10px 28px; transition: transform 0.2s, box-shadow 0.2s;">Встреча с менеджером</a>
+    <a data-dc-tpl="20" href="#" data-burger="" style="align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(40, 44, 62, 0.12); color: rgb(40, 44, 62); text-decoration: none; flex-shrink: 0;">
+      <svg data-dc-tpl="21" width="22" height="22" viewBox="0 0 24 24" fill="none"><path data-dc-tpl="22" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg>
+    </a>
+  </nav>
+  <div data-dc-tpl="23" data-mmenu="" style="display: none; flex-direction: column; background: rgb(255, 255, 255); border-top: 1px solid rgba(40, 44, 62, 0.07); padding: 8px 18px 16px;">
+    <a data-dc-tpl="24" href="result.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Результаты</a>
+    <a data-dc-tpl="25" href="nauch-podhod.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Научный подход</a>
+    <a data-dc-tpl="26" href="index.dc.html#pricing" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Тарифы</a>
+    <a data-dc-tpl="27" href="gaids.dc.html" style="font-size: 16px; color: rgb(40, 44, 62); text-decoration: none; padding: 13px 8px; border-bottom: 1px solid rgba(40, 44, 62, 0.06);">Полезное</a>
+    <a data-dc-tpl="28" href="kabinet.dc.html" style="font-size: 16px; color: rgb(35, 146, 102); font-weight: 700; text-decoration: none; padding: 13px 8px;">Личный кабинет</a>
+  </div></header><section data-dc-tpl="29" id="top" style="max-width: 960px; margin: 0px auto; padding: 72px 40px 0px; text-align: center;">
+  <span data-dc-tpl="30" style="display: inline-flex; align-items: center; background: rgb(234, 247, 240); color: rgb(35, 146, 102); font-weight: 700; font-size: 14px; padding: 8px 16px; border-radius: 30px; margin-bottom: 16px;">Демо-тур платформы</span>
+  <h1 data-dc-tpl="31" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 48px; line-height: 1.08; letter-spacing: -1px; color: rgb(40, 44, 62); margin: 0px 0px 18px;">Как Alter выглядит для ваших сотрудников</h1>
+  <p data-dc-tpl="32" style="font-size: 18px; line-height: 1.5; color: rgb(76, 81, 107); max-width: 640px; margin: 0px auto;">Пять шагов — от подбора психолога до чата между сессиями. Тур за минуту покажет, что увидит сотрудник, когда компания подключит программу поддержки.</p>
+  <div data-dc-tpl="33" style="display: inline-flex; align-items: flex-start; gap: 10px; background: rgb(255, 247, 230); border: 1px solid rgb(240, 220, 175); border-radius: 14px; padding: 13px 18px; margin-top: 22px; text-align: left; max-width: 640px;">
+    <span data-dc-tpl="34" style="font-size: 17px;">🔒</span>
+    <span data-dc-tpl="35" style="font-size: 14.5px; line-height: 1.5; color: rgb(138, 109, 47);">Конфиденциально: работодатель не видит, кто из сотрудников обращается к психологам и с какими запросами. HR получает только обезличенную статистику.</span>
+  </div></section><section data-dc-tpl="36" style="max-width: 1160px; margin: 0px auto; padding: 56px 40px 0px;">
+  <div data-dc-tpl="37" data-tour-grid="" style="display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: start;">
+    <div data-dc-tpl="38" style="display: flex; flex-direction: column; gap: 10px;">
+      
+        <a data-dc-tpl="40" href="#top" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Futura PT&quot;, sans-serif; font-weight: 700; font-size: 16px; color: rgb(255, 255, 255); background: rgb(35, 146, 102); border: 1px solid rgb(35, 146, 102); border-radius: 16px; padding: 16px 20px; text-decoration: none; transition: background 0.18s, color 0.18s;">
+          <span data-dc-tpl="41" style="width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgba(255, 255, 255, 0.18); color: rgb(255, 255, 255);"><span class="sc-interp">1</span></span>
+          <span data-dc-tpl="42"><span class="sc-interp">Анкета подбора</span></span>
+        </a>
+      
+        <a data-dc-tpl="40" href="#top" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Futura PT&quot;, sans-serif; font-weight: 700; font-size: 16px; color: rgb(40, 44, 62); background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; padding: 16px 20px; text-decoration: none; transition: background 0.18s, color 0.18s;">
+          <span data-dc-tpl="41" style="width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgb(234, 247, 240); color: rgb(35, 146, 102);"><span class="sc-interp">2</span></span>
+          <span data-dc-tpl="42"><span class="sc-interp">Выбор психолога</span></span>
+        </a>
+      
+        <a data-dc-tpl="40" href="#top" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Futura PT&quot;, sans-serif; font-weight: 700; font-size: 16px; color: rgb(40, 44, 62); background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; padding: 16px 20px; text-decoration: none; transition: background 0.18s, color 0.18s;">
+          <span data-dc-tpl="41" style="width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgb(234, 247, 240); color: rgb(35, 146, 102);"><span class="sc-interp">3</span></span>
+          <span data-dc-tpl="42"><span class="sc-interp">Запись на сессию</span></span>
+        </a>
+      
+        <a data-dc-tpl="40" href="#top" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Futura PT&quot;, sans-serif; font-weight: 700; font-size: 16px; color: rgb(40, 44, 62); background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; padding: 16px 20px; text-decoration: none; transition: background 0.18s, color 0.18s;">
+          <span data-dc-tpl="41" style="width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgb(234, 247, 240); color: rgb(35, 146, 102);"><span class="sc-interp">4</span></span>
+          <span data-dc-tpl="42"><span class="sc-interp">Сессия</span></span>
+        </a>
+      
+        <a data-dc-tpl="40" href="#top" style="display: flex; align-items: center; gap: 12px; font-family: &quot;Futura PT&quot;, sans-serif; font-weight: 700; font-size: 16px; color: rgb(40, 44, 62); background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 16px; padding: 16px 20px; text-decoration: none; transition: background 0.18s, color 0.18s;">
+          <span data-dc-tpl="41" style="width: 28px; height: 28px; border-radius: 50%; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; font-size: 14px; background: rgb(234, 247, 240); color: rgb(35, 146, 102);"><span class="sc-interp">5</span></span>
+          <span data-dc-tpl="42"><span class="sc-interp">Чат между сессиями</span></span>
+        </a>
+      
+    </div>
+    <div data-dc-tpl="43" style="background: rgb(255, 255, 255); border: 1px solid rgba(40, 44, 62, 0.08); border-radius: 24px; padding: 30px; min-height: 480px;">
+      <div data-dc-tpl="44" style="font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgb(154, 160, 181);"><span class="sc-interp">Шаг 1 из 5</span></div>
+      <h2 data-dc-tpl="45" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 26px; letter-spacing: -0.4px; color: rgb(40, 44, 62); margin: 8px 0px 10px;"><span class="sc-interp">Сотрудник рассказывает о запросе</span></h2>
+      <p data-dc-tpl="46" style="font-size: 16px; line-height: 1.55; color: rgb(76, 81, 107); margin: 0px 0px 22px; max-width: 640px;"><span class="sc-interp">Короткая анкета: что беспокоит, какой опыт терапии, предпочтения к специалисту. Алгоритм подбора разработан вместе с ПИ РАО — единственной в России лабораторией, изучающей эффективность психотерапии.</span></p>
+      <div data-dc-tpl="47" style="display: block;"><image-slot data-dc-tpl="48" id="demo-step-1" radius="16" placeholder="Скриншот: анкета подбора психолога" style="width: 100%; height: 400px;"></image-slot></div>
+      <div data-dc-tpl="49" style="display: none;"><image-slot data-dc-tpl="50" id="demo-step-2" radius="16" placeholder="Скриншот: подборка психологов под запрос" style="width: 100%; height: 400px;"></image-slot></div>
+      <div data-dc-tpl="51" style="display: none;"><image-slot data-dc-tpl="52" id="demo-step-3" radius="16" placeholder="Скриншот: выбор времени сессии" style="width: 100%; height: 400px;"></image-slot></div>
+      <div data-dc-tpl="53" style="display: none;"><image-slot data-dc-tpl="54" id="demo-step-4" radius="16" placeholder="Скриншот: видеосессия на платформе" style="width: 100%; height: 400px;"></image-slot></div>
+      <div data-dc-tpl="55" style="display: none;"><image-slot data-dc-tpl="56" id="demo-step-5" radius="16" placeholder="Скриншот: чат с психологом между сессиями" style="width: 100%; height: 400px;"></image-slot></div>
+    </div>
+  </div></section><section data-dc-tpl="57" style="max-width: 1160px; margin: 0px auto; padding: 64px 40px 0px;">
+  <div data-dc-tpl="58" style="background: rgb(40, 44, 62); border-radius: 28px; padding: 44px 52px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+    <div data-dc-tpl="59" style="max-width: 620px;">
+      <h2 data-dc-tpl="60" style="font-family: &quot;Futura PT&quot;; font-weight: 700; font-size: 28px; line-height: 1.15; letter-spacing: -0.5px; color: rgb(255, 255, 255); margin: 0px 0px 8px;">Хотите посмотреть платформу вживую?</h2>
+      <p data-dc-tpl="61" style="font-size: 16px; line-height: 1.5; color: rgb(185, 191, 210); margin: 0px;">На встрече менеджер покажет платформу и HR-кабинет со статистикой, ответит на вопросы про запуск и цены.</p>
+    </div>
+    <div data-dc-tpl="62" style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <a data-dc-tpl="63" href="kabinet.dc.html#demo" class="scp2" style="background: rgb(41, 185, 129); color: rgb(255, 255, 255); font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 44px; text-decoration: none; box-shadow: rgba(41, 185, 129, 0.4) 0px 10px 26px; transition: transform 0.2s;">Назначить встречу</a>
+      <a data-dc-tpl="64" href="kabinet.dc.html" class="scp3" style="border: 1.5px solid rgba(255, 255, 255, 0.35); color: rgb(255, 255, 255); font-weight: 700; font-size: 16px; padding: 15px 30px; border-radius: 44px; text-decoration: none; transition: background 0.18s;">В личный кабинет</a>
+    </div>
+  </div></section><footer data-dc-tpl="65" style="background: rgb(40, 44, 62); color: rgb(255, 255, 255); margin-top: 100px;">
+  <div data-dc-tpl="66" style="max-width: 1280px; margin: 0px auto; padding: 64px 40px 40px;">
+    <div data-dc-tpl="67" style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <div data-dc-tpl="68">
+        <a data-dc-tpl="69" href="index.dc.html" style="display: inline-block; text-decoration: none;"><img data-dc-tpl="70" src="assets/logo.svg" alt="Alter" style="height: 28px; width: auto; display: block;"></a>
+        <p data-dc-tpl="71" style="font-size: 15px; line-height: 1.55; color: rgb(154, 160, 181); margin-top: 16px; max-width: 280px;">Корпоративная психологическая поддержка с научным подходом для удержания сотрудников.</p>
+      </div>
+      <div data-dc-tpl="72" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="73" style="font-weight: 700; font-size: 15px;">Сервис</div>
+        <a data-dc-tpl="74" href="result.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Результаты</a>
+        <a data-dc-tpl="75" href="nauch-podhod.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Научный подход</a>
+        <a data-dc-tpl="76" href="index.dc.html#platform" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Платформа</a>
+        <a data-dc-tpl="77" href="index.dc.html#pricing" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Тарифы</a>
+        <a data-dc-tpl="78" href="keysy.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Кейсы</a>
+      </div>
+      <div data-dc-tpl="79" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="80" style="font-weight: 700; font-size: 15px;">для HR</div>
+        <a data-dc-tpl="81" href="gaids.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Исследования, гайды</a>
+        <a data-dc-tpl="82" href="Мероприятия%20Alter.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Мероприятия</a>
+        <a data-dc-tpl="83" href="kabinet.dc.html" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Личный кабинет</a>
+      </div>
+      <div data-dc-tpl="84" style="display: flex; flex-direction: column; gap: 12px;">
+        <div data-dc-tpl="85" style="font-weight: 700; font-size: 15px;">Контакты</div>
+        <a data-dc-tpl="86" href="mailto:business@alter.ru" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">business@alter.ru</a>
+        <a data-dc-tpl="87" href="https://t.me/+9X1R0Y-8X64xYTVi" target="_blank" rel="noopener" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Telegram-канал</a>
+        <a data-dc-tpl="88" href="https://t.me/alter_business" target="_blank" rel="noopener" class="scp4" style="font-size: 15px; color: rgb(154, 160, 181); text-decoration: none; transition: color 0.18s;">Написать нам в Telegram</a>
+      </div>
+    </div>
+    <div data-dc-tpl="89" style="padding-top: 26px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <span data-dc-tpl="90" style="font-size: 14px; color: rgb(113, 120, 146);">© 2026 Alter. Все права защищены.</span>
+      <div data-dc-tpl="91" style="display: flex; gap: 24px;"><a data-dc-tpl="92" href="#" class="scp4" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Политика конфиденциальности</a><a data-dc-tpl="93" href="#" class="scp4" style="font-size: 14px; color: rgb(113, 120, 146); text-decoration: none; transition: color 0.18s;">Условия использования</a></div>
+    </div>
+  </div></footer></div></div></div>
+<!--PRERENDER-END-->
+
+
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 0, mMenu: false };
+
+  get _tourSteps() {
+    return [
+      { label: 'Анкета подбора', title: 'Сотрудник рассказывает о запросе', desc: 'Короткая анкета: что беспокоит, какой опыт терапии, предпочтения к специалисту. Алгоритм подбора разработан вместе с ПИ РАО — единственной в России лабораторией, изучающей эффективность психотерапии.' },
+      { label: 'Выбор психолога', title: 'Платформа предлагает 12 подходящих психологов', desc: 'Под запрос — подборка специалистов с анкетами, опытом и видео-визитками. Все психологи прошли научный отбор: конкурс жесткий, повторная попытка — только через год.' },
+      { label: 'Запись на сессию', title: 'Запись день в день', desc: 'Сотрудник выбирает удобный слот в календаре специалиста — можно попасть на сессию уже в день обращения. Без согласований с работодателем и ожидания в очереди.' },
+      { label: 'Сессия', title: 'Видеосессия прямо на платформе', desc: 'Сессия проходит в защищенном видеоформате на платформе Alter — не нужны сторонние сервисы. 50 минут один на один со специалистом.' },
+      { label: 'Чат между сессиями', title: 'Поддержка не заканчивается со звонком', desc: 'Между сессиями сотрудник может написать своему психологу в чат — задать вопрос, поделиться наблюдением, перенести встречу.' }
+    ];
+  }
+
+  _trackOnce() {
+    try {
+      if (sessionStorage.getItem('alter_cab_tour_tracked')) return;
+      sessionStorage.setItem('alter_cab_tour_tracked', '1');
+    } catch (_) {}
+    if (window.AlterCabinet) window.AlterCabinet.track('demo_tour_viewed', { page: location.pathname });
+  }
+
+  renderVals() {
+    const steps = this._tourSteps;
+    const cur = steps[this.state.step] || steps[0];
+    const active = this.state.step;
+    return {
+      mMenuDisplay: this.state.mMenu ? 'flex' : 'none',
+      toggleMenu: (e) => { e.preventDefault(); this.setState(s => ({ mMenu: !s.mMenu })); },
+      closeMenu: () => this.setState({ mMenu: false }),
+      stepNum: 'Шаг ' + (active + 1) + ' из ' + steps.length,
+      stepTitle: cur.title,
+      stepDesc: cur.desc,
+      slot1Display: active === 0 ? 'block' : 'none',
+      slot2Display: active === 1 ? 'block' : 'none',
+      slot3Display: active === 2 ? 'block' : 'none',
+      slot4Display: active === 3 ? 'block' : 'none',
+      slot5Display: active === 4 ? 'block' : 'none',
+      tabs: steps.map((s, i) => ({
+        num: String(i + 1),
+        label: s.label,
+        onPick: (e) => { e.preventDefault(); this.setState({ step: i }); this._trackOnce(); },
+        style: {
+          display: 'flex', alignItems: 'center', gap: '12px',
+          fontFamily: "'Futura PT', sans-serif", fontWeight: 700, fontSize: '16px',
+          color: i === active ? '#fff' : '#282C3E',
+          background: i === active ? '#239266' : '#fff',
+          border: '1px solid ' + (i === active ? '#239266' : 'rgba(40,44,62,0.08)'),
+          borderRadius: '16px', padding: '16px 20px', textDecoration: 'none',
+          transition: 'background .18s, color .18s'
+        },
+        numStyle: {
+          width: '28px', height: '28px', borderRadius: '50%', flex: '0 0 auto',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: '14px',
+          background: i === active ? 'rgba(255,255,255,0.18)' : '#EAF7F0',
+          color: i === active ? '#fff' : '#239266'
+        }
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
