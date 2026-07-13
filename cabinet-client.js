@@ -5,6 +5,9 @@
    Экспортирует window.AlterCabinet (api, gate, track, getToken...) и window.ALTER_MATERIALS.
    Демо-режим почты: /api/request-code возвращает demoCode — показываем его в плашке. */
 (function () {
+  // Защита от повторного исполнения: dc-рантайм может исполнить helmet-скрипт
+  // дважды, а второй экземпляр вешал бы второй document-обработчик (двойные модалки).
+  if (window.AlterCabinet) return;
   var IS_LOCAL = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   // URL воркера. После деплоя вписать реальный адрес workers.dev (как в crm-submit.js).
   var ENDPOINT = window.ALTER_CAB_ENDPOINT ||
@@ -29,6 +32,35 @@
     '9': { title: 'Тревожность и продуктивность', type: 'Исследование', topic: 'Стресс и тревога', status: 'soon' },
     '11': { title: 'Готова ли компания к well-being программе', type: 'Чек-лист', topic: 'Культура', status: 'soon' },
     '13': { title: 'Выгорание в IT: масштаб проблемы', type: 'Исследование', topic: 'Выгорание', status: 'soon' }
+  };
+
+  /* ---------- Отрасли и кейсы ----------
+     Слаги отраслей — копия белого списка воркера (INDUSTRY_LABELS).
+     Маппинг кейсов на отрасли черновой — согласовать с продуктом. */
+
+  var INDUSTRIES = {
+    it: 'IT и разработка',
+    retail: 'Ритейл и e-com',
+    gamedev: 'Геймдев',
+    horeca: 'HoReCa и сервис',
+    fin: 'Финансы и финтех',
+    media: 'Медиа и креатив',
+    gov: 'Госсектор и образование',
+    other: 'Другое'
+  };
+
+  var CASES = {
+    'selectel': { company: 'Selectel', quote: '«Сотрудники находят поддержку у компетентных психологов Alter в любой трудный для них момент».', href: 'keys-selectel.dc.html', industries: ['it'] },
+    'custis': { company: 'CUSTIS', quote: '«Alter пользуется большой популярностью среди наших сотрудников».', href: 'keys-custis.dc.html', industries: ['it', 'gov'] },
+    'oggetto': { company: 'Oggetto', quote: '«Выбрали Alter за тщательный подбор психологов и гибкость условий сотрудничества».', href: 'keys-oggetto.dc.html', industries: ['it'] },
+    'x5': { company: 'X5 Digital', quote: '«В нашей компании забота о ментальном здоровье коллег — важный поинт на карте корпоративной культуры».', href: 'keys-x5.dc.html', industries: ['retail', 'fin', 'other'] },
+    'dodo': { company: 'Додо Пицца', quote: '«Додо стала первой в России компанией, которая запустила психологическую поддержку для 22 000 сотрудников».', href: 'keys-dodo.dc.html', industries: ['horeca', 'retail', 'other'] },
+    'azur': { company: 'Azur Games', quote: '«Сотрудники стали всё больше обращаться к сервису».', href: 'keys-azur-games.dc.html', industries: ['gamedev'] },
+    'pikcher': { company: 'Пикчер', quote: '«Для нас это не просто HR-инструмент, а способ сохранить эмоциональное здоровье команды в сложные времена».', href: 'keys-pikcher.dc.html', industries: ['gamedev', 'media'] },
+    'fistashki': { company: 'Fistashki', quote: '«Текучесть за год снизилась на 35%. Считаю, это одна из лучших инвестиций в нашу команду».', href: 'keys-fistashki.dc.html', industries: ['horeca', 'media'] },
+    'koshelek': { company: 'Кошелёк', quote: '«Команда на 20% стала спокойнее, выгорать стали меньше».', href: 'keys-koshelek.dc.html', industries: ['fin'] },
+    'yanao': { company: 'Институт управления Правительства ЯНАО', quote: '«Получаем много благодарностей со стороны наших коллег».', href: 'keys-yanao.dc.html', industries: ['gov'] },
+    'revolt': { company: 'Револьт-центр', quote: '«Психотерапия — один из самых эффективных путей начать работать над собой».', href: 'keys-revolt-centr.dc.html', industries: ['media', 'gov'] }
   };
 
   /* ---------- API-клиент ---------- */
@@ -56,6 +88,37 @@
     return api('/api/track', { token: token, event: event, meta: meta || null }).catch(function () { return { ok: false }; });
   }
 
+  /* ---------- Память ROI-расчета ----------
+     Расчет сохраняется в профиль (воркер пересчитывает цифры сам). Без сессии —
+     черновик в localStorage, подтянется после первого входа (syncRoiDraft). */
+
+  var ROI_DRAFT_KEY = 'alter_cab_roi_draft';
+
+  function saveRoi(inputs) {
+    try { localStorage.setItem(ROI_DRAFT_KEY, JSON.stringify({ inputs: inputs, t: Date.now() })); } catch (_) {}
+    if (!getToken()) return Promise.resolve({ ok: false });
+    return track('roi_saved', inputs).then(function (r) {
+      if (r && r.ok) { try { localStorage.removeItem(ROI_DRAFT_KEY); } catch (_) {} }
+      return r;
+    });
+  }
+
+  function syncRoiDraft() {
+    if (!getToken()) return;
+    var raw = null;
+    try { raw = localStorage.getItem(ROI_DRAFT_KEY); } catch (_) {}
+    if (!raw) return;
+    var draft = null;
+    try { draft = JSON.parse(raw); } catch (_) {}
+    if (!draft || !draft.inputs) {
+      try { localStorage.removeItem(ROI_DRAFT_KEY); } catch (_) {}
+      return;
+    }
+    track('roi_saved', draft.inputs).then(function (r) {
+      if (r && r.ok) { try { localStorage.removeItem(ROI_DRAFT_KEY); } catch (_) {} }
+    });
+  }
+
   /* ---------- Лента рекомендаций (правила, без ML) ---------- */
 
   function buildFeed(profile) {
@@ -66,6 +129,11 @@
       var m = MATERIALS[id];
       if (m && m.topic) topicScore[m.topic] = (topicScore[m.topic] || 0) + 1;
     });
+    // Проблемные темы из мини-диагностики весят сильнее поведенческого скоринга.
+    var md = profile.miniDiag || null;
+    if (md && md.topics) {
+      md.topics.forEach(function (t) { topicScore[t] = (topicScore[t] || 0) + 2; });
+    }
 
     var items = Object.keys(MATERIALS)
       .filter(function (id) { return unlocked.indexOf(id) === -1; })
@@ -75,6 +143,21 @@
       })
       .sort(function (a, b) { return b.score - a.score; })
       .slice(0, 6);
+
+    // Кейсы по отрасли: до 2 карточек в топ ленты; уже открытые не повторяем.
+    var industry = profile.industry || '';
+    if (industry && INDUSTRIES[industry]) {
+      var openedCases = {};
+      events.forEach(function (e) { if (e.type === 'case_opened' && e.meta && e.meta.id) openedCases[e.meta.id] = 1; });
+      var caseItems = Object.keys(CASES)
+        .filter(function (id) { return CASES[id].industries.indexOf(industry) !== -1 && !openedCases[id]; })
+        .slice(0, 2)
+        .map(function (id) {
+          var c = CASES[id];
+          return { id: 'case-' + id, kind: 'case', caseId: id, title: c.quote, company: c.company, type: 'Кейс', topic: c.company, status: 'case', file: null, href: c.href, score: 0 };
+        });
+      if (caseItems.length) items = caseItems.concat(items).slice(0, 6);
+    }
 
     var usedCalc = events.some(function (e) { return e.type === 'calculator_used'; }) || unlocked.indexOf('calc-xlsx') !== -1;
     var size = String(profile.companySize || '');
@@ -153,6 +236,10 @@
       '<input name="company" type="text" placeholder="Название компании" style="' + INPUT_STYLE + '"/>' +
       '<select name="companySize" style="' + INPUT_STYLE + 'color:#6A7088;">' +
       '<option value="">Размер компании</option><option>50–200 сотрудников</option><option>200–500 сотрудников</option><option>500–1000 сотрудников</option><option>более 1000 сотрудников</option></select>' +
+      '<select name="industry" style="' + INPUT_STYLE + 'color:#6A7088;">' +
+      '<option value="">Отрасль компании (необязательно)</option>' +
+      Object.keys(INDUSTRIES).map(function (k) { return '<option value="' + k + '">' + INDUSTRIES[k] + '</option>'; }).join('') +
+      '</select>' +
       '<p style="font-size:12.5px; line-height:1.5; color:#8A90A6; margin:2px 0 0;">Нажимая «Получить», вы принимаете условия <span style="text-decoration:underline;">пользовательского соглашения</span>, даете согласие на обработку <span style="text-decoration:underline;">персональных данных</span> и на получение рекламно-информационной рассылки.</p>' +
       '<button type="submit" style="' + BTN_STYLE + 'margin-top:4px;">Получить</button>' +
       '<div style="text-align:center; margin-top:6px;"><button type="button" data-cab-tologin style="' + LINK_BTN + '">Уже были у нас? Войти по коду</button></div>' +
@@ -197,10 +284,12 @@
         api('/api/register', {
           name: f.name.value.trim(), email: f.email.value.trim(),
           company: f.company.value.trim(), companySize: f.companySize.value,
+          industry: f.industry ? f.industry.value : '',
           materialId: materialId, materialTitle: m.title, topic: m.topic, page: location.pathname
         }).then(function (r) {
           if (!r.ok) throw new Error(r.error || 'register failed');
           setToken(r.token);
+          syncRoiDraft();
           box.querySelector('[data-cab-body]').innerHTML = deliver(materialId);
           renderChip();
           if (afterAuth) afterAuth(r.profile);
@@ -237,6 +326,7 @@
           api('/api/verify-code', { email: email, code: form.elements.code.value.trim() }).then(function (r) {
             if (!r.ok) throw new Error(r.error || 'verify failed');
             setToken(r.token);
+            syncRoiDraft();
             renderChip();
             if (materialId) {
               api('/api/unlock', { token: r.token, materialId: materialId, materialTitle: m.title, topic: m.topic }).catch(function () {});
@@ -328,12 +418,15 @@
   /* ---------- Экспорт и инициализация ---------- */
 
   window.ALTER_MATERIALS = MATERIALS;
+  window.ALTER_INDUSTRIES = INDUSTRIES;
+  window.ALTER_CASES = CASES;
   window.AlterCabinet = {
     endpoint: ENDPOINT,
     getToken: getToken,
     setToken: setToken,
     api: api,
     track: track,
+    saveRoi: saveRoi,
     gate: gate,
     loginModal: loginModal,
     buildFeed: buildFeed,
@@ -345,7 +438,7 @@
     }
   };
 
-  function init() { renderChip(); wireRoiTracking(); }
+  function init() { renderChip(); wireRoiTracking(); syncRoiDraft(); }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

@@ -178,6 +178,12 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
           </div>
         </div>
         <div style="position:relative; z-index:2; font-size:13px; color:#767C93; margin-top:26px; line-height:1.5;">Расчёт приблизительный: стоимость замены сотрудника оценивается как ~6 окладов, ожидаемое снижение текучести с Alter — 30%, стоимость программы — от 9 000 ₽ на сотрудника в год. Точную оценку под ваши процессы подготовит команда Alter.</div>
+        <sc-if value="{{ roiSavedToCab }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative; z-index:2; margin-top:18px; background:rgba(41,185,129,0.12); border:1px solid rgba(41,185,129,0.35); border-radius:14px; padding:14px 18px; font-size:14.5px; line-height:1.5; color:#7BDDB4;">Расчет сохранен в вашем <a href="kabinet.dc.html" style="color:#53C99B; font-weight:700;">личном кабинете</a> — вернетесь к нему в любой момент.</div>
+        </sc-if>
+        <sc-if value="{{ roiGuestHint }}" hint-placeholder-val="{{ false }}">
+          <div style="position:relative; z-index:2; margin-top:18px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:14px 18px; font-size:14.5px; line-height:1.5; color:#B9BFD2;">Мы запомнили этот расчет. Получите любой материал на сайте — создастся <a href="kabinet.dc.html" style="color:#53C99B; font-weight:700;">личный кабинет</a>, и расчет сохранится в нем автоматически.</div>
+        </sc-if>
       </div>
     </sc-if>
   </div>
@@ -936,12 +942,16 @@ class Component extends DCLogic {
       if (vp._raf) { cancelAnimationFrame(vp._raf); vp._raf = null; }
       down = true; moved = false; sx = e.clientX; ss = vp.scrollLeft;
       lastX = e.clientX; lastT = performance.now(); vel = 0;
-      try { vp.setPointerCapture(e.pointerId); } catch (err) {}
     });
     vp.addEventListener("pointermove", (e) => {
       if (!down) return;
       const dx = e.clientX - sx;
-      if (Math.abs(dx) > 3) moved = true;
+      // Захват указателя — только при реальном перетаскивании: захват на pointerdown
+      // переназначал click на карусель и ломал кнопки/ссылки внутри нее.
+      if (Math.abs(dx) > 3 && !moved) {
+        moved = true;
+        try { vp.setPointerCapture(e.pointerId); } catch (err) {}
+      }
       const now = performance.now();
       const dt = now - lastT;
       if (dt > 0) vel = 0.8 * vel + 0.2 * ((e.clientX - lastX) / dt);
@@ -1003,6 +1013,8 @@ class Component extends DCLogic {
       demoNot: !this.state.demoSubmitted,
       onDemo: (e) => { e.preventDefault(); const form = e.currentTarget; window.alterSubmitLead(form).then(() => this.setState({ demoSubmitted: true })).catch((err) => { console.error(err); alert('Не удалось отправить заявку. Попробуйте позже или напишите нам.'); }); },
       roiComputed: !!this.state.roi,
+      roiSavedToCab: !!this.state.roi && !!(window.AlterCabinet && window.AlterCabinet.getToken()),
+      roiGuestHint: !!this.state.roi && !(window.AlterCabinet && window.AlterCabinet.getToken()),
       roiValue: this.state.roi ? this.state.roi.roi.toLocaleString("ru-RU") : "",
       savingsValue: this.state.roi ? this.state.roi.savings.toLocaleString("ru-RU").replace(/\u00A0/g, "\u202F") + " ₽" : "",
       retainedValue: this.state.roi ? this.state.roi.retained.toLocaleString("ru-RU") : "",
@@ -1012,6 +1024,8 @@ class Component extends DCLogic {
         const f = Object.fromEntries(fd.entries());
         const roi = this.computeRoi(f);
         this.setState({ roi });
+        // Память расчета: в профиль кабинета (или в черновик до первого входа).
+        if (window.AlterCabinet) window.AlterCabinet.saveRoi({ employees: f.employees, turnover: f.turnover, salary: f.salary });
         setTimeout(() => {
           const el = document.querySelector("[data-roi-result]");
           if (el) { const y = el.getBoundingClientRect().top + window.scrollY - 90; window.scrollTo({ top: y, behavior: "smooth" }); }

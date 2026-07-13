@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Отчет для руководителя — Alter для бизнеса</title>
+<script src="cabinet-client.js"></script>
+<style>
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBook.otf') format('opentype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Futura PT'; src:url('uploads/FuturaPTBold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Futura PT', 'Helvetica Neue', Arial, sans-serif; color:#282C3E; background:#F4F8F5; -webkit-font-smoothing:antialiased; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.sheet { max-width:860px; margin:0 auto; background:#fff; padding:52px 56px 44px; }
+.topbar { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 8px; }
+.topbar a.back { font-size:15px; color:#6A7088; text-decoration:none; }
+.topbar button { font-family:inherit; font-weight:700; font-size:15px; color:#fff; background:#29B981; border:none; padding:13px 26px; border-radius:40px; cursor:pointer; box-shadow:0 8px 20px rgba(41,185,129,0.3); }
+h1 { font-weight:700; font-size:30px; line-height:1.15; letter-spacing:-0.6px; margin:18px 0 6px; }
+h2 { font-weight:700; font-size:19px; letter-spacing:-0.2px; margin:0 0 14px; }
+.muted { color:#6A7088; }
+.section { margin-top:34px; padding-top:26px; border-top:1px solid #ECEFEA; }
+.grid3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.stat { background:#F4F8F5; border-radius:14px; padding:18px 20px; }
+.stat .v { font-weight:700; font-size:24px; letter-spacing:-0.4px; }
+.stat .l { font-size:13.5px; line-height:1.4; color:#6A7088; margin-top:5px; }
+.arg { display:flex; gap:14px; align-items:flex-start; margin-top:12px; }
+.arg .n { flex:0 0 auto; width:28px; height:28px; border-radius:50%; background:#EAF7F0; color:#239266; font-weight:700; font-size:14px; display:flex; align-items:center; justify-content:center; }
+.arg p { font-size:15px; line-height:1.5; }
+.arg .src { font-size:12.5px; color:#9AA0B5; margin-top:3px; }
+.zone { display:inline-block; font-weight:700; font-size:13.5px; color:#fff; border-radius:30px; padding:6px 15px; }
+.chip { display:inline-block; font-size:12.5px; font-weight:700; color:#8A6D2F; background:#FFF7E6; border:1px solid #F0DCAF; border-radius:30px; padding:5px 12px; margin:4px 4px 0 0; }
+.note { font-size:12.5px; line-height:1.5; color:#9AA0B5; margin-top:12px; }
+.invite { background:#EAF7F0; border:1px dashed #9BD8BC; border-radius:14px; padding:16px 20px; font-size:14.5px; line-height:1.5; color:#3A6E56; }
+.invite a { color:#239266; font-weight:700; }
+.steps { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-top:6px; }
+.step { background:#F4F8F5; border-radius:14px; padding:16px; }
+.step .n { font-weight:700; font-size:13px; color:#239266; }
+.step .t { font-weight:700; font-size:14.5px; margin-top:6px; line-height:1.35; }
+.step .d { font-size:13px; line-height:1.45; color:#6A7088; margin-top:5px; }
+.foot { margin-top:36px; padding-top:20px; border-top:1px solid #ECEFEA; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13.5px; color:#6A7088; }
+.foot a { color:#239266; text-decoration:none; }
+@media (max-width:720px) { .sheet { padding:32px 22px; } .grid3, .steps { grid-template-columns:1fr; } }
+@media print {
+  @page { size:A4; margin:12mm; }
+  body { background:#fff; }
+  .sheet { max-width:none; padding:0; }
+  .topbar, .no-print { display:none !important; }
+  .section { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back" href="kabinet.dc.html">← Вернуться в кабинет</a>
+  <button type="button" onclick="window.print()">Скачать в PDF</button>
+</div>
+
+<div class="sheet" id="report" style="display:none;">
+  <img src="assets/logo.svg" alt="Alter" style="height:26px;">
+  <h1>Программа психологической поддержки сотрудников</h1>
+  <div class="muted" style="font-size:15px;">Аргументы для решения<span id="r-company"></span></div>
+  <div class="muted" style="font-size:13.5px; margin-top:4px;">Подготовлено в личном кабинете Alter для бизнеса<span id="r-for"></span> · <span id="r-date"></span></div>
+
+  <div class="section" id="roi-block">
+    <h2>Что теряет компания и что может дать программа</h2>
+    <div id="roi-data" style="display:none;">
+      <div class="grid3">
+        <div class="stat"><div class="v" id="r-losses"></div><div class="l">потери от текучки в год при текущих показателях</div></div>
+        <div class="stat"><div class="v" id="r-savings"></div><div class="l">потенциальная экономия на удержании за год</div></div>
+        <div class="stat"><div class="v" id="r-roi"></div><div class="l">ориентировочный возврат инвестиций за год</div></div>
+      </div>
+      <p class="note" id="r-inputs"></p>
+    </div>
+    <div id="roi-empty" style="display:none;">
+      <div class="arg"><div class="n">₽</div><div><p>Замена одного сотрудника обходится компании в 50–200% его годового оклада — подбор, адаптация, недополученная продуктивность.</p><div class="src">Gallup, SHRM</div></div></div>
+      <div class="invite no-print" style="margin-top:14px;">Посчитайте потери и экономию на цифрах вашей компании — <a href="roi.dc.html">калькулятор ROI</a> в личном кабинете. Расчет автоматически появится в этом отчете.</div>
+    </div>
+  </div>
+
+  <div class="section" id="diag-block">
+    <h2>Состояние команды: экспресс-оценка</h2>
+    <div id="diag-data" style="display:none;">
+      <span class="zone" id="r-zone"></span>
+      <span style="font-weight:700; font-size:22px; margin-left:10px;" id="r-score"></span><span class="muted" style="font-size:14px;"> / 100 — индекс нагрузки на команду</span>
+      <div id="r-topics" style="margin-top:8px;"></div>
+      <p class="note">Ориентировочная оценка по ответам HR на 7 вопросов, не клиническая диагностика. Следующий шаг — бесплатная анонимная диагностика сотрудников по критериям ВОЗ: 7–10 минут на человека, картина в цифрах без раскрытия личных ответов.</p>
+    </div>
+    <div id="diag-empty" style="display:none;">
+      <p style="font-size:15px; line-height:1.5;">Первый шаг программы — бесплатная анонимная диагностика состояния команды по критериям ВОЗ: опрос 7–10 минут, HR получает картину в цифрах без раскрытия личных ответов сотрудников.</p>
+      <div class="invite no-print" style="margin-top:14px;">Экспресс-оценку на 7 вопросов можно пройти прямо в <a href="kabinet.dc.html">личном кабинете</a> — результат появится в этом отчете.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Что говорят исследования</h2>
+    <div class="arg"><div class="n">1</div><div><p>Каждый доллар, вложенный в поддержку сотрудников при депрессии и тревожности, возвращает около 4 долларов ростом продуктивности.</p><div class="src">WHO, Lancet Psychiatry</div></div></div>
+    <div class="arg"><div class="n">2</div><div><p>79% сотрудников готовы доверять внешнему сервису психотерапии. Штатному психологу — только 21%.</p><div class="src">Исследование Alter × hh, 5206 соискателей</div></div></div>
+    <div class="arg"><div class="n">3</div><div><p>83% работодателей видят влияние психологических проблем сотрудников на продуктивность.</p><div class="src">Исследование Alter × hh, 334 работодателя</div></div></div>
+  </div>
+
+  <div class="section">
+    <h2>Как выглядит пилотный запуск</h2>
+    <div class="steps">
+      <div class="step"><div class="n">Шаг 1</div><div class="t">Диагностика</div><div class="d">Бесплатный анонимный опрос команды по критериям ВОЗ.</div></div>
+      <div class="step"><div class="n">Шаг 2</div><div class="t">Пилотная группа</div><div class="d">10–20 сотрудников получают доступ к платформе Alter.</div></div>
+      <div class="step"><div class="n">Шаг 3</div><div class="t">2–3 месяца работы</div><div class="d">Консультации с психологами, вебинары, поддержка менеджера Alter.</div></div>
+      <div class="step"><div class="n">Шаг 4</div><div class="t">Замер и решение</div><div class="d">Отчет по итогам пилота — и решение о масштабировании на компанию.</div></div>
+    </div>
+    <p class="note">Alter — сервис подбора психологов с научным отбором специалистов (алгоритм разработан с ПИ РАО). 300+ компаний-клиентов, 2000+ корпоративных сессий в месяц.</p>
+  </div>
+
+  <div class="foot">
+    <span>Alter для бизнеса · <a href="https://alter.ru/business" target="_blank" rel="noopener">alter.ru/business</a></span>
+    <span><a href="mailto:business@alter.ru">business@alter.ru</a> · <a href="https://t.me/alter_business" target="_blank" rel="noopener">Telegram</a></span>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cab = window.AlterCabinet;
+  if (!cab || !cab.getToken()) { location.replace('kabinet.dc.html'); return; }
+
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+  function el(id) { return document.getElementById(id); }
+
+  cab.me().then(function (p) {
+    if (!p) { location.replace('kabinet.dc.html'); return; }
+
+    if (p.company) el('r-company').textContent = ' — ' + p.company;
+    if (p.name) el('r-for').textContent = ' для ' + p.name;
+    el('r-date').textContent = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    var roi = p.roi || null;
+    el(roi ? 'roi-data' : 'roi-empty').style.display = 'block';
+    if (roi) {
+      el('r-losses').textContent = '~' + fmt(roi.losses) + ' ₽';
+      el('r-savings').textContent = '~' + fmt(roi.savings) + ' ₽';
+      el('r-roi').textContent = (roi.roiPct > 0 ? '+' : '') + fmt(roi.roiPct) + '%';
+      el('r-inputs').textContent = 'Расчет для команды ' + fmt(roi.employees) + ' человек, текучесть ' + roi.turnover +
+        '% в год, средняя зарплата ' + fmt(roi.salary) + ' ₽/мес. Замена сотрудника оценена как ~6 окладов (Gallup, SHRM: 50–200% годового оклада), ' +
+        'ожидаемое снижение текучести — 30%, программа — от 9 000 ₽ на сотрудника в год. Оценка приблизительная, точный расчет подготовит команда Alter.';
+    }
+
+    var md = p.miniDiag || null;
+    el(md ? 'diag-data' : 'diag-empty').style.display = 'block';
+    if (md) {
+      var zones = {
+        green: { label: 'Зеленая зона', color: '#239266' },
+        yellow: { label: 'Желтая зона', color: '#C98A1F' },
+        red: { label: 'Красная зона', color: '#C0392B' }
+      };
+      var z = zones[md.zone] || zones.yellow;
+      var zoneEl = el('r-zone');
+      zoneEl.textContent = z.label;
+      zoneEl.style.background = z.color;
+      el('r-score').textContent = md.score;
+      if (md.topics && md.topics.length) {
+        el('r-topics').innerHTML = '<span class="muted" style="font-size:13.5px;">Напряженные темы: </span>' +
+          md.topics.map(function (t) { return '<span class="chip">' + t + '</span>'; }).join('');
+      }
+    }
+
+    el('report').style.display = 'block';
+
+    var tracked = false;
+    try { tracked = !!sessionStorage.getItem('alter_cab_report_tracked'); } catch (_) {}
+    if (!tracked) {
+      try { sessionStorage.setItem('alter_cab_report_tracked', '1'); } catch (_) {}
+      cab.track('report_generated', { hasRoi: !!roi, hasDiag: !!md });
+    }
+  });
+})();
+</script>
+</body>
+</html>

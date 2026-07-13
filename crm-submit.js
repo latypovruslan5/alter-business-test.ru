@@ -2,6 +2,7 @@
    Секретный токен amoCRM живёт только в воркере (Cloudflare secret), в клиент не попадает.
    Экспортирует window.alterSubmitLead(formEl) -> Promise. */
 (function () {
+  if (window.alterSubmitLead) return; // защита от повторного исполнения скрипта
   // URL развёрнутого Cloudflare Worker. После деплоя воркера подставить сюда его адрес.
   // Можно переопределить до загрузки страницы через window.ALTER_CRM_ENDPOINT.
   var ENDPOINT = window.ALTER_CRM_ENDPOINT || 'https://alter-crm.alter-b2b.workers.dev/';

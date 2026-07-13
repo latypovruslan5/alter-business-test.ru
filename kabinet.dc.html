@@ -163,6 +163,83 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
   </div>
 </section>
 
+<!-- Мини-диагностика команды -->
+<section style="max-width:1160px; margin:0 auto; padding:56px 40px 0;">
+  <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:28px; padding:40px 44px; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-70px; right:-50px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(41,185,129,0.1), transparent 70%); pointer-events:none;"></div>
+
+    <sc-if value="{{ mdInvite }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+        <div style="max-width:640px;">
+          <h2 style="font-family:'Futura PT'; font-weight:700; font-size:30px; letter-spacing:-0.5px; color:#282C3E; margin:0 0 10px;">Мини-диагностика команды</h2>
+          <p style="font-size:16px; line-height:1.5; color:#6A7088; margin:0;">7 вопросов о том, как чувствует себя команда, — около 2 минут. Сразу покажем ориентировочный индекс нагрузки и сравнение с данными рынка из исследования Alter × hh.</p>
+        </div>
+        <a href="#top" onClick="{{ mdStart }}" style="background:#29B981; color:#fff; font-weight:700; font-size:17px; padding:16px 32px; border-radius:44px; text-decoration:none; box-shadow:0 10px 26px rgba(41,185,129,0.34); transition:transform .2s;" style-hover="transform:translateY(-2px);">Начать</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ mdActive }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative; z-index:2; max-width:720px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:8px;">
+          <span style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9AA0B5;">{{ mdProgress }}</span>
+        </div>
+        <div style="height:5px; border-radius:3px; background:#EEF2EF; overflow:hidden; margin-bottom:24px;"><div style="height:100%; border-radius:3px; background:#29B981; transition:width .3s; width:{{ mdProgressPct }};"></div></div>
+        <h3 style="font-family:'Futura PT'; font-weight:700; font-size:24px; line-height:1.3; color:#282C3E; margin:0 0 20px;">{{ mdQuestion }}</h3>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <sc-for list="{{ mdOptions }}" as="o" hint-placeholder-count="4">
+            <a href="#top" onClick="{{ o.onPick }}" style="display:block; font-size:16px; line-height:1.45; color:#282C3E; background:#F4F8F5; border:1px solid #E3ECE6; border-radius:14px; padding:15px 20px; text-decoration:none; transition:border-color .18s, background .18s;" style-hover="border-color:#29B981 !important; background:#EAF7F0 !important;">{{ o.text }}</a>
+          </sc-for>
+        </div>
+        <p style="font-size:13px; color:#9AA0B5; margin:18px 0 0;">Это ориентировочная оценка по вашим ответам, а не клиническая диагностика.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ mdHasResult }}" hint-placeholder-val="{{ false }}">
+      <div style="position:relative; z-index:2;">
+        <h2 style="font-family:'Futura PT'; font-weight:700; font-size:30px; letter-spacing:-0.5px; color:#282C3E; margin:0 0 22px;">Мини-диагностика команды</h2>
+        <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:36px; align-items:start;">
+          <div>
+            <span style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:14px; color:#fff; background:{{ mdZoneColor }}; border-radius:30px; padding:8px 16px;">{{ mdZoneLabel }}</span>
+            <div style="display:flex; align-items:baseline; gap:8px; margin-top:14px;">
+              <span style="font-family:'Futura PT'; font-weight:700; font-size:58px; line-height:1; letter-spacing:-1.5px; color:#282C3E;">{{ mdScore }}</span>
+              <span style="font-size:18px; color:#9AA0B5;">/ 100 — индекс нагрузки на команду</span>
+            </div>
+            <div style="height:10px; border-radius:6px; margin-top:16px; background:linear-gradient(90deg,#29B981 0%,#29B981 33%,#E5A93D 33%,#E5A93D 66%,#D9634C 66%,#D9634C 100%); position:relative;">
+              <div style="position:absolute; top:-4px; width:18px; height:18px; border-radius:50%; background:#fff; border:3px solid #282C3E; transform:translateX(-50%); left:{{ mdScorePct }};"></div>
+            </div>
+            <p style="font-size:15.5px; line-height:1.55; color:#4C516B; margin:20px 0 0;">{{ mdSummary }}</p>
+            <sc-if value="{{ mdHasTopics }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;">
+                <sc-for list="{{ mdTopicChips }}" as="tc" hint-placeholder-count="2">
+                  <span style="font-size:13px; font-weight:700; color:#8A6D2F; background:#FFF7E6; border:1px solid #F0DCAF; border-radius:30px; padding:6px 14px;">{{ tc.name }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+            <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:24px;">
+              <sc-if value="{{ diagNot }}" hint-placeholder-val="{{ false }}">
+                <a href="#top" onClick="{{ onDiag }}" style="background:#29B981; color:#fff; font-weight:700; font-size:16px; padding:14px 28px; border-radius:44px; text-decoration:none; box-shadow:0 8px 22px rgba(41,185,129,0.3); transition:transform .2s;" style-hover="transform:translateY(-2px);">Пройти полную диагностику</a>
+              </sc-if>
+              <a href="#top" onClick="{{ mdStart }}" style="font-size:14.5px; color:#9AA0B5; text-decoration:underline; text-underline-offset:3px;">Пройти заново</a>
+            </div>
+            <p style="font-size:13px; color:#9AA0B5; margin:16px 0 0;">Это ориентировочная оценка по вашим ответам, а не клиническая диагностика. Полная диагностика — анонимный опрос сотрудников по критериям ВОЗ.</p>
+          </div>
+          <div style="background:#F4F8F5; border-radius:20px; padding:26px 28px;">
+            <h3 style="font-family:'Futura PT'; font-weight:700; font-size:18px; color:#282C3E; margin:0 0 16px;">А как в среднем по рынку</h3>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div><div style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E;">5,7 из 10</div><div style="font-size:14px; line-height:1.45; color:#6A7088;">средний уровень стресса соискателей</div></div>
+              <div><div style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E;">3,0 из 5</div><div style="font-size:14px; line-height:1.45; color:#6A7088;">среднее эмоциональное состояние</div></div>
+              <div><div style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E;">83%</div><div style="font-size:14px; line-height:1.45; color:#6A7088;">работодателей видят влияние психологических проблем на продуктивность</div></div>
+              <div><div style="font-family:'Futura PT'; font-weight:700; font-size:24px; color:#282C3E;">92%</div><div style="font-size:14px; line-height:1.45; color:#6A7088;">соискателей называют хронический стресс причиной сменить работу</div></div>
+            </div>
+            <div style="font-size:12.5px; color:#9AA0B5; margin-top:16px;">Исследование Alter × hh, 2025</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</section>
+
 <!-- Главный CTA: диагностика -->
 <section style="max-width:1160px; margin:0 auto; padding:56px 40px 0;">
   <div style="background:#282C3E; border-radius:28px; padding:48px 52px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
@@ -210,6 +287,14 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
 <section style="max-width:1160px; margin:0 auto; padding:64px 40px 0;">
   <h2 style="font-family:'Futura PT'; font-weight:700; font-size:30px; letter-spacing:-0.5px; color:#282C3E; margin:0 0 6px;">Рекомендуем вам</h2>
   <p style="font-size:16px; color:#6A7088; margin:0 0 26px;">Подборка по темам, которые вы уже изучаете. Все открывается без повторных форм.</p>
+  <sc-if value="{{ askIndustry }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:16px; padding:16px 20px; margin-bottom:22px;">
+      <span style="font-size:15px; color:#4C516B;">Уточните отрасль — подберем истории компаний, похожих на вашу:</span>
+      <sc-for list="{{ industryChips }}" as="ic" hint-placeholder-count="4">
+        <a href="#top" onClick="{{ ic.onPick }}" style="font-size:14px; font-weight:700; color:#239266; background:#EAF7F0; border:1px solid #CDEBDD; border-radius:30px; padding:7px 15px; text-decoration:none; transition:background .18s, color .18s;" style-hover="background:#239266 !important; color:#fff !important;">{{ ic.name }}</a>
+      </sc-for>
+    </div>
+  </sc-if>
   <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
     <sc-for list="{{ feedItems }}" as="f" hint-placeholder-count="3">
       <div style="display:flex; flex-direction:column; gap:10px; background:#F4F8F5; border-radius:16px; padding:22px; transition:transform .2s, box-shadow .2s;" style-hover="transform:translateY(-4px) !important; box-shadow:0 14px 30px rgba(40,44,62,0.1) !important;">
@@ -234,6 +319,12 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
       <a href="roi.dc.html" style="color:#239266; font-weight:700; font-size:15px; text-decoration:underline; text-underline-offset:3px;">Открыть калькулятор →</a>
     </div>
     <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font-size:24px;">📊</div>
+      <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; color:#282C3E; margin:0;">Отчет для руководителя</h3>
+      <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0; flex:1;">Одна страница с вашими цифрами и аргументами из исследований — удобно показать руководству и обсудить бюджет.</p>
+      <a href="report.html" style="color:#239266; font-weight:700; font-size:15px; text-decoration:underline; text-underline-offset:3px;">Собрать отчет →</a>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:10px;">
       <div style="font-size:24px;">🎓</div>
       <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; color:#282C3E; margin:0;">Тренинг или вебинар для команды</h3>
       <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0; flex:1;">Психологи Alter проводят вебинары и интенсивы под задачи команды: стресс, выгорание, коммуникации.</p>
@@ -243,6 +334,12 @@ body { font-family:'Futura PT', sans-serif; color:#282C3E; background:#FBFCFB; -
       <sc-if value="{{ webinarDone }}" hint-placeholder-val="{{ false }}">
         <span style="color:#239266; font-weight:700; font-size:15px;">✓ Запрос отправлен менеджеру</span>
       </sc-if>
+    </div>
+    <div style="background:#fff; border:1px solid rgba(40,44,62,0.08); border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:10px;">
+      <div style="font-size:24px;">🖥️</div>
+      <h3 style="font-family:'Futura PT'; font-weight:700; font-size:19px; color:#282C3E; margin:0;">Как это выглядит для сотрудников</h3>
+      <p style="font-size:14.5px; line-height:1.5; color:#6A7088; margin:0; flex:1;">Тур по платформе за минуту: подбор психолога, запись день в день, сессия и чат между сессиями.</p>
+      <a href="demo-platforma.dc.html" style="color:#239266; font-weight:700; font-size:15px; text-decoration:underline; text-underline-offset:3px;">Смотреть тур →</a>
     </div>
     <sc-if value="{{ showPilot }}" hint-placeholder-val="{{ true }}">
       <div style="background:#EAF7F0; border:1px solid #CDEBDD; border-radius:20px; padding:28px; display:flex; flex-direction:column; gap:10px;">
@@ -437,8 +534,23 @@ class Component extends DCLogic {
     view: (function () { try { return localStorage.getItem('alter_cab_token') ? 'loading' : 'guest'; } catch (e) { return 'guest'; } })(),
     profile: null,
     diagOk: false, webinarOk: false, pilotOk: false, consultOk: false,
-    mMenu: false
+    mMenu: false,
+    mdActive: false, mdStep: 0, mdAnswers: {}
   };
+
+  // Вопросы мини-диагностики (черновик — согласовать с продуктом).
+  // Баллы = индекс варианта (0–3), карта тем — в воркере (MINIDIAG_TOPICS).
+  get _mdQuestions() {
+    return [
+      { q: 'Как часто сотрудники жалуются на усталость и нехватку сил?', opts: ['Практически не слышим', 'Иногда, от отдельных людей', 'Регулярно, от разных команд', 'Постоянно, это уже фон'] },
+      { q: 'Что происходит с текучестью за последние 6–12 месяцев?', opts: ['Снижается', 'Стабильна, нас устраивает', 'Стабильна, но выше желаемой', 'Растет'] },
+      { q: 'Как часто команда перерабатывает — вечера, выходные?', opts: ['Редко, в исключительных случаях', 'В пиковые периоды', 'Несколько раз в месяц', 'Практически постоянно'] },
+      { q: 'Есть ли напряжение и конфликты внутри команд?', opts: ['Почти не бывает', 'Бывают, решаются сами', 'Заметны, приходится вмешиваться', 'Есть затяжные конфликты'] },
+      { q: 'Насколько сотрудники пользуются текущими программами благополучия — ДМС, спорт, обучение?', opts: ['Активно', 'Примерно половина', 'Единицы', 'Таких программ почти нет'] },
+      { q: 'Что с больничными и внеплановыми отгулами в последнем квартале?', opts: ['Обычный уровень', 'Немного больше обычного', 'Заметно больше', 'Резкий рост'] },
+      { q: 'Как проходят первые месяцы у новичков?', opts: ['Быстро включаются', 'По-разному', 'Часть уходит до конца испытательного', 'Регулярно теряем новичков'] }
+    ];
+  }
 
   componentDidMount() {
     this._loadProfile();
@@ -466,17 +578,28 @@ class Component extends DCLogic {
     this.setState({ [okKey]: true });
   }
 
+  _fmt(n) {
+    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
   _steps(p, feed) {
     const unlocked = p.unlocked || [];
     const events = p.events || [];
-    const usedCalc = events.some(e => e.type === 'calculator_used') || unlocked.indexOf('calc-xlsx') !== -1;
+    const roi = p.roi || null;
+    const usedCalc = !!roi || events.some(e => e.type === 'calculator_used') || unlocked.indexOf('calc-xlsx') !== -1;
     const diagDone = this.state.diagOk || events.some(e => e.type === 'diagnostic_requested');
     const consultDone = this.state.consultOk || events.some(e => e.type === 'consult_requested');
+    const md = p.miniDiag || null;
+    const zoneRu = md ? ({ green: 'зеленая зона', yellow: 'желтая зона', red: 'красная зона' })[md.zone] : '';
 
     const defs = [
       { done: unlocked.length > 0, title: 'Изучить материалы', desc: 'Гайды и чек-листы по темам, которые болят у вашей команды.', action: 'К материалам →', href: 'gaids.dc.html', onClick: null },
-      { done: usedCalc, title: 'Посчитать бюджет и потери', desc: 'Калькулятор покажет цену текучки и стоимость программы.', action: 'Открыть калькулятор →', href: 'roi.dc.html', onClick: null },
-      { done: diagDone, title: 'Пройти диагностику команды', desc: 'Бесплатный анонимный опрос по критериям ВОЗ — картина в цифрах.', action: 'Пройти диагностику →', href: '#top', onClick: (e) => { e.preventDefault(); this._track('diagnostic_requested', 'diagOk'); } },
+      { done: usedCalc, title: 'Посчитать бюджет и потери',
+        desc: roi ? ('Ваши потери от текучки: ~' + this._fmt(roi.losses) + ' ₽/год. Потенциальная экономия с Alter: ~' + this._fmt(roi.savings) + ' ₽/год.') : 'Калькулятор покажет цену текучки и стоимость программы.',
+        action: roi ? 'Пересчитать →' : 'Открыть калькулятор →', href: 'roi.dc.html', onClick: null, forceAction: !!roi },
+      { done: diagDone, title: 'Пройти диагностику команды',
+        desc: md ? ('Экспресс-оценка: ' + zoneRu + ', индекс ' + md.score + '/100. Следующий шаг — полная диагностика по методике ВОЗ.') : 'Бесплатный анонимный опрос по критериям ВОЗ — картина в цифрах.',
+        action: 'Пройти диагностику →', href: '#top', onClick: (e) => { e.preventDefault(); this._track('diagnostic_requested', 'diagOk'); } },
       { done: consultDone, title: 'Встретиться с менеджером', desc: '30 минут: разбор ситуации и план поддержки под вашу команду.', action: 'Назначить встречу →', href: '#demo', onClick: null }
     ];
 
@@ -487,7 +610,7 @@ class Component extends DCLogic {
       title: d.title, desc: d.desc,
       action: d.action, href: d.href,
       onClick: d.onClick || (() => {}),
-      showAction: !d.done,
+      showAction: !d.done || !!d.forceAction,
       cardStyle: {
         background: d.done ? '#EAF7F0' : '#fff',
         border: '1px solid ' + (d.done ? '#CDEBDD' : 'rgba(40,44,62,0.08)'),
@@ -522,12 +645,29 @@ class Component extends DCLogic {
       noMyMaterials: false, diagNot: false, diagDone: false, webinarNot: false, webinarDone: false,
       showPilot: false, noPilot: false, pilotNot: false, pilotDone: false,
       consultNot: false, consultDone: false,
-      onLogout: () => {}, onDiag: () => {}, onWebinar: () => {}, onPilot: () => {}, onConsult: () => {}
+      onLogout: () => {}, onDiag: () => {}, onWebinar: () => {}, onPilot: () => {}, onConsult: () => {},
+      mdInvite: false, mdActive: false, mdHasResult: false, mdStart: () => {},
+      mdProgress: '', mdProgressPct: '0%', mdQuestion: '', mdOptions: [],
+      mdZoneLabel: '', mdZoneColor: '#239266', mdScore: 0, mdScorePct: '0%',
+      mdSummary: '', mdHasTopics: false, mdTopicChips: [],
+      askIndustry: false, industryChips: []
     };
     if (!base.isAuthed || !cab) return base;
 
     const feed = cab.buildFeed(p);
     const events = p.events || [];
+
+    // Мини-диагностика: квиз и результат.
+    const md = p.miniDiag || null;
+    const qs = this._mdQuestions;
+    const mdStep = Math.min(this.state.mdStep, qs.length - 1);
+    const zoneMeta = {
+      green: { label: 'Зеленая зона', color: '#239266', summary: 'Команда в ресурсном состоянии. Хороший момент закрепить это системной профилактикой.' },
+      yellow: { label: 'Желтая зона', color: '#C98A1F', summary: 'Есть зоны напряжения. По вашим ответам стоит присмотреться к темам ниже — материалы по ним уже в вашей ленте.' },
+      red: { label: 'Красная зона', color: '#C0392B', summary: 'Высокая нагрузка на команду. Рекомендуем начать с полной диагностики — она покажет картину точнее.' }
+    };
+    const zm = md ? (zoneMeta[md.zone] || zoneMeta.yellow) : null;
+
     const diagDone = this.state.diagOk || events.some(e => e.type === 'diagnostic_requested');
     const webinarDone = this.state.webinarOk || events.some(e => e.type === 'webinar_requested');
     const pilotDone = this.state.pilotOk || events.some(e => e.type === 'pilot_requested');
@@ -542,11 +682,22 @@ class Component extends DCLogic {
       };
     }).filter(Boolean);
 
-    const feedItems = feed.items.map((f) => ({
-      type: f.type, topic: f.topic, title: f.title,
-      action: f.status === 'ready' ? 'Получить ↓' : (f.status === 'request' ? 'Запросить у менеджера' : 'Закрепить за собой'),
-      onGet: (e) => { e.preventDefault(); cab.gate(f.id, () => this._refresh()); }
-    }));
+    const feedItems = feed.items.map((f) => {
+      if (f.kind === 'case') {
+        return {
+          type: f.type, topic: f.company, title: f.title,
+          action: 'Читать кейс →',
+          onGet: (e) => { e.preventDefault(); cab.track('case_opened', { id: f.caseId, title: f.company }); location.href = f.href; }
+        };
+      }
+      return {
+        type: f.type, topic: f.topic, title: f.title,
+        action: f.status === 'ready' ? 'Получить ↓' : (f.status === 'request' ? 'Запросить у менеджера' : 'Закрепить за собой'),
+        onGet: (e) => { e.preventDefault(); cab.gate(f.id, () => this._refresh()); }
+      };
+    });
+
+    const industries = window.ALTER_INDUSTRIES || {};
 
     return Object.assign(base, {
       userName: p.name || 'коллега',
@@ -558,11 +709,47 @@ class Component extends DCLogic {
       myMaterials: myMaterials,
       noMyMaterials: myMaterials.length === 0,
       feedItems: feedItems,
+      askIndustry: !p.industry,
+      industryChips: Object.keys(industries).map((slug) => ({
+        name: industries[slug],
+        onPick: (e) => {
+          e.preventDefault();
+          cab.track('industry_set', { industry: slug }).then(() => this._refresh());
+        }
+      })),
       webinarNot: !webinarDone, webinarDone: webinarDone,
       onWebinar: (e) => { e.preventDefault(); this._track('webinar_requested', 'webinarOk'); },
       showPilot: feed.showPilot, noPilot: !feed.showPilot,
       pilotNot: !pilotDone, pilotDone: pilotDone,
       onPilot: (e) => { e.preventDefault(); this._track('pilot_requested', 'pilotOk'); },
+      mdInvite: !md && !this.state.mdActive,
+      mdActive: this.state.mdActive,
+      mdHasResult: !!md && !this.state.mdActive,
+      mdStart: (e) => { e.preventDefault(); this.setState({ mdActive: true, mdStep: 0, mdAnswers: {} }); },
+      mdProgress: 'Вопрос ' + (mdStep + 1) + ' из ' + qs.length,
+      mdProgressPct: Math.round((mdStep / qs.length) * 100) + '%',
+      mdQuestion: qs[mdStep].q,
+      mdOptions: qs[mdStep].opts.map((text, idx) => ({
+        text: text,
+        onPick: (e) => {
+          e.preventDefault();
+          const answers = Object.assign({}, this.state.mdAnswers);
+          answers['q' + (mdStep + 1)] = idx;
+          if (mdStep + 1 < qs.length) {
+            this.setState({ mdAnswers: answers, mdStep: mdStep + 1 });
+          } else {
+            this.setState({ mdActive: false, mdStep: 0, mdAnswers: {} });
+            cab.track('minidiag_completed', { answers: answers }).then(() => this._refresh());
+          }
+        }
+      })),
+      mdZoneLabel: zm ? zm.label : '',
+      mdZoneColor: zm ? zm.color : '#239266',
+      mdScore: md ? md.score : 0,
+      mdScorePct: md ? Math.max(2, Math.min(98, md.score)) + '%' : '0%',
+      mdSummary: zm ? zm.summary : '',
+      mdHasTopics: !!(md && md.topics && md.topics.length),
+      mdTopicChips: (md && md.topics ? md.topics : []).map(t => ({ name: t })),
       consultNot: !consultDone && !this.state.consultOk,
       consultDone: consultDone || this.state.consultOk,
       onConsult: (e) => {
